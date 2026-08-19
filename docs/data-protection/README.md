@@ -43,6 +43,8 @@ operating across borders.
 | [`12-sector-notes.md`](12-sector-notes.md) | Where it lands differently: BFSI, healthcare, education and edtech, consumer internet and D2C, B2B SaaS and IT/BPM, and the public sector |
 | [`13-breach-response.md`](13-breach-response.md) | The three clocks — CERT-In's six hours, "without delay" to individuals and the Board, 72 hours for particulars — two reportability tests, a runbook, seven pre-built artefacts and a tabletop scenario |
 | [`14-employment-data.md`](14-employment-data.md) | Workplace data under S.7(i): what the employment legitimate use covers, the proportionality limit that survives it, the gaps in Indian workplace privacy law, and seven actions |
+| [`15-consent-managers.md`](15-consent-managers.md) | India's institutional bet: what a Consent Manager must be, the DEPA and Account Aggregator lineage, who is building, the market-structure risk, and the registrar that does not yet exist |
+| [`16-competition-and-privacy.md`](16-competition-and-privacy.md) | How the CCI enforced a DPDP-style consent standard against Meta/WhatsApp before the Board existed, the pending Supreme Court appeal, and the two-regulator overlap it creates |
 | [`memo/`](memo/) | The study as a formally cited Word research memorandum — 75 numbered references, with the build script |
 
 Each file is self-contained and can be read alone. Cross-references use section numbers of
