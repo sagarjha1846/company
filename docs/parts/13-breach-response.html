@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 13 — Breach response: the three clocks</title>
+<meta name="description" content="Part 13 — Breach response: the three clocks">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="sitebar"><a href="../index.html">&#8592; All parts</a><span>India&rsquo;s DPDP Act &mdash; a study</span></div>
+<div class="shell"><aside class="toc"><p class="tl">On this page</p><a class="l2" href="#1-the-three-clocks">1. The three clocks</a><a class="l2" href="#2-what-without-delay-means-in-practice">2. What &amp;quot;without delay&amp;quot; means in practice</a><a class="l2" href="#3-reportability-two-tests-run-in-parallel">3. Reportability: two tests, run in parallel</a><a class="l2" href="#4-what-each-notification-must-contain">4. What each notification must contain</a><a class="l2" href="#5-the-runbook">5. The runbook</a><a class="l2" href="#6-pre-build-these-seven-artefacts">6. Pre-build these seven artefacts</a><a class="l2" href="#citations">Citations</a></aside><main class="prose"><h1 id="part-13-breach-response-the-three-clocks">Part 13 — Breach response: the three clocks</h1>
+<p>The most operationally demanding thing in the Indian regime is not consent — it is what happens in the six hours after somebody notices something wrong. Three separate clocks start, run in parallel, and are owned by different teams. This part turns them into a runbook.</p>
+<hr>
+<h2 id="1-the-three-clocks">1. The three clocks</h2>
+<div class="scroll"><table><thead><tr>
+<th>Clock</th>
+<th>Owner</th>
+<th>Trigger</th>
+<th>Deadline</th>
+<th>Legal source</th>
+<th>Failure exposure</th>
+</tr></thead><tbody>
+<tr><td><strong>CERT-In</strong></td><td>Security</td><td>Noticing, or being informed of, a listed cyber incident</td><td><strong>6 hours</strong></td><td>CERT-In Directions, 28 April 2022, under S.70B(6) IT Act</td><td>Up to <strong>₹1 lakh</strong> fine and <strong>1 year imprisonment</strong> under S.70B(7)</td></tr>
+<tr><td><strong>Data Principals</strong></td><td>Privacy / Comms</td><td>Becoming aware of <em>any</em> personal data breach</td><td><strong>Without delay</strong></td><td>R.7(1)</td><td><strong>₹200 crore</strong> tier</td></tr>
+<tr><td><strong>Data Protection Board</strong></td><td>Privacy / Legal</td><td>Becoming aware — two stages</td><td><strong>Without delay</strong> (initial), then <strong>72 hours</strong> (particulars)</td><td>R.7(2)</td><td><strong>₹200 crore</strong> tier</td></tr>
+</tbody></table></div>
+<p>Behind all three sits the <strong>₹250 crore</strong> tier for the underlying failure to maintain reasonable security safeguards (S.8(5) with R.6). Notifying perfectly does not cure a control failure, and having good controls does not excuse a late notification — they are independent exposures.</p>
+<p>Sectoral clocks stack on top: RBI, SEBI and IRDAI incident reporting each run on their own timelines for regulated entities.</p>
+<p><strong>Note the asymmetry between the clocks.</strong> CERT-In&#x27;s trigger is a <em>cyber incident</em> from a defined list — website defacement, intrusion, ransomware, malicious code, unauthorised access. The DPDP trigger is a <em>personal data breach</em>, with <strong>no severity threshold at all</strong>. Most personal data breaches are not CERT-In incidents (a misdirected email, a misconfigured permission, an employee taking data to a competitor), and some CERT-In incidents involve no personal data. <strong>You need two reportability tests, not one.</strong></p>
+<hr>
+<h2 id="2-what-without-delay-means-in-practice">2. What &quot;without delay&quot; means in practice</h2>
+<p>The Rules do not define it, and there is no Board practice to calibrate against. Three observations:</p>
+<ol>
+<li><strong>It is stricter than 72 hours.</strong> The drafters used both formulations in the same rule, so &quot;without delay&quot; must mean something shorter than the 72 hours they also specified.</li>
+<li><strong>It runs from awareness, not confirmation.</strong> Waiting for a complete forensic picture before notifying is the failure mode the phrase is designed to prevent. The initial Board intimation and the individual notification are both <em>first</em> communications, not final ones.</li>
+<li><strong>The safe operating assumption is hours, not days</strong> — and in practice, aligning the first individual notification with the six-hour CERT-In report is the only defensible design, because it means one decision point rather than two.</li>
+</ol>
+<hr>
+<h2 id="3-reportability-two-tests-run-in-parallel">3. Reportability: two tests, run in parallel</h2>
+<p><strong>Test A — CERT-In (6 hours).</strong> Is this one of the listed incident categories? Website defacement or unauthorised change; intrusion; malicious code including ransomware, worms, spyware and crypto miners; unauthorised access to data or systems; identity theft; attacks on critical infrastructure or IoT; and the rest of the enumerated list. If yes → report, whether or not personal data is involved.</p>
+<p><strong>Test B — DPDP (without delay).</strong> Was there <strong>any</strong> unauthorised processing, or accidental disclosure, acquisition, sharing, use, alteration, destruction or loss of access, that compromises the confidentiality, integrity or availability of personal data? If yes → notify <strong>every affected Data Principal and the Board</strong>. There is no volume threshold, no harm threshold, and no &quot;unlikely to result in a risk&quot; filter.</p>
+<p><strong>The consequence teams underestimate:</strong> Test B will fire many times a year in any organisation of scale, for incidents that would be logged and closed under the GDPR without any external communication. The process must therefore be <strong>cheap to run</strong>, or it will not be run.</p>
+<hr>
+<h2 id="4-what-each-notification-must-contain">4. What each notification must contain</h2>
+<p><strong>To the Data Principal (R.7(1))</strong> — in clear and plain language:</p>
+<ul>
+<li>the <strong>nature, extent and timing</strong> of the breach;</li>
+<li>the <strong>likely consequences</strong> for that individual;</li>
+<li>the <strong>mitigation measures</strong> the Fiduciary has implemented or is implementing;</li>
+<li>the <strong>safety measures the individual can take</strong> — the part most often omitted, and the part that turns a notice from a disclaimer into something useful;</li>
+<li><strong>contact details</strong> of a person able to answer questions.</li>
+</ul>
+<p><strong>To the Board, stage 1 — without delay:</strong> nature, extent, timing and likely impact.</p>
+<p><strong>To the Board, stage 2 — within 72 hours</strong> (extendable on request):</p>
+<ul>
+<li>the <strong>events and circumstances</strong> leading to the breach;</li>
+<li><strong>mitigation measures</strong> taken;</li>
+<li><strong>findings on the person who caused it</strong>, where known;</li>
+<li><strong>remedial measures</strong> to prevent recurrence;</li>
+<li>a <strong>report on the intimations given</strong> to affected Data Principals.</li>
+</ul>
+<p>Note stage 2 asks for a <strong>root-cause narrative and attribution</strong> within 72 hours. That is a forensic timeline most organisations cannot meet from a standing start, which is the argument for retaining a forensics provider on a pre-agreed SLA before you need one.</p>
+<hr>
+<h2 id="5-the-runbook">5. The runbook</h2>
+<p><strong>T+0 — detection.</strong> Anyone can detect; the pipeline must accept reports from support, engineering, a vendor, a researcher or a regulator. Start the clock at <em>first awareness within the organisation</em>, not at escalation to the security team.</p>
+<p><strong>T+0 to T+60 minutes — triage.</strong></p>
+<ul>
+<li>Assign an incident lead with authority to notify.</li>
+<li>Run <strong>Test A</strong> and <strong>Test B</strong> independently and record both answers with reasons.</li>
+<li>Snapshot logs. Rule 6&#x27;s one-year access-log retention is what makes the affected-user query possible at all — an organisation without it cannot scope the breach and therefore cannot notify accurately.</li>
+</ul>
+<p><strong>T+1 to T+6 hours — the hard window.</strong></p>
+<ul>
+<li>File the <strong>CERT-In report</strong> if Test A is positive.</li>
+<li>Run the <strong>affected-user query</strong> off the data inventory and log store.</li>
+<li>Send the <strong>initial Board intimation</strong> and begin <strong>individual notifications</strong> if Test B is positive. Do not wait for containment to complete.</li>
+<li>Notify sectoral regulators if applicable.</li>
+</ul>
+<p><strong>T+6 to T+72 hours — the investigation.</strong></p>
+<ul>
+<li>Containment and eradication; preserve evidence.</li>
+<li>Build the root-cause narrative, attribution where possible, and the remediation plan.</li>
+<li>File the <strong>stage 2 Board report</strong> with the record of individual notifications.</li>
+</ul>
+<p><strong>After.</strong> Update the control set, record the lessons, and re-run the affected-user query to confirm nobody was missed. Keep the whole file — the Board&#x27;s inquiry powers under S.28 are civil-court powers of discovery.</p>
+<hr>
+<h2 id="6-pre-build-these-seven-artefacts">6. Pre-build these seven artefacts</h2>
+<p>A breach process assembled during a breach will miss the six-hour window. Before you need it:</p>
+<ol>
+<li><strong>Two reportability decision trees</strong> (Test A, Test B) with worked examples, so triage does not require a lawyer at 2 a.m.</li>
+<li><strong>A CERT-In report template</strong> and a named filing account with credentials that work.</li>
+<li><strong>Notification templates</strong> — Board stage 1, Board stage 2, and the individual notice — in English and the languages your notices use.</li>
+<li><strong>A pre-built affected-user query</strong> against the inventory and access logs, tested on a drill.</li>
+<li><strong>A named decision-maker and deputy</strong> with standing authority to notify without further sign-off. This is the single most common cause of missed windows.</li>
+<li><strong>A forensics retainer</strong> with an SLA short enough to support a 72-hour root-cause narrative.</li>
+<li><strong>A vendor notification clause</strong> in every processor contract requiring upstream notice fast enough to leave you time — hours, not &quot;promptly.&quot;</li>
+</ol>
+<p><strong>Run one tabletop before May 2027.</strong> The scenario that tests everything: a third-party processor discloses on a Friday evening that a misconfigured storage bucket exposed a table containing names, phone numbers and order history of two lakh users, for an unknown period. It is not a listed CERT-In category on its face; it is squarely a Test B breach; the affected-user list must be reconstructed from logs you may not have; and the 72-hour root-cause report depends on a vendor&#x27;s cooperation you have not contracted for.</p>
+<hr>
+<h2 id="citations">Citations</h2>
+<ul>
+<li>CERT-In Directions dated 28 April 2022 under S.70B(6) of the IT Act, 2000 — <a href="https://trilegal.com/wp-content/uploads/2022/05/2022-CERT-In-Directions-on-Reporting-Cyber-Incidents-1.pdf">Trilegal analysis</a> · <a href="https://natlawreview.com/article/cyber-security-india-revamps-rules-mandatory-incident-reporting-allied-compliances">National Law Review, &quot;India Revamps Rules on Mandatory Incident Reporting&quot;</a></li>
+<li><a href="https://www.upguard.com/blog/indias-6-hour-data-breach-reporting-rule">UpGuard, &quot;India&#x27;s 6-Hour Data Breach Reporting Rule&quot;</a></li>
+<li><a href="https://eventussecurity.com/cybersecurity/cert-in-six-hour-incident-reporting/">Eventus Security, &quot;CERT-In 6-Hour Incident Reporting: Format &amp; Checklist 2026&quot;</a></li>
+<li><a href="https://adaptive.live/blog/cert-in-compliance-checklist-a-practical-guide-for-indian-businesses">Adaptive, &quot;CERT-In Compliance Checklist for Indian Businesses (2026)&quot;</a></li>
+<li>DPDP Rules, 2025, Rule 6 and Rule 7; DPDP Act, 2023, S.8(5)–(6) and the Schedule</li>
+</ul>
+<nav class="pager"><a href="12-sector-notes.html">&#8592; Part 12 — Sector notes</a><a href="14-employment-data.html">Part 14 — Employment and workplace data &#8594;</a></nav>
+</main></div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 15 — The Consent Manager: India&#x27;s institutional bet</title>
+<meta name="description" content="Part 15 — The Consent Manager: India&#x27;s institutional bet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="sitebar"><a href="../index.html">&#8592; All parts</a><span>India&rsquo;s DPDP Act &mdash; a study</span></div>
+<div class="shell"><aside class="toc"><p class="tl">On this page</p><a class="l2" href="#1-why-it-exists">1. Why it exists</a><a class="l2" href="#2-what-a-consent-manager-must-be">2. What a Consent Manager must be</a><a class="l2" href="#3-where-it-came-from-depa-and-account-aggregators">3. Where it came from: DEPA and Account Aggregators</a><a class="l2" href="#4-who-is-building-it">4. Who is building it</a><a class="l2" href="#5-the-structural-problem">5. The structural problem</a><a class="l2" href="#6-readiness">6. Readiness</a><a class="l2" href="#7-what-to-do-about-it">7. What to do about it</a><a class="l2" href="#citations">Citations</a></aside><main class="prose"><h1 id="part-15-the-consent-manager-indias-institutional-bet">Part 15 — The Consent Manager: India&#x27;s institutional bet</h1>
+<p>The Consent Manager is the most original thing in the DPDP framework, and the one on which the whole consent-first design depends. Rule 4 commences on <strong>13 November 2026</strong>. This part sets out what the institution is, where it came from, who is building it, and the structural problem sitting at the centre of it.</p>
+<hr>
+<h2 id="1-why-it-exists">1. Why it exists</h2>
+<p>India built a regime with <strong>two lawful bases</strong> and no legitimate-interests ground (<a href="04-comparative-matrices.html">Part 4</a>). Almost every commercial purpose therefore runs on consent, and every consent must be free, specific, informed, unconditional and unambiguous, preceded by a <strong>standalone itemised notice in one of 22 languages</strong>, and as easy to withdraw as to give.</p>
+<p>At Indian internet scale, that design collapses into click-through theatre unless something absorbs the load. The Consent Manager is that something: a <strong>registered intermediary through which a Data Principal gives, manages, reviews and withdraws consent across many Data Fiduciaries from one place</strong> (S.6(7)–(9), R.4, First Schedule).</p>
+<p>No other data protection statute institutionalises this. It is India&#x27;s principal contribution to the field, and it will be judged on whether it works.</p>
+<hr>
+<h2 id="2-what-a-consent-manager-must-be">2. What a Consent Manager must be</h2>
+<p><strong>To register</strong> (First Schedule, Part A):</p>
+<div class="scroll"><table><thead><tr>
+<th>Condition</th>
+<th>Detail</th>
+</tr></thead><tbody>
+<tr><td>Incorporation</td><td>A <strong>company incorporated in India</strong></td></tr>
+<tr><td>Net worth</td><td>At least <strong>₹2 crore</strong></td></tr>
+<tr><td>Capability</td><td>Demonstrated technical, operational and financial capacity to operate an <strong>interoperable</strong> consent platform across Fiduciaries</td></tr>
+<tr><td>Fit and proper</td><td>Promoters and directors assessed; certification required</td></tr>
+<tr><td>Transparency</td><td>The business model and terms must be published</td></tr>
+<tr><td>Registration</td><td>Granted by, and revocable by, the <strong>Data Protection Board</strong></td></tr>
+</tbody></table></div>
+<p><strong>Design constraint — data-blind by default.</strong> The Consent Manager routes and records consent; it is not a data store. The architecture mirrors the &quot;sealed pipe&quot; model already used in financial services, and it is what makes the institution trustworthy: a consent broker that could read the data would be a single point of catastrophic aggregation.</p>
+<p><strong>Obligations</strong> (First Schedule, Part B) include: enabling give / manage / review / withdraw; maintaining <strong>machine-readable consent, notice and data-sharing records</strong> available to the Data Principal — reported retention of a <strong>minimum of seven years</strong> — under encryption, access control and incident-response duties; accountability <strong>to the Data Principal</strong>, not to the Fiduciary that pays; and Board oversight extending to a change-of-control regime.</p>
+<p>That last point is the constitutional core of the institution. <strong>The Consent Manager&#x27;s duty runs to the individual</strong>, which is what distinguishes it from a vendor consent-management platform (a CMP) sold to a Fiduciary. Both may be called &quot;consent management&quot;; only one is a statutory fiduciary of the user.</p>
+<hr>
+<h2 id="3-where-it-came-from-depa-and-account-aggregators">3. Where it came from: DEPA and Account Aggregators</h2>
+<p>The Consent Manager generalises <strong>DEPA</strong> — the Data Empowerment and Protection Architecture — whose financial-sector implementation is the RBI-regulated <strong>Account Aggregator</strong> framework. NBFC-AAs orchestrate consented, purpose-specific data flows between financial institutions as a <strong>data-blind conduit</strong>, never storing the data. The ecosystem is live: <strong>17 NBFC-AAs hold operational licences and one holds an in-principle licence</strong>.</p>
+<p>This is the strongest argument that the DPDP design is achievable: India has already run this architecture at national scale in the hardest sector.</p>
+<p><strong>But it also creates a genuine conflict.</strong> A fintech will shortly sit inside <strong>two consent regimes at once</strong> — the RBI&#x27;s AA framework for financial information, and the DPDP Consent Manager framework for personal data — with different regulators, registration regimes, consent-artefact formats and audit trails, overlapping in scope. Commentators have called this the Account Aggregator–Consent Manager paradox, and it is unresolved. Neither MeitY nor the RBI has published a reconciliation.</p>
+<p><strong>Practical reading for fintechs:</strong> assume both apply, map which data elements fall under which framework, and design consent artefacts that can satisfy the stricter of the two rather than building twice.</p>
+<hr>
+<h2 id="4-who-is-building-it">4. Who is building it</h2>
+<p>MeitY ran a consent-management challenge and shortlisted <strong>six firms</strong>:</p>
+<div class="scroll"><table><thead><tr>
+<th>Entity</th>
+<th>Base</th>
+</tr></thead><tbody>
+<tr><td><strong>Jio Platforms</strong></td><td>Mumbai</td></tr>
+<tr><td><strong>IDfy</strong> (Baldor Technologies)</td><td>Mumbai</td></tr>
+<tr><td><strong>VertexTech Labs</strong> (Redacto)</td><td>Bengaluru</td></tr>
+<tr><td><strong>Zoop</strong> (Quagga Tech)</td><td>Pune</td></tr>
+<tr><td><strong>Concur — Consent Manager</strong></td><td>Mumbai</td></tr>
+<tr><td><strong>Aurelion Future Forge</strong></td><td>Chennai</td></tr>
+</tbody></table></div>
+<p>Alongside them, a wider vendor market is forming — Perfios launched a DPDP suite, Cross Identity a consent portal, and a long tail of CMP vendors is repositioning. <strong>Most of these are not Consent Managers in the statutory sense</strong>; they are compliance tooling sold to Fiduciaries. Buyers should be clear which they are purchasing, because only a registered Consent Manager discharges the S.6(7) function.</p>
+<p><strong>The market-structure question.</strong> A ₹2 crore net-worth bar plus interoperability and fit-and-proper requirements is not a high wall for a large platform and is a meaningful one for a startup. Combined with the network effects inherent in consent intermediation — the useful Consent Manager is the one every Fiduciary already integrates with — the plausible outcome is <strong>a small number of large players</strong>, with Jio Platforms the obvious anchor. That is precisely the concentration pattern the GDPR literature documented in the vendor market (<a href="10-economics-and-watchlist.html">Part 10</a>), arriving here by design rather than by accident.</p>
+<p>Whether a consent broker owned by one of India&#x27;s largest data-collecting conglomerates can discharge a statutory duty <strong>to the individual</strong> is a question the Board will have to answer when it grants the first registrations.</p>
+<hr>
+<h2 id="5-the-structural-problem">5. The structural problem</h2>
+<p><strong>Rule 4 commences on 13 November 2026. Registration is granted by the Data Protection Board. The Board has no Chairperson and no Members</strong> — MeitY invited applications only in May 2026 — and the sections conferring its functions and procedure (S.27–S.34) have <strong>not been commenced</strong> (<a href="02-dpdp-rules-2025.html">Part 2</a>).</p>
+<p>So on the date the Consent Manager framework switches on, there may be no functioning body able to register a Consent Manager. Three consequences follow:</p>
+<ol>
+<li><strong>The date may slip in practice even if it does not slip in law.</strong> A commenced rule with no registrar is a rule that cannot be complied with.</li>
+<li><strong>Fiduciaries cannot plan around integration they cannot yet test.</strong> No registered Consent Manager means no interoperability specification proven in production, six months before the substantive obligations land in May 2027.</li>
+<li><strong>The consent-fatigue problem the institution exists to solve remains unsolved</strong> through the period when Fiduciaries are building their consent flows — so they will build them without it, and retrofit later.</li>
+</ol>
+<hr>
+<h2 id="6-readiness">6. Readiness</h2>
+<p>Industry forecasts suggest that by 2027 roughly <strong>60–70% of large firms</strong> and <strong>30–40% of mid-sized companies</strong> will reach full DPDP operational readiness. Large BFSI, telecom and IT services firms are ahead; mid-market and traditional industry lack the audit trails, retention systems and infrastructure. Read that alongside EY India&#x27;s finding that <strong>64% of organisations have not allocated a compliance budget</strong> (<a href="10-economics-and-watchlist.html">Part 10</a>).</p>
+<p>The implication is uncomfortable and worth stating: <strong>a substantial share of the Indian market will be non-compliant on 13 May 2027</strong>, not through defiance but through capacity. What happens then depends entirely on how a newly constituted Board chooses to open its enforcement account — whether it starts with the largest and most culpable, or with whoever generates the first complaints.</p>
+<hr>
+<h2 id="7-what-to-do-about-it">7. What to do about it</h2>
+<ol>
+<li><strong>Decide your posture now</strong> — integrate with Consent Managers, become one, or run your own consent capture and integrate later. For most organisations it is the first.</li>
+<li><strong>Build your consent ledger to be exportable.</strong> Purpose IDs, notice version hashes, timestamps, language served, capture surface, and withdrawal events — in a machine-readable form you could hand to a Consent Manager. This is the single design decision that keeps the option open.</li>
+<li><strong>Do not buy a &quot;consent manager&quot; without checking which thing it is.</strong> A CMP is useful tooling; only a registered Consent Manager discharges S.6(7).</li>
+<li><strong>If you are in financial services, map the AA/CM overlap explicitly</strong> and design to the stricter artefact.</li>
+<li><strong>Plan for the registrar not existing on time.</strong> Your consent architecture should work standalone and integrate with a Consent Manager later, not depend on one existing.</li>
+</ol>
+<hr>
+<h2 id="citations">Citations</h2>
+<ul>
+<li>DPDP Act, 2023, S.2(g) and S.6(7)–(9); DPDP Rules, 2025, Rule 4 and the First Schedule</li>
+<li><a href="https://www.azbpartners.com/bank/consent-managers-under-indias-dpdp-act-and-dpdp-rules/">AZB &amp; Partners, &quot;Consent Managers under India&#x27;s DPDP Act and DPDP Rules&quot;</a></li>
+<li><a href="https://candourlegal.com/dpdp-consent-manager-framework-2026/">Candour Legal, &quot;DPDP Consent Managers: A November 2026 Deadline, But No Regulator Yet&quot;</a></li>
+<li><a href="https://www.consently.in/blog/dpdp-consent-manager-registration-eligibility-checklist">Consently, &quot;DPDP Consent Manager Registration: Eligibility, the ₹2 Crore Net Worth Bar, and the Application Checklist&quot;</a></li>
+<li><a href="https://sahamati.org.in/reconciling-the-account-aggregator-and-consent-manager-frameworks/">Sahamati, &quot;Reconciling the Account Aggregator and Consent Manager Frameworks&quot;</a></li>
+<li><a href="https://www.scconline.com/blog/post/2026/06/26/account-aggregator-consent-manager-paradox-dpdp-rules-fintech-sector/">SCC Online, &quot;Fragmented Consent and Fractured Rights: Resolving the Account Aggregator–Consent Manager Paradox under DPDP Rules&quot;</a></li>
+<li><a href="https://www.niti.gov.in/sites/default/files/2023-03/Data-Empowerment-and-Protection-Architecture-A-Secure-Consent-Based.pdf">NITI Aayog, &quot;Data Empowerment and Protection Architecture — Draft for Discussion&quot;</a></li>
+<li><a href="https://bfsi.eletsonline.com/meity-picks-six-firms-to-lead-digital-consent-management-for-dpdp-act/">Elets BFSI, &quot;MeitY Picks Six Firms to Lead Digital Consent Management for DPDP Act&quot;</a></li>
+<li><a href="https://www.storyboard18.com/amp/brand-makers/dpdp-deadline-10-35-readiness-gap-pushes-indian-organizations-to-adopt-consent-managers-for-data-governance-84891.htm">Storyboard18, &quot;DPDP deadline: 10–35% readiness gap pushes Indian organizations to adopt consent managers&quot;</a></li>
+<li><a href="https://www.ikigailaw.com/article/230/consent-managers-in-the-financial-space-account-aggregators">Ikigai Law, &quot;Consent Managers in the financial space: Account Aggregators&quot;</a></li>
+</ul>
+<nav class="pager"><a href="14-employment-data.html">&#8592; Part 14 — Employment and workplace data</a><a href="16-competition-and-privacy.html">Part 16 — Competition law got there first &#8594;</a></nav>
+</main></div>
+</body>
+</html>

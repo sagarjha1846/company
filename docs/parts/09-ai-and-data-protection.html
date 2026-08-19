@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 9 — AI, algorithms and data protection</title>
+<meta name="description" content="Part 9 — AI, algorithms and data protection">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="sitebar"><a href="../index.html">&#8592; All parts</a><span>India&rsquo;s DPDP Act &mdash; a study</span></div>
+<div class="shell"><aside class="toc"><p class="tl">On this page</p><a class="l2" href="#1-indias-architecture-no-ai-statute-governance-through-existing-law">1. India&amp;#x27;s architecture: no AI statute, governance through existing law</a><a class="l2" href="#2-where-the-dpdp-act-actually-bites-on-ai">2. Where the DPDP Act actually bites on AI</a><a class="l3" href="#21-the-training-data-question-s3cii">2.1 The training-data question: S.3(c)(ii)</a><a class="l3" href="#22-no-anonymisation-standard">2.2 No anonymisation standard</a><a class="l3" href="#23-the-lawful-basis-problem">2.3 The lawful-basis problem</a><a class="l3" href="#24-withdrawal-erasure-and-model-unlearning">2.4 Withdrawal, erasure and model unlearning</a><a class="l3" href="#25-rule-13-algorithmic-due-diligence">2.5 Rule 13 — algorithmic due diligence</a><a class="l3" href="#26-what-the-act-does-not-reach">2.6 What the Act does not reach</a><a class="l2" href="#3-the-comparative-ai-law-map-as-at-19-august-2026">3. The comparative AI-law map, as at 19 August 2026</a><a class="l2" href="#4-training-data-legality-compared">4. Training-data legality, compared</a><a class="l2" href="#5-what-to-do-about-it">5. What to do about it</a><a class="l2" href="#citations">Citations</a></aside><main class="prose"><h1 id="part-9-ai-algorithms-and-data-protection">Part 9 — AI, algorithms and data protection</h1>
+<p>The most consequential unanswered question in Indian data protection is not in the DPDP Act at all: <strong>on what legal footing may personal data be used to train and operate AI systems?</strong> This part sets out India&#x27;s answer, the answers other jurisdictions have given, and where the Indian position is genuinely unsettled rather than merely undecided.</p>
+<hr>
+<h2 id="1-indias-architecture-no-ai-statute-governance-through-existing-law">1. India&#x27;s architecture: no AI statute, governance through existing law</h2>
+<p>On <strong>5 November 2025</strong> — nine days before the DPDP Rules were notified — MeitY published the <strong>India AI Governance Guidelines</strong> under the IndiaAI Mission. The central policy choice is explicit: <strong>India is not enacting a separate AI law.</strong> Foreseeable AI harms are to be addressed through instruments that already exist — the IT Act, 2000, the Bharatiya Nyaya Sanhita, 2023, consumer protection legislation, and the DPDP Act, 2023.</p>
+<p>The Guidelines are principle-based and techno-legal rather than prescriptive:</p>
+<ul>
+<li><strong>Seven sutras</strong> as founding principles: trust is the foundation; people first; innovation over restraint; fairness and equity; accountability; understandable by design; and safety, resilience and sustainability.</li>
+<li><strong>Institutional architecture</strong>: an <strong>AI Governance Group (AIGG)</strong> to steer national policy and coordinate across regulators; a <strong>Technology and Policy Expert Committee (TPEC)</strong> to supply technical advice; and an <strong>IndiaAI Safety Institute (AISI)</strong> for standards, model testing and evaluation.</li>
+<li><strong>Voluntary compliance and graded liability</strong>, rather than a licensing or conformity regime.</li>
+<li><strong>A phased action plan</strong>: near-term, stand up AIGG and TPEC and build India-specific risk assessment and classification frameworks; medium-term, publish standards for content authentication, data integrity and fairness and operationalise a <strong>National AI Incidents Database</strong>; long-term, monitor and legislate only if highly autonomous systems require it.</li>
+</ul>
+<p><strong>Assessment.</strong> This is the lightest-touch posture of any major economy, and it is coherent with the DPDP Act&#x27;s own design: keep the statute thin, govern through delegated instruments and institutions, and preserve room to move. Its weakness is the same as the Act&#x27;s — the binding content is deferred. In the meantime, <strong>the DPDP Act is India&#x27;s operative AI law for anything touching personal data</strong>, and it was not drafted with models in mind.</p>
+<hr>
+<h2 id="2-where-the-dpdp-act-actually-bites-on-ai">2. Where the DPDP Act actually bites on AI</h2>
+<h3 id="21-the-training-data-question-s3cii">2.1 The training-data question: S.3(c)(ii)</h3>
+<p>The Act <strong>does not apply</strong> to personal data &quot;made or caused to be made publicly available&quot; by the Data Principal themselves, or by a person under a legal obligation to publish it.</p>
+<p>This is the widest such carve-out in comparative law. Elsewhere — Singapore, China, several US states — public availability relieves the <em>consent</em> requirement while the data stays inside the statute. In India the data leaves the statute&#x27;s application altogether, taking every downstream right and obligation with it. For a company assembling an Indian training corpus, that is an enormous difference.</p>
+<p><strong>Four limits are being argued, and none has been tested:</strong></p>
+<ol>
+<li><strong>It is not a public-internet exemption.</strong> The trigger is publication <em>by the data principal</em> or <em>under a legal obligation</em> — not visibility, crawlability, indexation, or presence in a third-party dataset. Data that leaked, was republished by someone else, or was scraped from a platform the individual did not publish to is not within S.3(c)(ii).</li>
+<li><strong>Context of publication.</strong> A person posting a photograph to a social network has made <em>that</em> publicly available; whether that extends to bulk ingestion into a commercial model is exactly the unsettled question.</li>
+<li><strong>Aggregation and repurposing.</strong> Combining exempt public data with non-exempt data produces a composite that is not &quot;the published record,&quot; and the exemption plausibly does not travel with it.</li>
+<li><strong>Outputs.</strong> The exemption addresses the <em>input</em> data. A model that emits personal data about an identifiable Indian, or is used to make a decision about one, is processing personal data in a fresh context.</li>
+</ol>
+<p><strong>Practical posture.</strong> Treat S.3(c)(ii) as a <em>narrow, provenance-based</em> exemption: record, per dataset, who published the data and under what obligation. A corpus whose provenance you cannot evidence is not exempt merely because it was reachable.</p>
+<h3 id="22-no-anonymisation-standard">2.2 No anonymisation standard</h3>
+<p>The Act defines neither anonymisation nor pseudonymisation, so the threshold at which training data or a model leaves the Act&#x27;s scope is undefined. Two external frameworks fill the vacuum:</p>
+<ul>
+<li><strong>EDPB Opinion 28/2024</strong> (17 December 2024): an AI model is anonymous only where the likelihood of extracting personal data, or of obtaining it through queries, is <strong>&quot;insignificant&quot;</strong> — assessed comprehensively, accounting for unintended reuse and disclosure. It also holds that <strong>Article 6(1)(f) legitimate interests cannot be a default basis</strong> for training; the three-step test must be run and documented.</li>
+<li><strong>Case C-413/23 P <em>EDPS v. SRB</em></strong> (4 September 2025): identifiability is <strong>relative and contextual</strong> — data can be personal for the original controller and not for a recipient who cannot reasonably re-identify.</li>
+</ul>
+<p>Neither binds India. Both are the obvious analytical source when the Board first has to decide whether a de-identified corpus or a trained model is inside the Act.</p>
+<h3 id="23-the-lawful-basis-problem">2.3 The lawful-basis problem</h3>
+<p>This is the sharpest structural difference between India and the EU on AI. In the EU, model training generally runs on <strong>legitimate interests</strong>, subject to a balancing test. <strong>India has no such basis.</strong> Training on non-exempt personal data must run on <strong>consent for that specific purpose</strong> (S.6), or on one of the nine legitimate uses (S.7) — none of which is a research or development ground for private parties.</p>
+<p>The consequences are concrete: consent obtained to provide a service does not extend to model training, because S.6(1) limits consent to the data necessary for the specified purpose and voids it beyond that. <strong>Training therefore needs its own notice and its own consent</strong>, or it needs data that is outside the Act — which is why S.3(c)(ii) is carrying so much weight in Indian AI practice.</p>
+<p>The one relief valve is <strong>Rule 16</strong>: processing necessary for <strong>research, archiving or statistical purposes</strong> is exempt from the Act entirely, subject to the Second Schedule standards and the condition that it is <strong>not used to take any decision specific to a Data Principal</strong>. That condition is what excludes most commercial model deployment — but not necessarily pre-training.</p>
+<h3 id="24-withdrawal-erasure-and-model-unlearning">2.4 Withdrawal, erasure and model unlearning</h3>
+<p>S.6(4) permits withdrawal at any time; S.8(7) requires erasure on withdrawal or purpose exhaustion. Neither the Act nor the Rules says what that means for a <strong>model already trained</strong> on the data. Deleting the training row does not remove the parameter contribution. India has not addressed machine unlearning, and no jurisdiction has solved it — but India&#x27;s combination of consent-only bases and an unqualified erasure duty makes the exposure sharper than under the GDPR, where the legitimate-interests basis at least survives an objection that fails the balancing test.</p>
+<h3 id="25-rule-13-algorithmic-due-diligence">2.5 Rule 13 — algorithmic due diligence</h3>
+<p>The only provision in the DPDP framework aimed squarely at algorithms. A <strong>Significant Data Fiduciary</strong> must &quot;observe due diligence to verify that algorithmic software deployed by it for hosting, display, uploading, modification, publishing, transmission, storage, updating or sharing of personal data <strong>does not pose a risk to the rights of Data Principals</strong>.&quot;</p>
+<p>Three observations:</p>
+<ul>
+<li><strong>It is supply-side only.</strong> It creates a duty on the deployer and <strong>no corresponding right for the individual</strong> — no explanation, no contest, no human review. Compare GDPR Article 22, PIPL Article 24 and Korea&#x27;s PIPA, all of which give the individual something.</li>
+<li><strong>It is undefined.</strong> No methodology, no threshold, no documentation standard, no auditor qualification. In practice the annual DPIA and independent audit under the same rule are what will carry it.</li>
+<li><strong>It applies to nobody yet.</strong> No SDF has been notified.</li>
+</ul>
+<h3 id="26-what-the-act-does-not-reach">2.6 What the Act does <em>not</em> reach</h3>
+<p>No rules on automated decision-making for ordinary Fiduciaries; no transparency duty for AI-generated content; no fairness or non-discrimination obligation; no dataset documentation requirement; no rules on inference. In India those gaps are filled — if at all — by the IT Rules, 2021 (as amended in 2026, with three-hour takedowns and two-hour removal for non-consensual or morphed imagery), sectoral regulators, and the voluntary AI Governance Guidelines.</p>
+<hr>
+<h2 id="3-the-comparative-ai-law-map-as-at-19-august-2026">3. The comparative AI-law map, as at 19 August 2026</h2>
+<div class="scroll"><table><thead><tr>
+<th>Jurisdiction</th>
+<th>Instrument</th>
+<th>Status</th>
+<th>Approach</th>
+</tr></thead><tbody>
+<tr><td><strong>EU</strong></td><td><strong>AI Act</strong> (Reg. 2024/1689) + Digital Omnibus on AI</td><td>Omnibus <strong>in force 27 July 2026</strong>; high-risk obligations for <strong>Annex III</strong> systems deferred to <strong>2 December 2027</strong>, for <strong>Annex I</strong> embedded systems to <strong>2 August 2028</strong></td><td>Risk tiers: prohibited, high-risk, transparency, GPAI. The only conformity-assessment model. Deferral driven by unfinished harmonised standards and unappointed national authorities</td></tr>
+<tr><td><strong>South Korea</strong></td><td><strong>AI Framework (Basic) Act</strong></td><td>Promulgated 21 Jan 2025, <strong>in force 22 January 2026</strong></td><td>Second comprehensive AI law in the world. Transparency disclosures, impact assessments for high-impact AI, risk management, and <strong>domestic representatives for foreign operators</strong></td></tr>
+<tr><td><strong>China</strong></td><td>PIPL Art. 24 + Algorithm Recommendation, Deep Synthesis and Generative AI Measures + <strong>Labelling Measures</strong></td><td>Labelling Measures <strong>in force 1 September 2025</strong></td><td>Sector-by-sector, filing-based. Requires <strong>explicit labels</strong> on AI-generated text, image, audio, video and virtual scenes and <strong>implicit labels</strong> in file metadata</td></tr>
+<tr><td><strong>Japan</strong></td><td>AI-related basic law (2024, light-touch) + <strong>APPI 2026 amendment</strong></td><td>Amendment promulgated 17 July 2026, in force within two years</td><td>The only jurisdiction to legislate a <strong>statistical-processing consent exemption expressly for AI development</strong>, with transparency and contractual safeguards</td></tr>
+<tr><td><strong>United States</strong></td><td>No federal statute; state patchwork</td><td><strong>109 AI laws</strong> enacted across the states as at 1 July 2026; <strong>1,561 AI bills</strong> introduced in 45 states by March 2026</td><td><strong>Texas TRAIGA</strong> in force <strong>1 January 2026</strong>; <strong>Colorado</strong> repealed and replaced its AI Act in May–June 2026, dropping the duty of care, risk programmes and impact assessments in favour of disclosure, with the effective date moved to <strong>1 January 2027</strong>. Federal posture is deregulatory, with preemption of state laws under discussion</td></tr>
+<tr><td><strong>India</strong></td><td><strong>India AI Governance Guidelines</strong> (5 Nov 2025) + DPDP Act</td><td>Voluntary; no statute proposed</td><td>Governance through existing law; seven sutras; AIGG, TPEC and AISI; graded liability; legislation only if autonomous systems demand it</td></tr>
+</tbody></table></div>
+<p><strong>The pattern.</strong> 2026 is the year the AI-regulation wave broke. The EU deferred its own core obligations; Colorado repealed and replaced its law before it ever took effect; the US federal posture turned deregulatory. Meanwhile Korea&#x27;s Act commenced, China&#x27;s labelling rules bit, and Japan legislated a targeted <em>permission</em> rather than a restriction. India&#x27;s choice to regulate AI through data protection and existing law now looks less like a gap and more like the median position — but only because everyone else moved toward it.</p>
+<hr>
+<h2 id="4-training-data-legality-compared">4. Training-data legality, compared</h2>
+<div class="scroll"><table><thead><tr>
+<th>Jurisdiction</th>
+<th>Basis for training on personal data</th>
+<th>Public/scraped data</th>
+<th>Explicit AI carve-out</th>
+</tr></thead><tbody>
+<tr><td><strong>India</strong></td><td><strong>Consent only</strong>, or R.16 research exemption (no individual decisions)</td><td><strong>Outside the Act</strong> if published by the principal or under a legal obligation (S.3(c)(ii)) — narrower than it looks</td><td>None</td></tr>
+<tr><td><strong>EU</strong></td><td>Legitimate interests, subject to the three-step test; <strong>not a default basis</strong> (EDPB Op. 28/2024)</td><td>In scope; Art. 14(5)(b) may relieve notice at scale</td><td>None; the AI Act regulates systems, not the lawful basis</td></tr>
+<tr><td><strong>Japan</strong></td><td><strong>Statistical-processing exemption</strong> covering AI development, incl. publicly available sensitive data, with safeguards</td><td>Permitted within the exemption</td><td><strong>Yes — the clearest in the world</strong></td></tr>
+<tr><td><strong>China</strong></td><td>Consent, with <strong>separate consent</strong> for sensitive data; GenAI Measures require lawful sources</td><td>Restricted; provenance obligations on providers</td><td>Partial, via the GenAI Measures</td></tr>
+<tr><td><strong>South Korea</strong></td><td>Consent; pseudonymised data may be used for statistical, research and public-interest purposes without consent</td><td>In scope</td><td>Partial</td></tr>
+<tr><td><strong>US states</strong></td><td>Generally permitted; sensitive data opt-in; some ADMT rules (California, Colorado)</td><td>Publicly available information is typically excluded from &quot;personal data&quot;</td><td>Varies</td></tr>
+</tbody></table></div>
+<p><strong>The Indian anomaly.</strong> India has simultaneously the <strong>most restrictive lawful-basis regime</strong> (consent only) and the <strong>most permissive public-data exclusion</strong>. That combination pushes every serious Indian AI effort toward the same strategy: build corpora that fall outside the Act entirely, and document provenance to prove it. It is a legally rational response that produces a policy outcome nobody designed — the protection of Indian personal data in AI turns almost entirely on the meaning of one sub-clause.</p>
+<hr>
+<h2 id="5-what-to-do-about-it">5. What to do about it</h2>
+<p>For any organisation training or deploying models on Indian personal data before 13 May 2027:</p>
+<ol>
+<li><strong>Keep a dataset provenance register.</strong> Per corpus: source, date, who published it, under what obligation or act of the individual, licence, and whether S.3(c)(ii) is claimed. This is the single artefact that determines whether the Act applies, and it cannot be reconstructed later.</li>
+<li><strong>Do not rely on service consent for training.</strong> S.6(1) voids consent beyond the specified purpose. If training is the purpose, it needs its own itemised notice under Rule 3 and its own consent record.</li>
+<li><strong>Test the Rule 16 route honestly.</strong> The research, archiving and statistical exemption is real and broad, but it fails the moment the processing is used to take a decision specific to an individual. Pre-training may qualify; personalisation and scoring do not.</li>
+<li><strong>Document a de-identification standard now.</strong> India has none, so adopt the <em>SRB</em> and EDPB 28/2024 reasoning: assess re-identification risk contextually, evidence that it is insignificant, and record the assessment.</li>
+<li><strong>Build the Rule 13 method before you are an SDF.</strong> A documented algorithmic risk-review process — scope, tests for the rights actually at stake, findings, remediation, sign-off — is what converts an SDF notification from a crisis into paperwork.</li>
+<li><strong>Build automated-decision transparency anyway.</strong> India does not require it, but the EU, UK, Brazil, Korea, China, California and Colorado do in some form. It is cheaper to build once.</li>
+<li><strong>Separate model artefacts by legal basis.</strong> If a model is trained on data that later becomes subject to withdrawal or erasure, the ability to identify and, if necessary, retrain from a clean corpus is the only practical answer to the unlearning problem.</li>
+</ol>
+<hr>
+<h2 id="citations">Citations</h2>
+<ul>
+<li>Ministry of Electronics and Information Technology, <strong>India AI Governance Guidelines</strong>, IndiaAI Mission, 5 November 2025 — <a href="https://www.saikrishnaassociates.com/decoding-the-india-ai-governance-guidelines/">Saikrishna &amp; Associates analysis</a> · <a href="https://iapp.org/news/a/notes-from-the-asia-pacific-region-india-releases-dpdpa-rules-ai-governance-guidelines">IAPP, &quot;India releases DPDPA rules, AI governance guidelines&quot;</a> · <a href="https://www.mondaq.com/india/new-technology/1746072/indias-ai-governance-guidelines">Mondaq, &quot;India&#x27;s AI Governance Guidelines&quot;</a></li>
+<li><a href="https://ssrana.in/articles/effect-of-digital-personal-data-protection-rules-2025-on-ai-regulation/">S.S. Rana &amp; Co., &quot;Effect of Digital Personal Data Protection Rules, 2025 on AI Regulation&quot;</a></li>
+<li><a href="https://fpf.org/blog/five-ways-in-which-the-dpdpa-could-shape-the-development-of-ai-in-india/">Future of Privacy Forum, &quot;Five ways in which the DPDPA could shape the development of AI in India&quot;</a></li>
+<li><a href="https://community.nasscom.in/communities/public-policy/publicly-accessible-personal-data-under-dpdp-act-ai-training-and-other">nasscom, &quot;Publicly accessible personal data under the DPDP Act: AI training and other public-source data uses&quot;</a></li>
+<li><a href="https://iapp.org/news/a/scraping-public-data-in-india-innovation-enabler-or-privacy-threat-">IAPP, &quot;Scraping public data in India: Innovation enabler or privacy threat?&quot;</a></li>
+<li><a href="https://lawschoolpolicyreview.com/2026/01/13/publicly-available-data-under-the-dpdp-act-the-limits-of-exemptions-in-ai-driven-processing/">Law School Policy Review, &quot;Publicly Available Data under the DPDP Act: The Limits of Exemptions in AI-Driven Processing&quot;</a></li>
+<li><a href="https://www.mondaq.com/india/new-technology/1740470/ai-training-data-under-indias-dpdp-regime-compliance-challenges-and-strategies">Mondaq, &quot;AI Training Data Under India&#x27;s DPDP Regime: Compliance Challenges and Strategies&quot;</a></li>
+<li>EDPB, <strong>Opinion 28/2024</strong> on certain data protection aspects related to the processing of personal data in the context of AI models, 17 December 2024 — <a href="https://www.edpb.europa.eu/system/files/2024-12/edpb_opinion_202428_ai-models_en.pdf">full text</a> · <a href="https://cms.law/en/deu/legal-updates/edpb-opinion-28-2024-key-takeaways-on-processing-personal-data-in-the-context-of-ai-models">CMS summary</a></li>
+<li>Case C-413/23 P <em>EDPS v. Single Resolution Board</em> (4 September 2025) — <a href="https://www.skadden.com/insights/publications/2025/11/in-a-landmark-decision-eu-court-clarifies">Skadden</a> · <a href="https://fpf.org/blog/rethinking-personal-data-the-cjeus-contextual-turn-in-edps-vs-srb/">Future of Privacy Forum</a></li>
+<li><a href="https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/">Gibson Dunn, &quot;EU AI Act Omnibus Agreement — Postponed High-Risk Deadlines and Other Key Changes&quot;</a> · <a href="https://www.freshfields.com/en/our-thinking/blogs/technology-quotient/eu-ai-act-unpacked-34-the-final-digital-omnibus-on-ai-key-amendments-to-the-a-102nber">Freshfields, &quot;The final Digital Omnibus on AI&quot;</a></li>
+<li><a href="https://www.cooley.com/news/insight/2026/2026-01-27-south-koreas-ai-basic-act-overview-and-key-takeaways">Cooley, &quot;South Korea&#x27;s AI Basic Act: Overview and Key Takeaways&quot;</a> · <a href="https://fpf.org/blog/south-koreas-new-ai-framework-act-a-balancing-act-between-innovation-and-regulation/">Future of Privacy Forum, &quot;South Korea&#x27;s New AI Framework Act&quot;</a></li>
+<li><a href="https://www.loeb.com/en/insights/publications/2025/03/chinas-ai-labeling-measures-and-mandatory-national-standards-take-effect-september-1">Loeb &amp; Loeb, &quot;China&#x27;s AI-Labeling Measures and Mandatory National Standards Take Effect September 1&quot;</a> · <a href="https://www.twobirds.com/en/insights/2025/new-ai-content-labelling-rules-in-china-what-are-they-and-how-do-they-compare-to-the-eu-ai-act">Bird &amp; Bird, &quot;New AI Content Labelling Rules in China&quot;</a></li>
+<li><a href="https://www.skadden.com/insights/publications/2026/06/colorado-repeals-and-replaces-its-ai-act">Skadden, &quot;Colorado Repeals and Replaces Its AI Act&quot;</a> · <a href="https://www.hunton.com/privacy-and-cybersecurity-law-blog/colorado-ai-act-amended-and-effective-date-delayed">Hunton, &quot;Colorado AI Act Amended and Effective Date Delayed&quot;</a></li>
+<li><a href="https://www.nortonrosefulbright.com/en/knowledge/publications/c6c60e0c/the-texas-responsible-ai-governance-act">Norton Rose Fulbright, &quot;The Texas Responsible AI Governance Act&quot;</a></li>
+<li><a href="https://www.techpolicy.press/where-state-ai-legislation-stands-half-way-into-2026/">TechPolicy.Press, &quot;Where State AI Legislation Stands Half Way Into 2026&quot;</a> · <a href="https://www.bakerbotts.com/thought-leadership/publications/2026/january/us-ai-law-update">Baker Botts, &quot;US Artificial Intelligence Law Update&quot;</a></li>
+</ul>
+<nav class="pager"><a href="08-jurisprudence.html">&#8592; Part 8 — The case law: what courts have actually decided</a><a href="10-economics-and-watchlist.html">Part 10 — The economics, the readiness gap, and what is still unnotified &#8594;</a></nav>
+</main></div>
+</body>
+</html>

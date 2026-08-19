@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 6 — From statute to control set</title>
+<meta name="description" content="Part 6 — From statute to control set">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="sitebar"><a href="../index.html">&#8592; All parts</a><span>India&rsquo;s DPDP Act &mdash; a study</span></div>
+<div class="shell"><aside class="toc"><p class="tl">On this page</p><a class="l2" href="#1-the-eleven-control-domains">1. The eleven control domains</a><a class="l3" href="#c1-data-inventory-and-lawful-basis-register">C1 — Data inventory and lawful-basis register</a><a class="l3" href="#c2-notice-and-consent-capture">C2 — Notice and consent capture</a><a class="l3" href="#c3-rule-6-security-controls-highest-priority">C3 — Rule 6 security controls (highest priority)</a><a class="l3" href="#c4-breach-detection-response-and-notification">C4 — Breach detection, response and notification</a><a class="l3" href="#c5-retention-and-erasure">C5 — Retention and erasure</a><a class="l3" href="#c6-data-principal-rights-fulfilment">C6 — Data principal rights fulfilment</a><a class="l3" href="#c7-childrens-data">C7 — Children&amp;#x27;s data</a><a class="l3" href="#c8-processor-and-vendor-governance">C8 — Processor and vendor governance</a><a class="l3" href="#c9-cross-border-transfer-posture">C9 — Cross-border transfer posture</a><a class="l3" href="#c10-sdf-readiness">C10 — SDF readiness</a><a class="l3" href="#c11-governance-and-evidence">C11 — Governance and evidence</a><a class="l2" href="#2-sequencing">2. Sequencing</a><a class="l2" href="#3-multi-jurisdiction-reuse">3. Multi-jurisdiction reuse</a><a class="l2" href="#annex-a-applicability-note-for-this-repository">Annex A — Applicability note for this repository</a></aside><main class="prose"><h1 id="part-6-from-statute-to-control-set">Part 6 — From statute to control set</h1>
+<p>A translation layer: what the DPDP Act and Rules actually require an engineering and product organisation to build, sequenced by lead time, with the equivalent obligation in other jurisdictions noted so that one control set can serve multiple regimes.</p>
+<hr>
+<h2 id="1-the-eleven-control-domains">1. The eleven control domains</h2>
+<h3 id="c1-data-inventory-and-lawful-basis-register">C1 — Data inventory and lawful-basis register</h3>
+<p><strong>Requirement:</strong> implied by S.4–S.6 (you cannot prove a lawful basis you have not recorded) and required in fact by Rule 3&#x27;s itemised-notice duty, which is impossible to satisfy without an element-level inventory.</p>
+<p><strong>Build:</strong> a machine-readable register — one row per personal-data element — carrying: element name, system of record, purpose(s), lawful basis (S.6 consent / which S.7 ground), retention trigger, downstream recipients (Processors and other Fiduciaries), and cross-border destination.</p>
+<p><strong>Reuse:</strong> this is also the GDPR Article 30 record, the LGPD register, and the input to US state data protection assessments. Build it once.</p>
+<p><strong>Test:</strong> can you generate an itemised Rule 3 notice for any product surface directly from the register? If not, the register is not granular enough.</p>
+<hr>
+<h3 id="c2-notice-and-consent-capture">C2 — Notice and consent capture</h3>
+<p><strong>Requirement:</strong> S.5, S.6, Rule 3.</p>
+<p><strong>Build:</strong></p>
+<ul>
+<li>Notices rendered <strong>standalone</strong>, not embedded in terms of service, with itemised data and purposes.</li>
+<li><strong>22-language</strong> support (Eighth Schedule) plus English, selectable by the user.</li>
+<li><strong>Per-purpose consent records</strong>: purpose ID, notice version hash, timestamp, capture surface, language served, and the affirmative action taken.</li>
+<li><strong>Withdrawal with parity of ease</strong> — if consent was one tap, withdrawal must be one tap. Model withdrawal as a first-class event that fans out to processing halts and Processor notifications (S.6(6)).</li>
+<li><strong>Retrospective notice</strong> for every consent obtained before commencement (S.5(2)).</li>
+</ul>
+<p><strong>Anti-pattern:</strong> a single global &quot;I agree to the privacy policy&quot; checkbox. It fails S.5, S.6(1) and Rule 3 simultaneously and is void to the extent it over-collects.</p>
+<hr>
+<h3 id="c3-rule-6-security-controls-highest-priority">C3 — Rule 6 security controls <em>(highest priority)</em></h3>
+<p><strong>Requirement:</strong> Rule 6 read with S.8(5) — the ₹250 crore tier.</p>
+<div class="scroll"><table><thead><tr>
+<th>Control</th>
+<th>Concrete implementation</th>
+</tr></thead><tbody>
+<tr><td>Encryption / tokenisation / masking</td><td>Encryption at rest and in transit; tokenise identifiers in analytics and non-production environments; mask in logs and admin UIs</td></tr>
+<tr><td>Access control</td><td>Authentication on every endpoint touching personal data; least-privilege roles; no shared credentials; no credentials in source</td></tr>
+<tr><td>Logging and monitoring</td><td>Access logs for every read/write of personal data, sufficient to detect, investigate and remediate unauthorised access, <strong>retained ≥ 1 year</strong></td></tr>
+<tr><td>Backup and continuity</td><td>Tested restores; the rule requires continued processing after compromise, not merely backup existence</td></tr>
+<tr><td>Processor flow-down</td><td>Contractual imposition of equivalent controls on every Processor (S.8(2) + Rule 6)</td></tr>
+<tr><td>Organisational measures</td><td>Documented ownership, review cadence, and evidence that the above are observed in practice</td></tr>
+</tbody></table></div>
+<p><strong>Why first:</strong> it is the most prescriptive, most auditable, highest-penalty and longest-lead-time requirement in the framework, and it maps cleanly onto GDPR Art. 32, ISO 27001 Annex A, SOC 2 CC6, Nigeria&#x27;s GAID and Saudi PDPL controls. Nothing else in the Act gives this much compliance leverage per unit of engineering effort.</p>
+<hr>
+<h3 id="c4-breach-detection-response-and-notification">C4 — Breach detection, response and notification</h3>
+<p><strong>Requirement:</strong> S.8(6), Rule 7 — plus CERT-In&#x27;s 2022 Directions (6-hour reporting).</p>
+<p><strong>Build a single runbook with three clocks:</strong></p>
+<div class="scroll"><table><thead><tr>
+<th>Clock</th>
+<th>Obligation</th>
+</tr></thead><tbody>
+<tr><td><strong>6 hours</strong></td><td>CERT-In report for covered cyber incidents</td></tr>
+<tr><td><strong>Without delay</strong></td><td>Board initial intimation <strong>and</strong> notification to every affected Data Principal, in plain language: nature, extent, timing, likely consequences, mitigation taken, safety measures the individual can take, contact point</td></tr>
+<tr><td><strong>72 hours</strong></td><td>Detailed particulars to the Board: circumstances leading to the breach, mitigation, findings on cause, remedial measures, and a report on the individual notifications made</td></tr>
+</tbody></table></div>
+<p><strong>Design implication:</strong> because there is <strong>no materiality threshold</strong>, the pipeline from detection to notification must be capable of running frequently and cheaply. Pre-draft the templates, pre-build the affected-user query path off the C1 register, and pre-agree the approval chain. A process that requires a legal review meeting per incident will not hold.</p>
+<hr>
+<h3 id="c5-retention-and-erasure">C5 — Retention and erasure</h3>
+<p><strong>Requirement:</strong> S.8(7), Rule 8, Third Schedule.</p>
+<p><strong>Build:</strong> a retention clock per data element keyed to purpose exhaustion and consent withdrawal; automated deletion jobs with an auditable record; cascade to backups, caches, analytics stores, data warehouses and Processor systems. If in a Third Schedule class (large e-commerce, online gaming, social media), add the <strong>3-year inactivity clock</strong> and the <strong>48-hour pre-erasure notice with a re-engagement path</strong>.</p>
+<p><strong>Common failure:</strong> deleting from the primary database only. Erasure that leaves the record in a warehouse, a search index, a CRM or a vendor system is not erasure.</p>
+<hr>
+<h3 id="c6-data-principal-rights-fulfilment">C6 — Data principal rights fulfilment</h3>
+<p><strong>Requirement:</strong> S.11–S.14, Rule 14.</p>
+<p><strong>Build:</strong> a published request mechanism (Rule 14 requires publication of both the mechanism and the response period); identity verification proportionate to the request; and fulfilment paths for <strong>access</strong> (a summary of data <em>and</em> processing activities <em>and</em> the identities of every Fiduciary and Processor the data was shared with, with a description of what was shared — this is the part teams underestimate, because it requires the C1 register to track actual sharing, not just intended sharing), <strong>correction/completion/updating</strong>, <strong>erasure</strong>, and <strong>nomination</strong>.</p>
+<p><strong>Forward-compatibility note:</strong> although India grants no portability right, the EU, UK, Brazil, Korea and most US states do. If you serve any of those markets, build export in a structured, machine-readable format now.</p>
+<hr>
+<h3 id="c7-childrens-data">C7 — Children&#x27;s data</h3>
+<p><strong>Requirement:</strong> S.9, Rules 10–12, Fourth Schedule.</p>
+<p><strong>Build:</strong> an age-determination step; a verifiable-parental-consent flow using held identity details or a DigiLocker-style virtual token; a hard suppression of behavioural tracking and targeted advertising for any user under 18; and, if relying on a Fourth Schedule exemption, documented evidence that you are within the listed entity class <strong>and</strong> the stated processing scope.</p>
+<p><strong>Decision to take early:</strong> whether to age-gate at all. If your service does not need users under 18, excluding them and documenting the exclusion mechanism is materially cheaper than building verifiable parental consent — and &quot;confirming that the user is not a child&quot; is itself an exempt purpose under Fourth Schedule Part B.</p>
+<hr>
+<h3 id="c8-processor-and-vendor-governance">C8 — Processor and vendor governance</h3>
+<p><strong>Requirement:</strong> S.8(1)–(2), Rule 6.</p>
+<p><strong>Build:</strong> a Processor register; a standard data processing addendum imposing Rule 6-equivalent controls, breach notification upstream fast enough to meet <em>your</em> &quot;without delay&quot; clock, erasure-on-instruction, sub-processor consent, and audit rights. Remember S.8(1): you remain liable for your Processor regardless of what the contract says.</p>
+<hr>
+<h3 id="c9-cross-border-transfer-posture">C9 — Cross-border transfer posture</h3>
+<p><strong>Requirement:</strong> S.16, Rule 15, Rule 13 (SDF localisation).</p>
+<p><strong>Build:</strong> a destination map per data element (from C1); the ability to <strong>re-route or localise a data category on notice</strong>, since both the restricted-country list and the SDF localisation categories are unbounded executive powers; and a check for sector-specific localisation (RBI payment data, IRDAI, telecom, CERT-In log storage).</p>
+<p><strong>Do not build:</strong> an SCC/adequacy apparatus for India. It has no legal function here. Do build one if you touch EU, UK, Brazilian or Chinese data.</p>
+<hr>
+<h3 id="c10-sdf-readiness">C10 — SDF readiness</h3>
+<p><strong>Requirement:</strong> S.10, Rule 13. Applies only on Government notification — but notification gives little lead time.</p>
+<p><strong>Pre-position:</strong> identify who would be the India-resident DPO reporting to the board; identify a candidate independent auditor; run a first DPIA voluntarily on the highest-risk processing; document an algorithmic due-diligence method for any ranking, recommendation, scoring or moderation system. A company that has done these four things can absorb an SDF notification in weeks rather than quarters.</p>
+<hr>
+<h3 id="c11-governance-and-evidence">C11 — Governance and evidence</h3>
+<p><strong>Requirement:</strong> implied throughout; explicit for SDFs.</p>
+<p><strong>Build:</strong> named accountable owner; published contact per Rule 9; grievance mechanism with a published response period per S.13 and Rule 14 (note S.13(3) makes this the mandatory first step, so a weak grievance process directly increases Board complaint volume); training; and an evidence pack — policies, notices with version history, consent records, DPIAs, audit reports, incident records — because the Board&#x27;s inquiry powers under S.28 are civil-court powers.</p>
+<hr>
+<h2 id="2-sequencing">2. Sequencing</h2>
+<div class="scroll"><table><thead><tr>
+<th>Priority</th>
+<th>Domain</th>
+<th>Rationale</th>
+</tr></thead><tbody>
+<tr><td>1</td><td><strong>C3 Rule 6 controls</strong></td><td>Highest penalty tier, most prescriptive, longest lead time, most reusable across regimes</td></tr>
+<tr><td>2</td><td><strong>C1 inventory</strong></td><td>Every other control depends on it</td></tr>
+<tr><td>3</td><td><strong>C4 breach runbook</strong></td><td>Second-highest penalty tier; must exist before an incident, not after</td></tr>
+<tr><td>4</td><td><strong>C2 notice and consent</strong></td><td>Largest product/design surface; needs the longest design-and-localisation runway</td></tr>
+<tr><td>5</td><td><strong>C5 retention and erasure</strong></td><td>Deep data-plumbing work across every store</td></tr>
+<tr><td>6</td><td><strong>C6 rights fulfilment</strong></td><td>Buildable once C1 exists</td></tr>
+<tr><td>7</td><td><strong>C7 children</strong></td><td>Scope decision first, build second</td></tr>
+<tr><td>8</td><td><strong>C8 vendors</strong></td><td>Contract cycle times are long; start paper early</td></tr>
+<tr><td>9</td><td><strong>C9 transfers</strong></td><td>Low current obligation, high optionality value</td></tr>
+<tr><td>10</td><td><strong>C10 SDF readiness</strong></td><td>Only if plausibly in scope</td></tr>
+<tr><td>11</td><td><strong>C11 governance</strong></td><td>Continuous</td></tr>
+</tbody></table></div>
+<hr>
+<h2 id="3-multi-jurisdiction-reuse">3. Multi-jurisdiction reuse</h2>
+<p>If you build to the <strong>union of India + EU</strong>, you cover most of the world:</p>
+<div class="scroll"><table><thead><tr>
+<th>Build for</th>
+<th>Also satisfies</th>
+</tr></thead><tbody>
+<tr><td>Rule 6 prescriptive controls</td><td>GDPR Art. 32, Nigeria GAID, Saudi PDPL, Thailand, Kenya, ISO 27001, SOC 2</td></tr>
+<tr><td>GDPR Art. 30 records (= C1)</td><td>India Rule 3 notice generation, LGPD, US state assessments, Korea</td></tr>
+<tr><td>GDPR 72-hour breach process</td><td>India (tighten to &quot;without delay&quot; + no threshold), Korea, Nigeria, Saudi, Indonesia (3×24h), Singapore</td></tr>
+<tr><td>GDPR rights + portability</td><td>India S.11–S.14, Brazil, Korea, US states</td></tr>
+<tr><td>GDPR consent</td><td>India (tighten: standalone itemised notice, unconditional, 22 languages, withdrawal parity)</td></tr>
+<tr><td>GDPR Ch. V transfer mechanisms</td><td>Brazil, Nigeria, Indonesia, Saudi; <strong>not needed for India</strong>; <strong>not sufficient for China</strong></td></tr>
+<tr><td>Under-18 controls (India)</td><td>Strictest global standard — satisfies COPPA, GDPR Art. 8, Japan 2026, Korea, Australia</td></tr>
+</tbody></table></div>
+<p><strong>The two India-specific builds that nothing else gives you:</strong> 22-language standalone itemised notices, and no-threshold immediate breach notification to every affected individual.</p>
+<p><strong>The two things India does not give you:</strong> portability, and automated-decision transparency. Build both if you serve the EU, UK, Brazil, Korea or California.</p>
+<hr>
+<h2 id="annex-a-applicability-note-for-this-repository">Annex A — Applicability note for this repository</h2>
+<p><em>Illustrative, scoped to what is in the repo as of this commit. Not a legal opinion.</em></p>
+<p><strong>What the application does.</strong> <code>server/</code> is an Express + Sequelize + PostgreSQL service exposing <code>POST /company</code> (bulk insert) and <code>GET /company/get-company-data</code> (full table read) over a <code>companyrecords</code> table holding MCA-style corporate registry fields: CIN, company name, registration date, state, RoC, status, category, class, type, authorised and paid-up capital, activity code and description, <strong>registered office address</strong>, and <strong>email</strong>.</p>
+<p><strong>Is any of this personal data under S.2(t)?</strong> Mostly no — a company is not an individual, and corporate attributes are not personal data. But two fields can be:</p>
+<ul>
+<li><strong><code>email</code></strong> — registry contact emails are frequently a director&#x27;s or proprietor&#x27;s personal address rather than a role account.</li>
+<li><strong><code>registered_office_address</code></strong> — for One Person Companies, proprietorships and many small private limited companies, the registered office is the promoter&#x27;s residence.</li>
+</ul>
+<p>Where those fields identify an individual, they are personal data, and the record as a whole becomes personal data &quot;in relation to&quot; an identifiable individual.</p>
+<p><strong>Does the Act apply to it?</strong> Probably not, on two independent grounds:</p>
+<ol>
+<li><strong>S.3(c)(ii)</strong> — the Act does not apply to personal data that any person is under a <strong>legal obligation to make public</strong>. The MCA registry is published under the Companies Act, so data <em>as sourced from the registry</em> is outside the Act.</li>
+<li>Corporate-entity data is outside the definition of personal data altogether.</li>
+</ol>
+<p><strong>Where that reasoning stops.</strong> The S.3(c)(ii) exclusion attaches to the data as published. It does <strong>not</strong> cover:</p>
+<ul>
+<li><strong>Enrichment</strong> — appending phone numbers, LinkedIn profiles, personal emails, or inferred attributes from other sources. The composite is no longer &quot;the published record.&quot;</li>
+<li><strong>Inference and scoring</strong> — deriving lead scores, propensity or creditworthiness about a named individual.</li>
+<li><strong>Any user data the application later collects</strong> — accounts, logins, saved searches, contact forms, billing. That is squarely in scope, needs a lawful basis, and pulls in C2, C5, C6 and the whole notice/consent build.</li>
+<li><strong>Outbound marketing</strong> to registry emails, which engages the Telecom Commercial Communications Customer Preference Regulations and the Telecommunications Act 2023 regardless of the DPDP position.</li>
+</ul>
+<p><strong>Observations on the current code</strong>, framed against Rule 6 (which is the standard the service would be held to the moment it processes any in-scope personal data):</p>
+<div class="scroll"><table><thead><tr>
+<th>Observation</th>
+<th>Location</th>
+<th>Rule 6 element</th>
+</tr></thead><tbody>
+<tr><td>Database credentials hardcoded in source (<code>&#x27;company&#x27;, &#x27;postgres&#x27;, &#x27;admin&#x27;</code>)</td><td><code>server/src/configs/database.js:3</code></td><td>Access control — credentials should come from environment/secret storage, and the shipped values are defaults that must not reach any real deployment</td></tr>
+<tr><td><code>server/.env</code> is tracked in git</td><td><code>server/.env</code></td><td>Currently holds only <code>PORT</code>, so no secret is exposed today — but the pattern invites one. Add <code>.env</code> (not just <code>.env.*.local</code>) to <code>.gitignore</code></td></tr>
+<tr><td>No authentication or authorisation on any route</td><td><code>server/src/routes/companyRouter.js:5-7</code></td><td>Access control — <code>POST /company</code> accepts unauthenticated bulk writes and <code>GET /company/get-company-data</code> returns the entire table</td></tr>
+<tr><td>No access logging</td><td>throughout</td><td>Rule 6 requires logs of access to personal data retained ≥ 1 year</td></tr>
+<tr><td><code>console.log(companies)</code> prints full result sets</td><td><code>server/src/controllers/company.js:21,33</code></td><td>Logging personal data in cleartext to stdout is the opposite of the masking requirement</td></tr>
+<tr><td><code>getFilteredData</code> ignores filters and returns everything</td><td><code>server/src/controllers/company.js:29-40</code></td><td>Data minimisation in responses</td></tr>
+<tr><td>No retention or deletion path</td><td>schema</td><td>S.8(7) / Rule 8, if in-scope data is ever stored</td></tr>
+<tr><td>No transport security config</td><td><code>server/src/index.js</code></td><td>Encryption in transit</td></tr>
+</tbody></table></div>
+<p><strong>Recommendation.</strong> None of this is urgent <em>today</em> on a registry-only dataset. It becomes urgent the moment the service stores a user account, a contact form submission, or enriched contact data — at which point the whole of C2–C6 applies with a fixed deadline of <strong>13 May 2027</strong>. The two changes worth making regardless, because they are cheap and they are prerequisites for everything else, are <strong>moving credentials out of source</strong> and <strong>putting authentication and access logging on the routes</strong>.</p>
+<nav class="pager"><a href="05-findings-and-gap-analysis.html">&#8592; Part 5 — Findings, gap analysis and outlook</a><a href="07-indian-law-overlay.html">Part 7 — The rest of Indian law: what the DPDP Act sits on top of &#8594;</a></nav>
+</main></div>
+</body>
+</html>

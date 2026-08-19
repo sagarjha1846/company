@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 11 — DPDP ↔ GDPR crosswalk</title>
+<meta name="description" content="Part 11 — DPDP ↔ GDPR crosswalk">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="sitebar"><a href="../index.html">&#8592; All parts</a><span>India&rsquo;s DPDP Act &mdash; a study</span></div>
+<div class="shell"><aside class="toc"><p class="tl">On this page</p><a class="l2" href="#1-scope-and-definitions">1. Scope and definitions</a><a class="l2" href="#2-lawfulness-notice-and-consent">2. Lawfulness, notice and consent</a><a class="l2" href="#3-obligations-of-the-organisation">3. Obligations of the organisation</a><a class="l2" href="#4-rights">4. Rights</a><a class="l2" href="#5-transfers-exemptions-and-enforcement">5. Transfers, exemptions and enforcement</a><a class="l2" href="#6-the-seven-india-only-builds">6. The seven India-only builds</a><a class="l2" href="#7-the-four-eu-only-builds-india-does-not-require">7. The four EU-only builds India does not require</a></aside><main class="prose"><h1 id="part-11-dpdp-gdpr-crosswalk">Part 11 — DPDP ↔ GDPR crosswalk</h1>
+<p>For teams running dual compliance. Each row maps an Indian obligation to its nearest GDPR equivalent, states the <strong>delta</strong> that actually changes engineering or legal work, and says which single control satisfies both.</p>
+<p>Read the deltas, not the mappings. Where a row says &quot;<strong>India stricter</strong>&quot;, a GDPR-compliant control is <em>not</em> sufficient. Where it says &quot;<strong>EU stricter</strong>&quot;, building for the EU covers India.</p>
+<hr>
+<h2 id="1-scope-and-definitions">1. Scope and definitions</h2>
+<div class="scroll"><table><thead><tr>
+<th>Subject</th>
+<th>DPDP</th>
+<th>GDPR</th>
+<th>Delta</th>
+<th>Build once?</th>
+</tr></thead><tbody>
+<tr><td>Material scope</td><td>S.3 — <strong>digital</strong> personal data only (incl. digitised)</td><td>Art. 2 — automated <strong>and</strong> structured manual filing systems</td><td><strong>EU broader.</strong> Paper files and unstructured manual records sit outside the DPDP Act</td><td>Build to EU; India is a subset</td></tr>
+<tr><td>Territorial scope</td><td>S.3(b) — offering goods or services to people in India</td><td>Art. 3(2) — offering <strong>or monitoring behaviour</strong></td><td><strong>EU broader.</strong> A pure profiling/analytics operation with no offering is outside S.3(b)</td><td>Build to EU</td></tr>
+<tr><td>Public-domain data</td><td>S.3(c)(ii) — <strong>outside the Act entirely</strong></td><td>No equivalent; public availability affects balancing only</td><td><strong>India far more permissive.</strong> The single biggest divergence for AI corpora and scraping</td><td>Track separately; document provenance</td></tr>
+<tr><td>Personal data</td><td>S.2(t) — identifiable by or in relation to the data</td><td>Art. 4(1) + Recital 26; <em>Breyer</em>; <em>EDPS v SRB</em></td><td>Substantively similar; <strong>India has no anonymisation or pseudonymisation definition</strong></td><td>Adopt EU test, document it</td></tr>
+<tr><td>Controller / processor</td><td>Data Fiduciary / Data Processor</td><td>Controller / Processor</td><td>Same concept, different name</td><td>One model</td></tr>
+<tr><td>Sensitive data</td><td><strong>None</strong></td><td>Art. 9 special categories</td><td><strong>EU stricter</strong></td><td>Build to EU</td></tr>
+</tbody></table></div>
+<h2 id="2-lawfulness-notice-and-consent">2. Lawfulness, notice and consent</h2>
+<div class="scroll"><table><thead><tr>
+<th>Subject</th>
+<th>DPDP</th>
+<th>GDPR</th>
+<th>Delta</th>
+<th>Build once?</th>
+</tr></thead><tbody>
+<tr><td>Lawful bases</td><td>S.4, S.6, S.7 — consent + 9 legitimate uses</td><td>Art. 6 — six bases incl. legitimate interests</td><td><strong>India narrower.</strong> No legitimate interests, no contractual necessity</td><td><strong>No.</strong> India needs consent where the EU uses Art. 6(1)(b)/(f)</td></tr>
+<tr><td>Consent standard</td><td>S.6(1) — free, specific, informed, <strong>unconditional</strong>, unambiguous; void beyond necessity</td><td>Art. 4(11), Art. 7</td><td><strong>India stricter</strong> on paper — &quot;unconditional&quot; and automatic voiding have no GDPR analogue</td><td>Build to India</td></tr>
+<tr><td>Withdrawal</td><td>S.6(4)–(6) — as easy as giving; processing must cease</td><td>Art. 7(3) — as easy as giving</td><td>Similar; India adds an express duty to make processors cease</td><td>Build to India</td></tr>
+<tr><td>Notice content</td><td>S.5 + R.3 — itemised data and purposes, rights, complaint route; <strong>standalone</strong>; 22 languages</td><td>Arts. 13–14 — longer content list (retention, recipients, transfers, source, ADM)</td><td><strong>Split.</strong> GDPR requires <em>more content</em>; India requires a <em>standalone itemised</em> presentation in 22 languages</td><td>Merge: GDPR content, Indian form</td></tr>
+<tr><td>Retrospective notice</td><td>S.5(2) — re-notice pre-commencement consents</td><td>No equivalent</td><td><strong>India only</strong></td><td>India-specific task</td></tr>
+<tr><td>Consent records</td><td>R.4 (via Consent Manager); implicit generally</td><td>Art. 7(1) — demonstrate consent</td><td>Similar in effect</td><td>One consent ledger</td></tr>
+<tr><td>Consent intermediation</td><td>S.6(7)–(9), R.4 — <strong>registered Consent Managers</strong></td><td>No equivalent</td><td><strong>India only</strong></td><td>India-specific integration</td></tr>
+</tbody></table></div>
+<h2 id="3-obligations-of-the-organisation">3. Obligations of the organisation</h2>
+<div class="scroll"><table><thead><tr>
+<th>Subject</th>
+<th>DPDP</th>
+<th>GDPR</th>
+<th>Delta</th>
+<th>Build once?</th>
+</tr></thead><tbody>
+<tr><td>Accountability for processors</td><td>S.8(1)–(2)</td><td>Arts. 24, 28</td><td>Same</td><td>One DPA template + register</td></tr>
+<tr><td>Security</td><td>S.8(5) + <strong>R.6 — named controls</strong>: encryption/tokenisation, access control, <strong>≥1-year access logs</strong>, backups, flow-down</td><td>Art. 32 — risk-based, unnamed</td><td><strong>India more prescriptive.</strong> Art. 32 compliance does not prove R.6 compliance</td><td>Build to India; it satisfies Art. 32</td></tr>
+<tr><td>Breach → regulator</td><td>R.7 — without delay + particulars in 72h, <strong>no threshold</strong></td><td>Art. 33 — 72h <strong>where risk likely</strong></td><td><strong>India stricter</strong></td><td>Build to India</td></tr>
+<tr><td>Breach → individuals</td><td>R.7 — <strong>without delay, every breach</strong></td><td>Art. 34 — only where <strong>high risk</strong></td><td><strong>India far stricter</strong></td><td>Build to India</td></tr>
+<tr><td>Records of processing</td><td>SDF only (implicit)</td><td>Art. 30</td><td><strong>EU stricter</strong></td><td>Build Art. 30 record; it feeds R.3 notices</td></tr>
+<tr><td>DPO</td><td>S.10(a) — SDF only; <strong>India-resident, reports to the board</strong></td><td>Art. 37 — risk-based; may be external, no residency rule</td><td><strong>Different, not comparable.</strong> India&#x27;s is narrower in scope but stricter in form</td><td>Nominate an India-resident candidate</td></tr>
+<tr><td>DPIA</td><td>R.13 — SDF only, <strong>annual</strong></td><td>Art. 35 — high-risk processing, event-driven</td><td><strong>Different cadence.</strong> India is calendar-driven; the EU is trigger-driven</td><td>Run EU-style DPIAs, add an annual cycle if SDF</td></tr>
+<tr><td>Independent audit</td><td>R.13 — SDF only, <strong>annual, report to Board</strong></td><td>No equivalent</td><td><strong>India only</strong></td><td>India-specific</td></tr>
+<tr><td>Privacy by design</td><td><strong>None</strong></td><td>Art. 25</td><td><strong>EU only</strong></td><td>Build to EU</td></tr>
+<tr><td>Algorithmic due diligence</td><td>R.13 — SDF only, undefined</td><td>Not in GDPR (AI Act separately)</td><td><strong>India only</strong> in data law</td><td>Document a method</td></tr>
+<tr><td>Contact publication</td><td>R.9 — publish DPO or answering person</td><td>Art. 13(1)(b)</td><td>Similar</td><td>One page</td></tr>
+<tr><td>Grievance mechanism</td><td>S.8(10), S.13, R.14 — <strong>published response period</strong>; mandatory first step</td><td>Art. 12 + Art. 77 (complain direct to DPA)</td><td><strong>India adds a precondition</strong>; the EU does not</td><td>Build India&#x27;s; it satisfies the EU</td></tr>
+</tbody></table></div>
+<h2 id="4-rights">4. Rights</h2>
+<div class="scroll"><table><thead><tr>
+<th>Right</th>
+<th>DPDP</th>
+<th>GDPR</th>
+<th>Delta</th>
+</tr></thead><tbody>
+<tr><td>Information</td><td>S.5</td><td>Arts. 13–14</td><td>EU content list longer</td></tr>
+<tr><td>Access</td><td>S.11 — <strong>summary</strong> + recipients</td><td>Art. 15 — <strong>copy</strong> + retention, source, ADM, transfers</td><td><strong>EU stricter</strong></td></tr>
+<tr><td>Rectification</td><td>S.12</td><td>Art. 16</td><td>Same</td></tr>
+<tr><td>Erasure</td><td>S.12</td><td>Art. 17</td><td>Similar; GDPR has express carve-outs (expression, public interest) India lacks</td></tr>
+<tr><td>Restriction</td><td>—</td><td>Art. 18</td><td><strong>EU only</strong></td></tr>
+<tr><td>Portability</td><td>—</td><td>Art. 20</td><td><strong>EU only</strong></td></tr>
+<tr><td>Objection</td><td>—</td><td>Art. 21</td><td><strong>EU only</strong></td></tr>
+<tr><td>Automated decisions</td><td>—</td><td>Art. 22</td><td><strong>EU only</strong></td></tr>
+<tr><td>Nomination</td><td><strong>S.14</strong></td><td>—</td><td><strong>India only</strong></td></tr>
+<tr><td>Complaint to regulator</td><td>S.13(3) — <strong>after</strong> internal grievance</td><td>Art. 77 — direct</td><td>India adds a step</td></tr>
+<tr><td>Compensation</td><td>—</td><td>Art. 82</td><td><strong>EU only</strong></td></tr>
+<tr><td>Duties on the individual</td><td><strong>S.15 — ₹10,000 penalty</strong></td><td>—</td><td><strong>India only</strong></td></tr>
+</tbody></table></div>
+<p><strong>Single build:</strong> a request-handling system that returns an Art. 15 copy <strong>plus</strong> the S.11 recipient ledger, supports rectification, erasure, restriction, objection, portability and nomination, and records the response against a published SLA. That covers both, plus Brazil, Korea and the US states.</p>
+<h2 id="5-transfers-exemptions-and-enforcement">5. Transfers, exemptions and enforcement</h2>
+<div class="scroll"><table><thead><tr>
+<th>Subject</th>
+<th>DPDP</th>
+<th>GDPR</th>
+<th>Delta</th>
+</tr></thead><tbody>
+<tr><td>Transfers</td><td>S.16 + R.15 — permitted unless restricted</td><td>Ch. V — prohibited unless a mechanism applies</td><td><strong>EU far stricter.</strong> No SCC apparatus is needed for India</td></tr>
+<tr><td>Localisation</td><td>R.13 — SDF only, notified categories</td><td>None</td><td><strong>India only</strong></td></tr>
+<tr><td>Research exemption</td><td>R.16 — <strong>exempt from the whole Act</strong>, no individual decisions</td><td>Art. 89 — stays in scope, derogations from specific rights</td><td><strong>India far broader</strong></td></tr>
+<tr><td>Journalism</td><td><strong>None</strong></td><td>Art. 85 — member states must reconcile with expression</td><td><strong>EU only.</strong> A live constitutional issue in India</td></tr>
+<tr><td>State exemptions</td><td>S.17(2)(a) — plenary, by notification</td><td>Art. 23 — necessity, proportionality, specified safeguards</td><td><strong>EU far stricter on the carve-out</strong></td></tr>
+<tr><td>Regulator</td><td>Board — Government-appointed, 2-year renewable</td><td>DPAs — Charter-level independence</td><td>Structural</td></tr>
+<tr><td>Penalties</td><td>Schedule — absolute caps to ₹250 crore</td><td>Art. 83 — €20m / 4% worldwide</td><td>Different shape; EU scales with size</td></tr>
+<tr><td>Private action</td><td>None; S.39 bars civil courts</td><td>Arts. 79, 80, 82</td><td><strong>EU only</strong></td></tr>
+</tbody></table></div>
+<hr>
+<h2 id="6-the-seven-india-only-builds">6. The seven India-only builds</h2>
+<p>If you already run a mature GDPR programme, these are the gaps it will <strong>not</strong> cover:</p>
+<ol>
+<li><strong>Standalone itemised notices in 22 Eighth Schedule languages</strong> (R.3).</li>
+<li><strong>Consent as the basis for processing the EU runs on legitimate interests or contract</strong> — analytics, personalisation, product improvement, most fraud analytics (S.4, S.6, S.7).</li>
+<li><strong>Rule 6&#x27;s named controls</strong>, particularly the <strong>one-year access-log floor</strong> and mandatory encryption/tokenisation.</li>
+<li><strong>No-threshold breach notification to every affected individual, without delay</strong> (R.7) — plus the separate <strong>CERT-In six-hour</strong> report.</li>
+<li><strong>Verifiable parental consent for everyone under 18</strong>, with the tracking and targeted-ads ban (S.9, R.10).</li>
+<li><strong>Consent Manager integration</strong> from 13 November 2026 (R.4).</li>
+<li><strong>The right to nominate</strong> (S.14).</li>
+</ol>
+<h2 id="7-the-four-eu-only-builds-india-does-not-require">7. The four EU-only builds India does not require</h2>
+<p>Build them anyway if you serve the EU, UK, Brazil, Korea or California — and note that the first two are the ones most likely to arrive in India by amendment:</p>
+<ol>
+<li><strong>Portability</strong> (Art. 20).</li>
+<li><strong>Automated-decision rights</strong> (Art. 22).</li>
+<li><strong>Privacy by design and by default</strong> (Art. 25).</li>
+<li><strong>Restriction and objection</strong> (Arts. 18, 21).</li>
+</ol>
+<nav class="pager"><a href="10-economics-and-watchlist.html">&#8592; Part 10 — The economics, the readiness gap, and what is still unnotified</a><a href="12-sector-notes.html">Part 12 — Sector notes &#8594;</a></nav>
+</main></div>
+</body>
+</html>

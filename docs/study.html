@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DPDP in Global Context</title>
+<meta name="description" content="India&#x27;s DPDP Act read against nineteen comparable regimes.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#EDEFF4; --surface:#FBFBFD; --sunk:#E4E7EF;
+    --ink:#14181F; --ink-2:#4C5464; --ink-3:#79839A;
+    --rule:#D0D6E2; --rule-soft:#E1E5EE;
+    --accent:#22357A; --accent-ink:#22357A; --accent-soft:#DFE4F2;
+    --flag:#8F3730; --flag-soft:#F3E2DF;
+    --ok:#2C6349; --ok-soft:#DCEBE3;
+    --shadow:0 1px 0 rgba(20,24,31,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0E1116; --surface:#151922; --sunk:#1B2029;
+      --ink:#E7EAF1; --ink-2:#A0A9B9; --ink-3:#79839A;
+      --rule:#2A313D; --rule-soft:#212733;
+      --accent:#96A9E8; --accent-ink:#B6C3F0; --accent-soft:#1A2140;
+      --flag:#DC9187; --flag-soft:#33211F;
+      --ok:#7CBE9B; --ok-soft:#17281F;
+      --shadow:0 1px 0 rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0E1116; --surface:#151922; --sunk:#1B2029;
+    --ink:#E7EAF1; --ink-2:#A0A9B9; --ink-3:#79839A;
+    --rule:#2A313D; --rule-soft:#212733;
+    --accent:#96A9E8; --accent-ink:#B6C3F0; --accent-soft:#1A2140;
+    --flag:#DC9187; --flag-soft:#33211F;
+    --ok:#7CBE9B; --ok-soft:#17281F;
+    --shadow:0 1px 0 rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16.5px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .cite,code{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+
+  /* ---------- masthead ---------- */
+  header.masthead{
+    border-bottom:3px double var(--rule);
+    background:var(--surface);
+  }
+  .masthead-inner{
+    max-width:1200px; margin:0 auto; padding:34px 28px 26px;
+    display:flex; flex-wrap:wrap; gap:24px; align-items:flex-end; justify-content:space-between;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--ink-3); margin:0 0 12px;
+  }
+  h1{
+    font-family:Spectral,Georgia,serif; font-weight:600; font-size:clamp(30px,4.6vw,50px);
+    line-height:1.08; margin:0; letter-spacing:-.015em; text-wrap:balance; max-width:16ch;
+  }
+  .standfirst{
+    margin:14px 0 0; max-width:56ch; color:var(--ink-2); font-size:16px;
+  }
+  .clock{
+    border:1px solid var(--rule); background:var(--ground);
+    padding:14px 18px; min-width:210px; box-shadow:var(--shadow);
+  }
+  .clock .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+  .clock .v{font-family:Spectral,Georgia,serif;font-size:34px;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--accent-ink)}
+  .clock .s{font-size:13px;color:var(--ink-2)}
+
+  /* ---------- shell ---------- */
+  .shell{max-width:1200px;margin:0 auto;padding:0 28px 96px;display:grid;grid-template-columns:214px minmax(0,1fr);gap:52px}
+  nav.toc{position:sticky;top:0;align-self:start;padding:38px 0;max-height:100vh;overflow-y:auto}
+  nav.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+  nav.toc a{
+    display:flex;gap:10px;text-decoration:none;color:var(--ink-2);font-size:13.5px;
+    padding:5px 8px;border-left:2px solid var(--rule-soft);
+  }
+  nav.toc a:hover{color:var(--accent-ink);border-left-color:var(--accent);background:var(--accent-soft)}
+  nav.toc a .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);padding-top:2px}
+  nav.toc .grp{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin:22px 0 6px 10px}
+  nav.toc .grp:first-child{margin-top:0}
+
+  main{padding:38px 0 0;min-width:0}
+  section{padding-top:26px;margin-bottom:20px}
+  section+section{border-top:1px solid var(--rule-soft);margin-top:36px}
+
+  h2{
+    font-family:Spectral,Georgia,serif;font-weight:600;font-size:clamp(23px,2.9vw,31px);
+    line-height:1.16;margin:0 0 6px;letter-spacing:-.01em;text-wrap:balance;
+  }
+  h2 .num{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--accent-ink);display:block;letter-spacing:.1em;margin-bottom:9px;font-weight:500}
+  h3{font-family:Spectral,Georgia,serif;font-weight:600;font-size:20px;margin:34px 0 8px;line-height:1.25;text-wrap:balance}
+  h4{font-size:14px;font-weight:600;margin:24px 0 6px;letter-spacing:.01em}
+  p{margin:0 0 14px;max-width:68ch}
+  ul,ol{max-width:68ch;padding-left:20px;margin:0 0 16px}
+  li{margin-bottom:7px}
+  a{color:var(--accent-ink)}
+  strong{font-weight:600}
+  .lede{font-size:17.5px;color:var(--ink-2);max-width:62ch}
+
+  /* ---------- statutory citation ---------- */
+  .cite{
+    font-size:.88em;background:var(--sunk);border:1px solid var(--rule-soft);
+    padding:1px 5px;border-radius:2px;white-space:nowrap;color:var(--ink-2);
+  }
+
+  /* ---------- notes ---------- */
+  .note{
+    border-left:3px solid var(--accent);background:var(--surface);
+    padding:16px 20px;margin:22px 0;max-width:68ch;box-shadow:var(--shadow);
+  }
+  .note.flag{border-left-color:var(--flag)}
+  .note .lab{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:7px;
+  }
+  .note p:last-child{margin-bottom:0}
+
+  /* ---------- phase strip ---------- */
+  .phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin:24px 0 8px}
+  .phase{background:var(--surface);border:1px solid var(--rule);padding:16px 18px;box-shadow:var(--shadow)}
+  .phase .d{font-family:Spectral,Georgia,serif;font-size:21px;color:var(--accent-ink);line-height:1.2}
+  .phase .t{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+  .phase p{font-size:14px;margin:8px 0 0;color:var(--ink-2)}
+  .phase.done{border-color:var(--ok);background:var(--ok-soft)}
+
+  /* ---------- tables ---------- */
+  .scroll{overflow-x:auto;margin:20px 0 8px;border:1px solid var(--rule);background:var(--surface);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+  caption{
+    caption-side:top;text-align:left;padding:13px 16px;border-bottom:1px solid var(--rule);
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--ink-3);background:var(--sunk);
+  }
+  th,td{padding:9px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule-soft)}
+  thead th{
+    font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);
+    font-weight:600;border-bottom:1px solid var(--rule);white-space:nowrap;
+  }
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.india{background:var(--accent-soft)}
+  tbody tr.india td:first-child{font-weight:600}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .y{color:var(--ok);font-weight:600}
+  .n{color:var(--flag);font-weight:600}
+  .p{color:var(--ink-3);font-weight:600}
+
+  /* ---------- jurisdiction cards ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:14px;margin:22px 0 8px}
+  .card{background:var(--surface);border:1px solid var(--rule);padding:16px 18px;box-shadow:var(--shadow)}
+  .card h4{margin:0 0 3px;font-family:Spectral,Georgia,serif;font-size:18px;font-weight:600}
+  .card .inst{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);display:block;margin-bottom:9px}
+  .card p{font-size:14px;margin:0 0 9px;color:var(--ink-2)}
+  .card p:last-child{margin-bottom:0}
+  .tag{
+    display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;
+    text-transform:uppercase;padding:2px 7px;border:1px solid var(--rule);color:var(--ink-3);margin:0 4px 4px 0;
+  }
+  .tag.new{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
+
+  /* ---------- divergence list ---------- */
+  .div-list{counter-reset:d;list-style:none;padding:0;max-width:none}
+  .div-list li{
+    counter-increment:d;display:grid;grid-template-columns:44px 1fr;gap:16px;
+    padding:16px 0;border-top:1px solid var(--rule-soft);margin:0;max-width:none;
+  }
+  .div-list li::before{
+    content:counter(d,decimal-leading-zero);font-family:"IBM Plex Mono",monospace;
+    font-size:13px;color:var(--flag);padding-top:3px;
+  }
+  .div-list h4{margin:0 0 5px;font-size:16px;font-family:Spectral,Georgia,serif;font-weight:600}
+  .div-list p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:64ch}
+
+  footer{
+    border-top:3px double var(--rule);background:var(--surface);
+    padding:30px 28px 44px;color:var(--ink-2);font-size:13.5px;
+  }
+  footer .inner{max-width:1200px;margin:0 auto}
+  footer p{max-width:74ch}
+
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr;gap:0}
+    nav.toc{position:static;max-height:none;padding:26px 0 6px;border-bottom:1px solid var(--rule-soft)}
+    nav.toc ol{flex-direction:row;flex-wrap:wrap}
+    nav.toc .grp{display:none}
+    nav.toc a{border-left:none;border-bottom:2px solid var(--rule-soft);padding:4px 8px}
+  }
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+<style>
+.sitebar{font:500 13px/1 "IBM Plex Mono",ui-monospace,monospace;padding:11px 20px;display:flex;
+gap:16px;align-items:center;justify-content:space-between;background:#14181f;color:#c9d2e4}
+.sitebar a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4)}
+.sitebar span{opacity:.65;letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+</style>
+</head>
+<body>
+<div class="sitebar"><a href="index.html">&#8592; All parts</a><span>India&rsquo;s DPDP Act &mdash; a study</span></div>
+
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div>
+      <p class="eyebrow">Act 22 of 2023 &nbsp;·&nbsp; G.S.R. Rules, 14 November 2025 &nbsp;·&nbsp; Position as at 19 August 2026</p>
+      <h1>India&rsquo;s DPDP Act in Global Context</h1>
+      <p class="standfirst">A study of the Digital Personal Data Protection Act, 2023 and the DPDP Rules, 2025, read against nineteen comparable statutes — what India borrowed, what it dropped, and what an organisation actually has to build.</p>
+    </div>
+    <div class="clock">
+      <div class="k">Full compliance due</div>
+      <div class="v" id="days">—</div>
+      <div class="s">days to 13 May 2027<br><span style="color:var(--flag)">SDFs may face 13 Nov 2026</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <div class="grp">India</div>
+      <li><a href="#summary"><span class="n">01</span><span>The short version</span></a></li>
+      <li><a href="#act"><span class="n">02</span><span>The Act</span></a></li>
+      <li><a href="#rules"><span class="n">03</span><span>The Rules &amp; the clock</span></a></li>
+      <div class="grp">World</div>
+      <li><a href="#world"><span class="n">04</span><span>Nineteen regimes</span></a></li>
+      <li><a href="#matrices"><span class="n">05</span><span>Comparative matrices</span></a></li>
+      <div class="grp">Analysis</div>
+      <li><a href="#stack"><span class="n">06</span><span>The wider stack</span></a></li>
+      <li><a href="#ai"><span class="n">07</span><span>AI and the Act</span></a></li>
+      <li><a href="#divergence"><span class="n">08</span><span>Structural divergences</span></a></li>
+      <li><a href="#right"><span class="n">09</span><span>What India got right</span></a></li>
+      <li><a href="#build"><span class="n">10</span><span>What to build</span></a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+  <section id="summary">
+    <h2><span class="num">01</span>The short version</h2>
+    <p class="lede">India has enacted a short, delegation-heavy, consent-maximalist statute with strong front-end obligations and weak back-end accountability. The engineering duties are more prescriptive than the GDPR&rsquo;s; the legal exposure is lower, and far less predictable.</p>
+
+    <p>Forty-four sections across nine chapters, plus one Schedule — roughly a fifth the length of the GDPR. Twenty-six subjects are delegated to rules, and the Rules in turn leave core parameters to future notification. A company cannot fully determine its obligations from the statute book.</p>
+
+    <h4>Eight findings</h4>
+    <ol>
+      <li><strong>Two lawful bases, not six.</strong> Consent <span class="cite">S.6</span> or one of nine enumerated &ldquo;certain legitimate uses&rdquo; <span class="cite">S.7</span>. No legitimate-interests basis. No contractual-necessity basis. Ordinary commercial processing runs on consent.</li>
+      <li><strong>Sensitive personal data was abolished.</strong> India is the only major jurisdiction with no special category — a regression from the 2011 SPDI Rules it displaced. Caste, religion, health and biometrics carry no additional statutory protection.</li>
+      <li><strong>Children&rsquo;s data is the strictest limb.</strong> Verifiable parental consent under 18 — the highest threshold in the world — with an absolute ban on tracking and targeted advertising, and a &#8377;200 crore ceiling.</li>
+      <li><strong>Cross-border transfer is the most liberal limb.</strong> A negative list: data may go anywhere until the Government says otherwise. No adequacy, no SCCs, no transfer impact assessments.</li>
+      <li><strong>Breach notification is stricter than the GDPR.</strong> No materiality threshold, and notification to every affected individual &ldquo;without delay,&rdquo; on top of CERT-In&rsquo;s separate six-hour clock.</li>
+      <li><strong>The regulator cannot yet act.</strong> The sections giving the Board its functions, procedure and penalty powers — <span class="cite">S.27–34</span> — were not commenced on 13 November 2025, and no Chairperson or Member has been appointed to exercise them if they had been. Terms are two years, renewable, at the Government’s hand.</li>
+      <li><strong>Competition law got there first.</strong> The largest privacy enforcement in India to date was the <strong>CCI&rsquo;s &#8377;213.14 crore</strong> order against Meta over WhatsApp&rsquo;s 2021 policy &mdash; holding that data sharing beyond service provision <em>cannot be a precondition of access</em>, which is functionally what <span class="cite">S.6(1)</span> requires. NCLAT upheld the penalty; the Supreme Court is supervising compliance.</li>
+      <li><strong>The individual has no monetary remedy — from May 2027.</strong> Penalties go to the Consolidated Fund and <span class="cite">S.39</span> bars civil courts. But <span class="cite">S.44(2)</span>, which deletes the <span class="cite">S.43A IT Act</span> compensation claim, has <em>not</em> commenced — so that claim and the SPDI Rules, 2011 still stand. India runs two data protection regimes at once until the substantive phase.</li>
+      <li><strong>The RTI amendment is before a five-judge Constitution Bench.</strong> <span class="cite">S.44(3)</span> deleted the public-interest override from <span class="cite">S.8(1)(j) RTI Act</span>. The Supreme Court issued notice, <em>refused</em> an interim stay, and referred the challenge to a Constitution Bench.</li>
+    </ol>
+  </section>
+
+  <section id="act">
+    <h2><span class="num">02</span>The Act</h2>
+    <p>The Act is the legislative answer to <em>Puttaswamy</em> (2017), which held informational privacy to be a fundamental right under Article 21 and supplied the proportionality test — legality, legitimate aim, necessity, proportionality, procedural safeguards — against which the Act&rsquo;s own carve-outs are now being measured in court.</p>
+
+    <p>Everything distinctive about the statute dates from August 2022, when the Personal Data Protection Bill, 2019 was withdrawn in its entirety and redrawn: no sensitive-data categories, no hard localisation, a tiny lawful-basis list, and substance delegated to rules.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Chapter map</caption>
+        <thead><tr><th>Ch.</th><th>Sections</th><th>Subject</th><th>The load-bearing provisions</th></tr></thead>
+        <tbody>
+          <tr><td class="num">I</td><td class="num">1–3</td><td>Preliminary</td><td><span class="cite">S.3</span> applies to digital data only; catches foreign firms <em>offering goods or services</em> to people in India, but the profiling limb of the 2022 draft was dropped. Publicly available data is outside the Act entirely.</td></tr>
+          <tr><td class="num">II</td><td class="num">4–10</td><td>Obligations of the Data Fiduciary</td><td><span class="cite">S.5</span> notice · <span class="cite">S.6</span> consent, withdrawal parity, Consent Managers · <span class="cite">S.7</span> nine legitimate uses · <span class="cite">S.8</span> security, breach, erasure, grievance · <span class="cite">S.9</span> children · <span class="cite">S.10</span> Significant Data Fiduciaries</td></tr>
+          <tr><td class="num">III</td><td class="num">11–15</td><td>Rights and duties of the Data Principal</td><td>Access (summary only), correction, erasure, grievance redressal as a mandatory first step, and the novel right to nominate. <span class="cite">S.15</span> imposes enforceable duties <em>on the individual</em>.</td></tr>
+          <tr><td class="num">IV</td><td class="num">16–17</td><td>Special provisions</td><td><span class="cite">S.16</span> negative-list transfers · <span class="cite">S.17</span> exemptions, including the outsourcing carve-out and the power to exempt any State instrumentality</td></tr>
+          <tr><td class="num">V–VII</td><td class="num">18–32</td><td>The Board, its procedure, appeals</td><td>Digital-office adjudication, civil-court powers of discovery, appeal to TDSAT within 60 days, mediation, and voluntary undertakings that bar further proceedings</td></tr>
+          <tr><td class="num">VIII</td><td class="num">33–34</td><td>Penalties</td><td>Schedule ceilings per instance; proceeds to the Consolidated Fund of India</td></tr>
+          <tr><td class="num">IX</td><td class="num">35–44</td><td>Miscellaneous</td><td><span class="cite">S.36</span> power to call for information · <span class="cite">S.37</span> blocking after two penalties · <span class="cite">S.39</span> bar of civil jurisdiction · <span class="cite">S.44</span> — (1) TRAI Act, (2) omits <span class="cite">S.43A IT Act</span> <em>(not yet commenced)</em>, (3) rewrites the RTI exemption <em>(in force since day one)</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The nine legitimate uses</h3>
+    <p>These are exhaustive, and the shape of the list is the point: six of the nine are State grounds, one is employment, and only <span class="cite">S.7(a)</span> — data &ldquo;voluntarily provided&rdquo; for a specified purpose — is a flexible commercial ground. The State gets a self-executing basis for essentially all citizen-facing service delivery; a private company gets nothing equivalent for its own.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Penalty schedule — ceilings per instance, not fixed fines</caption>
+        <thead><tr><th>Breach</th><th>Provision</th><th>Ceiling</th></tr></thead>
+        <tbody>
+          <tr><td>Failure to take reasonable security safeguards</td><td><span class="cite">S.8(5)</span></td><td class="num">&#8377;250 crore</td></tr>
+          <tr><td>Failure to notify a breach</td><td><span class="cite">S.8(6)</span></td><td class="num">&#8377;200 crore</td></tr>
+          <tr><td>Breach of children&rsquo;s data obligations</td><td><span class="cite">S.9</span></td><td class="num">&#8377;200 crore</td></tr>
+          <tr><td>Breach of additional SDF obligations</td><td><span class="cite">S.10</span></td><td class="num">&#8377;150 crore</td></tr>
+          <tr><td>Breach of duties by the Data Principal</td><td><span class="cite">S.15</span></td><td class="num">&#8377;10,000</td></tr>
+          <tr><td>Any other breach — residuary</td><td>—</td><td class="num">&#8377;50 crore</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note flag">
+      <span class="lab">Structural note</span>
+      <p>These are <strong>absolute caps, not turnover-linked</strong>. &#8377;250 crore is roughly US$29 million — a cost of doing business for a global platform, and existential for an Indian mid-market firm. The schedule is regressive in effect, and <span class="cite">S.42</span> lets the Government raise the amounts only to twice the stated figure.</p>
+    </div>
+
+    <h3>The RTI amendment</h3>
+    <p>Section 8(1)(j) of the Right to Information Act formerly exempted personal information only where disclosure had no relationship to public activity or would be an unwarranted invasion of privacy — <em>unless the larger public interest justified disclosure</em>. <span class="cite">S.44(3)</span> replaces the whole clause with six words: <em>&ldquo;information which relates to personal information.&rdquo;</em></p>
+    <p>Three elements were deleted: the public-activity nexus test, the unwarranted-invasion test, and the public-interest override. Public Information Officers lose the power to balance privacy against accountability &mdash; a balancing exercise the Constitution Bench in <em>CPIO v. Subhash Chandra Agarwal</em> (2020) had held the clause required.</p>
+    <p>Petitions by the National Campaign for People&rsquo;s Right to Information, RTI activist Venkatesh Nayak and The Reporters&rsquo; Collective are pending. A bench of Chief Justice Surya Kant, Bagchi and Pancholi JJ issued notice, <strong>declined to stay</strong> the amendment, and <strong>referred the matter to a five-judge Constitution Bench</strong>. Beyond the RTI point they challenge the complete absence of a journalism exemption under Article 19(1)(a), and the breadth of <span class="cite">S.17(2)(a)</span>.</p>
+
+    <div class="note">
+      <span class="lab">Why the referral matters more than the notice</span>
+      <p>A Constitution Bench is not confined to <span class="cite">S.44(3)</span>. Once the question is framed as the constitutional balance between privacy and transparency, <span class="cite">S.17(2)(a)</span>, the missing press exemption and Rule 23&rsquo;s gag are all within reach &mdash; measured against the proportionality test from <em>Puttaswamy</em> (2017), whose third and fourth limbs, necessity and procedural safeguards, are exactly what those provisions omit. But Constitution Bench listings are slow, and a ruling is unlikely before obligations commence on 13 May 2027. <strong>Build to the Act as written; do not plan around the judgment.</strong></p>
+    </div>
+  </section>
+
+  <section id="rules">
+    <h2><span class="num">03</span>The Rules and the clock</h2>
+    <p>Twenty-three rules and seven Schedules, notified 14 November 2025. They carry the detail the Act deliberately omitted: notice format, security controls, breach timings, retention periods, children&rsquo;s consent mechanics, SDF duties, and the Board&rsquo;s own machinery. Commencement is staggered across eighteen months.</p>
+
+    <div class="phases">
+      <div class="phase done">
+        <div class="t">Phase 1 — in force</div>
+        <div class="d">13 Nov 2025</div>
+        <p>Rules 1, 2, 17–22 and Act sections 1(2), 2, 18–26, 35, 38–43, 44(1) and 44(3). The Board is constituted — but not <span class="cite">S.27–34</span>, which give it functions, procedure and penalties.</p>
+      </div>
+      <div class="phase">
+        <div class="t">Phase 2</div>
+        <div class="d">13 Nov 2026</div>
+        <p>Rule 4. Consent Manager registration opens — Indian incorporation, &#8377;2 crore net worth, interoperable platform, fit-and-proper test.</p>
+      </div>
+      <div class="phase">
+        <div class="t">Phase 3 — the deadline</div>
+        <div class="d">13 May 2027</div>
+        <p>Rules 3, 5–16, 23. Everything substantive: notice, security, breach, erasure, children, rights, transfers, SDF duties.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="lab">Read the phasing correctly</span>
+      <p>Nothing substantive binds an ordinary business before 13 May 2027 — but consent re-collection, re-noticing every pre-commencement consent under <span class="cite">S.5(2)</span>, retention engineering and breach tooling all have long lead times, and the Consent Manager market gets only six months of operation before the obligations land.</p>
+    </div>
+
+    <div class="note flag">
+      <span class="lab">The deadline may move &mdash; watch this</span>
+      <p>On <strong>23 January 2026</strong> MeitY circulated proposals to <strong>compress the compliance window for Significant Data Fiduciaries from 18 months to 12</strong>, moving SDF compliance from 13 May 2027 to <strong>13 November 2026</strong>; to <strong>notify the SDF list or classification criteria</strong> (reported targets: large platforms, major BFSI, large intermediaries); and to enforce the SDF <strong>cross-border restriction immediately</strong> on designation. Comments closed 4 February 2026.</p>
+      <p><strong>Still a proposal as at 19 August 2026 &mdash; not notified.</strong> The operative dates remain 13 November 2026 for Consent Managers and 13 May 2027 for full compliance. But it signals direction: SDFs first, faster, with localisation live from day one. Any plausible SDF should plan to November 2026, and should assume the localisation duty arrives <em>with</em> the designation rather than after a grace period.</p>
+    </div>
+
+    <h3>The four rules that will define compliance</h3>
+
+    <h4>Rule 3 — notice</h4>
+    <p>The notice must be presented <strong>independently of any other information</strong>, in clear and plain language, with an <strong>itemised</strong> description of the data and the purposes, and the means to withdraw consent, exercise rights and complain to the Board — in English or any of the 22 Eighth Schedule languages, at the individual&rsquo;s option. This is the end of the bundled privacy policy in India.</p>
+
+    <h4>Rule 6 — security safeguards</h4>
+    <p>India did what the GDPR pointedly avoided: it named the controls. Encryption, obfuscation, masking or tokenisation; access control; <strong>logs and monitoring of access retained for at least one year</strong>; backups sufficient for continued processing after compromise; equivalent safeguards imposed contractually on processors. It is the most auditable rule in the framework, and it carries the &#8377;250 crore tier.</p>
+
+    <h4>Rule 7 — breach notification</h4>
+    <p>To every affected individual, <strong>without delay</strong>, in plain language. To the Board, <strong>without delay</strong> in outline and with <strong>full particulars within 72 hours</strong>. No materiality threshold — every breach, however small. Cumulative with CERT-In&rsquo;s six-hour incident report.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>The three clocks &mdash; parallel, different owners</caption>
+        <thead><tr><th>Clock</th><th>Trigger</th><th>Deadline</th><th>Failure exposure</th></tr></thead>
+        <tbody>
+          <tr><td>CERT-In</td><td>Noticing a <em>listed cyber incident</em></td><td><strong>6 hours</strong></td><td>Up to &#8377;1 lakh and 1 year&rsquo;s imprisonment (S.70B(7) IT Act)</td></tr>
+          <tr><td>Affected individuals</td><td>Awareness of <em>any</em> personal data breach</td><td><strong>Without delay</strong></td><td>&#8377;200 crore tier</td></tr>
+          <tr><td>Data Protection Board</td><td>Same &mdash; two stages</td><td><strong>Without delay</strong>, then <strong>72 hours</strong> for particulars</td><td>&#8377;200 crore tier</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Behind all three sits the <strong>&#8377;250 crore</strong> tier for the underlying security failure &mdash; independent exposures, so notifying perfectly does not cure a control failure and good controls do not excuse a late notice. The trap is reportability: CERT-In&rsquo;s trigger is a <em>listed cyber incident</em>; the DPDP trigger is <em>any</em> personal data breach with no threshold. Most personal data breaches are not CERT-In incidents, and some CERT-In incidents involve no personal data. You need <strong>two decision trees, not one</strong> &mdash; and because the second fires often, the process has to be cheap to run or it will not be run.</p>
+
+    <h4>Rule 13 — Significant Data Fiduciaries</h4>
+    <p>Annual DPIA and independent audit reported to the Board; <strong>due diligence that algorithmic software poses no risk to Data Principals&rsquo; rights</strong> — India&rsquo;s only AI provision, and undefined; and a duty not to transfer Government-notified data categories or their traffic data outside India. SDF status arrives by notification, not self-assessment: a company cannot know it is one until told.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Implementation status, 19 August 2026</caption>
+        <thead><tr><th>Item</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Rules notified</td><td class="y">Done — 14 November 2025</td></tr>
+          <tr><td>Data Protection Board constituted with members</td><td class="n">No — applications invited 6 May 2026; none appointed</td></tr>
+          <tr><td>Board’s functions, procedure and penalty powers (S.27–34)</td><td class="n">Not commenced — no complaint can be adjudicated, no penalty imposed</td></tr>
+          <tr><td>S.43A IT Act and the SPDI Rules, 2011</td><td class="p">Still in force — S.44(2) not yet commenced</td></tr>
+          <tr><td>Consent Manager registrations</td><td class="p">Not open until 13 November 2026</td></tr>
+          <tr><td>Significant Data Fiduciary notifications</td><td class="n">None issued</td></tr>
+          <tr><td>Restricted-country list under Rule 15</td><td class="n">Empty</td></tr>
+          <tr><td>Data categories subject to SDF localisation</td><td class="n">None notified</td></tr>
+          <tr><td>Substantive obligations enforceable</td><td class="p">13 May 2027</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note flag">
+      <span class="lab">The enforcement gap</span>
+      <p>India has a fully notified framework, a fixed deadline and penalty ceilings among the highest in Asia — and no enforcement. The gap is doubled: the sections that would let the Board hear a complaint or impose a penalty were never commenced, <em>and</em> nobody has been appointed to exercise them. Every quarter the Board remains unconstituted compresses the runway before May 2027, when the obligations of several million Data Fiduciaries become enforceable at once.</p>
+    </div>
+  </section>
+
+  <section id="world">
+    <h2><span class="num">04</span>Nineteen regimes</h2>
+    <p>Roughly 160 countries now have a comprehensive data protection law. These are the ones that matter for an Indian company: the template India drew from, the template it rejected, the markets it sells into, and the peer economies that legislated in the same window and chose differently.</p>
+
+    <div class="cards">
+      <div class="card">
+        <h4>European Union</h4><span class="inst">GDPR · 2018</span>
+        <p>Six lawful bases including legitimate interests; special categories; full rights set with portability and Article 22 automated-decision rights; DPIAs, DPOs, records; transfers prohibited by default.</p>
+        <p><span class="tag new">Digital Omnibus</span> Proposed 19 Nov 2025. The AI limb was adopted by Council on 29 June 2026; <strong>the GDPR limb is still in negotiation</strong> and nothing has entered into force.</p>
+      </div>
+      <div class="card">
+        <h4>United Kingdom</h4><span class="inst">UK GDPR + DUAA 2025</span>
+        <p>Divergence by simplification: statutory &ldquo;recognised legitimate interests,&rdquo; relaxed automated-decision rules, a &ldquo;stop the clock&rdquo; on subject access, and a new controller duty to handle complaints from 19 June 2026. The ICO becomes the Information Commission.</p>
+        <p>Loosened obligations — but kept compensation and an independent regulator. India loosened both.</p>
+      </div>
+      <div class="card">
+        <h4>China</h4><span class="inst">PIPL · 2021</span>
+        <p>No legitimate-interests basis either — but a contract and HR basis, separate consent for sensitive data and transfers, a harm-based sensitive-data definition, and Article 24 automated-decision rights.</p>
+        <p><span class="tag new">1 Jan 2026</span> Cross-border transfer certification measures in force; supplementary standards mandatory from 1 July 2026.</p>
+      </div>
+      <div class="card">
+        <h4>Japan</h4><span class="inst">APPI · 2026 amendment</span>
+        <p>Passed the Diet 10 July 2026, promulgated 17 July, in force within two years. Creates a <strong>statistical-processing consent exemption for AI development</strong>, parental consent under 16, a new &ldquo;Specific Biometric Personal Information&rdquo; category, and administrative fines for the PPC.</p>
+      </div>
+      <div class="card">
+        <h4>South Korea</h4><span class="inst">PIPA · 2026 amendment</span>
+        <p>Portability, automated-decision rights, and a genuinely independent commission. February 2026 amendments authorise fines up to <strong>10% of total revenue</strong> in severe breach cases, with CEO accountability and a mandated CPO; most provisions effective 11 September 2026.</p>
+      </div>
+      <div class="card">
+        <h4>Brazil</h4><span class="inst">LGPD · 2020</span>
+        <p>The most faithful GDPR transposition outside Europe — ten lawful bases, sensitive categories, portability, review of automated decisions, and an autonomous ANPD. Proof that a developing economy can adopt the full model. India chose not to.</p>
+      </div>
+      <div class="card">
+        <h4>United States</h4><span class="inst">Sectoral + 21 state laws</span>
+        <p>No comprehensive federal law. Twenty state laws in effect through 2026, with Indiana, Kentucky and Rhode Island commencing 1 January; Alabama enacted the 21st framework and Vermont&rsquo;s law was signed 16 June 2026. Plus BIPA, My Health My Data, and FTC Act §5.</p>
+        <p>The fragmentation India avoided — and the enforcement culture it did not import.</p>
+      </div>
+      <div class="card">
+        <h4>Australia</h4><span class="inst">Privacy Act 1988 · 2024 amendments</span>
+        <p>A <strong>statutory tort for serious invasions of privacy</strong> since 10 June 2025, a children&rsquo;s code, doxxing offences and tiered penalties. Tranche 2 — removing the small-business exemption and adding erasure — remains an unlegislated commitment as of mid-2026.</p>
+      </div>
+      <div class="card">
+        <h4>Vietnam</h4><span class="inst">PDPL 91/2025 · 1 Jan 2026</span>
+        <p>Legislated in the same window as India&rsquo;s rules and went the other way: filing-based transfer control, an express ban on buying and selling personal data, and penalties of 5% of revenue for transfer violations or ten times the illicit gain. A five-year small-business exemption is in the statute itself.</p>
+      </div>
+      <div class="card">
+        <h4>Nigeria</h4><span class="inst">NDPA 2023 + GAID 2025</span>
+        <p>The GAID took effect 19 September 2025 with thresholds for &ldquo;major importance&rdquo; entities, annual audit returns and licensed compliance organisations. The NDPC issued compliance notices to <strong>1,368 organisations</strong> in 2025 — a younger regime enforcing while India&rsquo;s Board had no members.</p>
+      </div>
+      <div class="card">
+        <h4>Singapore</h4><span class="inst">PDPA · 2014, amended 2020</span>
+        <p>The pragmatic middle path India&rsquo;s industry wanted: legitimate interests and business-improvement exceptions, deemed consent, breach notification above a harm threshold, and a <strong>DPO in every organisation</strong>. India omitted both the exception and the universal DPO.</p>
+      </div>
+      <div class="card">
+        <h4>Canada, Indonesia, UAE</h4><span class="inst">Three cautionary cases</span>
+        <p>Bill C-27 died on prorogation in January 2025, leaving PIPEDA and a commissioner with no fining power. Indonesia&rsquo;s law bit in October 2024 with a delayed authority. The UAE&rsquo;s federal PDPL waited years for executive regulations while the DIFC and ADGM did the real work.</p>
+        <p>A law that sits unenforced trains the market to ignore it.</p>
+      </div>
+    </div>
+    <p style="margin-top:18px;color:var(--ink-2);font-size:14.5px">Also studied: Switzerland (revFADP, criminal fines on individuals rather than corporate penalties), Thailand, South Africa, Kenya, and Saudi Arabia — where PDPL breaches of sensitive data carry imprisonment.</p>
+  </section>
+
+  <section id="matrices">
+    <h2><span class="num">05</span>Comparative matrices</h2>
+    <p>India&rsquo;s row is highlighted in each table. <span class="y">✓</span> present · <span class="p">~</span> partial or conditional · <span class="n">✕</span> absent.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Lawful bases for processing</caption>
+        <thead><tr><th>Jurisdiction</th><th>Consent</th><th>Contract</th><th>Legal obligation</th><th>Public task</th><th>Legitimate interests</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr class="india"><td>India</td><td class="y">✓</td><td class="n">✕</td><td class="y">✓</td><td class="p">~ State only</td><td class="n">✕</td><td>2 categories, 9 uses</td></tr>
+          <tr><td>EU</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td>6</td></tr>
+          <tr><td>UK</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓ + statutory list</td><td>6+</td></tr>
+          <tr><td>Brazil</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td>10</td></tr>
+          <tr><td>China</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td><td class="n">✕</td><td>7</td></tr>
+          <tr><td>Singapore</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓ + business improvement</td><td>8+</td></tr>
+          <tr><td>South Korea</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="p">~ narrow</td><td>7</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Reading.</strong> India and China are the two majors with no legitimate-interests basis — but China compensates with a contract and HR basis, and India has neither. That is why the Consent Manager exists, and it is the most consequential design decision in the Act.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Sensitive and special-category data</caption>
+        <thead><tr><th>Jurisdiction</th><th>Category exists</th><th>Health</th><th>Biometrics</th><th>Caste / race</th><th>Religion</th><th>Financial</th></tr></thead>
+        <tbody>
+          <tr class="india"><td>India — DPDP Act</td><td class="n">✕ none</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td></tr>
+          <tr><td>India — SPDI Rules 2011 (superseded)</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✕</td><td class="n">✕</td><td class="y">✓</td></tr>
+          <tr><td>EU</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="n">✕</td></tr>
+          <tr><td>China</td><td class="y">✓ harm-based</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>Brazil, Thailand, Nigeria</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td></tr>
+          <tr><td>US states</td><td class="y">✓ opt-in</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td></tr>
+          <tr><td>Vietnam, Indonesia</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td><td class="y">✓</td><td class="y">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Reading.</strong> India is the outlier. Uniform protection avoids the definitional arbitrage of category lists — but in a country where caste and religious identity carry acute discrimination risk and Aadhaar has made biometric processing routine, it means those attributes get no additional statutory protection at all.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Rights of the individual</caption>
+        <thead><tr><th>Right</th><th>India</th><th>EU</th><th>Brazil</th><th>China</th><th>S. Korea</th><th>US states</th></tr></thead>
+        <tbody>
+          <tr><td>Access</td><td class="p">~ summary only</td><td class="y">✓ copy</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>Correction &amp; erasure</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>Portability</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>Object / restrict</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td><td class="p">~</td><td class="y">✓ opt-out</td></tr>
+          <tr><td>Automated decisions / explanation</td><td class="n">✕</td><td class="y">✓ Art. 22</td><td class="y">✓</td><td class="y">✓ Art. 24</td><td class="y">✓</td><td class="p">~ CA, CO</td></tr>
+          <tr><td>Nomination on death or incapacity</td><td class="y">✓ unique</td><td class="n">✕</td><td class="n">✕</td><td class="p">~</td><td class="n">✕</td><td class="n">✕</td></tr>
+          <tr><td>Compensation for harm</td><td class="n">✕</td><td class="y">✓ Art. 82</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓ statutory damages</td><td class="p">~ breach only</td></tr>
+          <tr><td>Enforceable duties <em>on</em> the individual</td><td class="n">✓ &#8377;10,000 penalty</td><td class="p">✕</td><td class="p">✕</td><td class="p">✕</td><td class="p">✕</td><td class="p">✕</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Reading.</strong> The thinnest rights set of any comprehensive regime studied, and the only one that runs the accountability arrow in both directions. Two absences matter most in practice: portability — which India has built the infrastructure for in Account Aggregator and ONDC without granting the right — and automated-decision rights, in an economy with algorithmic credit scoring and welfare eligibility at scale.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Breach notification</caption>
+        <thead><tr><th>Jurisdiction</th><th>To regulator</th><th>To individuals</th><th>Materiality threshold</th></tr></thead>
+        <tbody>
+          <tr class="india"><td>India</td><td>Without delay + particulars within 72h</td><td>Without delay</td><td class="n">None — every breach</td></tr>
+          <tr><td>EU / UK</td><td>72h where risk likely</td><td>Where high risk</td><td class="y">Risk-based</td></tr>
+          <tr><td>China</td><td>Immediately</td><td>Yes, unless mitigated</td><td class="p">Partial</td></tr>
+          <tr><td>South Korea</td><td>72h</td><td>72h</td><td class="p">Partial</td></tr>
+          <tr><td>Singapore</td><td>3 calendar days</td><td>Yes</td><td class="y">≥500 people or significant harm</td></tr>
+          <tr><td>Indonesia</td><td>3×24h</td><td>3×24h</td><td class="n">None</td></tr>
+          <tr><td>Nigeria / Saudi Arabia</td><td>72h</td><td>Where high risk</td><td class="p">Partial</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Reading.</strong> Strictest in the table on two axes at once. For a large consumer platform this turns a misdirected email into a mandatory dual notification carrying a &#8377;200 crore ceiling for failure. Expect over-notification as the observed behaviour, and expect this to be the first provision industry asks to soften.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Cross-border transfers</caption>
+        <thead><tr><th>Jurisdiction</th><th>Default</th><th>Mechanisms</th><th>Localisation</th></tr></thead>
+        <tbody>
+          <tr class="india"><td>India</td><td class="y">Permitted</td><td>Government negative list; conditions on foreign-government access</td><td class="p">SDFs only, notified categories; plus sectoral (RBI, IRDAI, telecom)</td></tr>
+          <tr><td>EU / UK</td><td class="n">Prohibited</td><td>Adequacy, SCCs, BCRs + transfer impact assessment</td><td class="y">None</td></tr>
+          <tr><td>China</td><td class="n">Prohibited</td><td>CAC assessment, standard contract filing, or certification</td><td class="n">CIIOs and threshold processors</td></tr>
+          <tr><td>Vietnam</td><td class="p">Permitted with filing</td><td>Impact dossier to the Ministry of Public Security</td><td class="p">Partial</td></tr>
+          <tr><td>Brazil, Indonesia, Nigeria</td><td class="n">Prohibited</td><td>Adequacy, safeguards, consent</td><td class="y">None</td></tr>
+          <tr><td>US states</td><td class="y">Permitted</td><td>None</td><td class="y">None</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Reading.</strong> India sits with the US at the permissive end — a deliberate signal to global services and to India&rsquo;s own IT and BPM export sector, reinforced by the outsourcing exemption in <span class="cite">S.17(1)(d)</span>. The latent risk is that both the restricted-country list and the SDF localisation categories are unbounded executive powers exercisable overnight. Permissiveness here is policy, not entitlement — keep transfer flows documentable and re-routable.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Penalties and redress</caption>
+        <thead><tr><th>Jurisdiction</th><th>Maximum</th><th>Turnover-linked</th><th>Compensation</th><th>Private right of action</th></tr></thead>
+        <tbody>
+          <tr class="india"><td>India</td><td class="num">&#8377;250 crore per instance</td><td class="n">✕ absolute cap</td><td class="n">✕</td><td class="n">✕</td></tr>
+          <tr><td>EU</td><td class="num">€20m / 4% worldwide</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>South Korea</td><td class="num">10% of total revenue</td><td class="y">✓</td><td class="y">✓ statutory damages</td><td class="y">✓</td></tr>
+          <tr><td>China</td><td class="num">¥50m / 5%</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>Australia</td><td class="num">A$50m / 30% adjusted turnover</td><td class="y">✓</td><td class="p">~</td><td class="y">✓ statutory tort</td></tr>
+          <tr><td>Singapore</td><td class="num">10% SG turnover / S$1m</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>Brazil</td><td class="num">2% Brazil revenue, cap BRL 50m</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+          <tr><td>Nigeria</td><td class="num">₦10m / 2% gross revenue</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Reading.</strong> India is the only jurisdiction in this table where an individual harmed by a breach has no statutory monetary remedy of any kind. Deterrence rests entirely on a regulator that does not yet exist.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Accountability obligations on organisations</caption>
+        <thead><tr><th>Obligation</th><th>India</th><th>EU</th><th>Brazil</th><th>China</th><th>Singapore</th><th>Nigeria</th></tr></thead>
+        <tbody>
+          <tr><td>Records of processing</td><td class="p">~ SDF only</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="p">~</td><td class="y">✓</td></tr>
+          <tr><td>DPO</td><td class="p">~ SDF only, India-resident</td><td class="y">✓ risk-based</td><td class="y">✓ all</td><td class="y">✓ threshold</td><td class="y">✓ all</td><td class="y">✓ threshold</td></tr>
+          <tr><td>DPIA</td><td class="p">~ SDF only, annual</td><td class="y">✓ high-risk</td><td class="p">~</td><td class="y">✓</td><td class="p">~</td><td class="y">✓</td></tr>
+          <tr><td>Independent audit</td><td class="y">✓ SDF only, annual</td><td class="n">✕</td><td class="n">✕</td><td class="y">✓</td><td class="n">✕</td><td class="y">✓ annual returns</td></tr>
+          <tr><td>Privacy by design / default</td><td class="n">✕</td><td class="y">✓ Art. 25</td><td class="p">~</td><td class="p">~</td><td class="p">~</td><td class="p">~</td></tr>
+          <tr><td>Prescribed security controls</td><td class="y">✓ Rule 6</td><td class="n">✕ risk-based only</td><td class="n">✕</td><td class="y">✓ MLPS</td><td class="p">~ guidance</td><td class="y">✓</td></tr>
+          <tr><td>Algorithmic risk due diligence</td><td class="y">✓ SDF only</td><td class="p">~ via AI Act</td><td class="p">~</td><td class="y">✓ Art. 24</td><td class="n">✕</td><td class="n">✕</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Reading.</strong> India inverts the usual pattern. Most regimes impose light-but-universal accountability duties. India imposes almost nothing on the ordinary Fiduciary, a heavy audited package on a small Government-designated set of SDFs, and one universal prescriptive security rule. The compliance landscape has a very sharp cliff at the SDF boundary — and Rule 6 is the only universal, testable technical standard, which makes it the correct first investment.</p>
+  </section>
+
+  <section id="stack">
+    <h2><span class="num">06</span>The Act is not the whole stack</h2>
+    <p><span class="cite">S.38</span> makes the DPDP Act <em>additional to</em> every other law, and provides that where another law confers a higher degree of protection or restriction, that higher standard prevails. It is a floor, not a ceiling &mdash; and in the sectors where Indian companies actually operate, it is frequently the least demanding instrument in the stack.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Where the stack conflicts</caption>
+        <thead><tr><th>Conflict</th><th>DPDP position</th><th>The other instrument</th><th>How it resolves</th></tr></thead>
+        <tbody>
+          <tr><td>Erasure vs. statutory retention</td><td>Erase on withdrawal or purpose exhaustion <span class="cite">S.8(7)</span></td><td>KYC 5 years &middot; PMLA 5 years &middot; SEBI 5&ndash;8 years &middot; IRDAI policy tail &middot; IT Rules 180 days post-deletion</td><td>Retention law wins through the &ldquo;required by law&rdquo; proviso &mdash; but name the provision, isolate the fields, and tell the individual what was kept</td></tr>
+          <tr><td>Free transfer vs. localisation</td><td>Permitted unless restricted <span class="cite">S.16</span></td><td>RBI payment data must stay in India; SEBI, IRDAI and telecom licence conditions</td><td><span class="cite">S.16(2)</span> preserves the stricter rule. The negative list is irrelevant to a payment system operator</td></tr>
+          <tr><td>Breach clocks</td><td>Without delay, then 72 hours</td><td>CERT-In 6 hours; RBI, SEBI and IRDAI on their own timelines</td><td>All cumulative. Design to the shortest clock and fan out</td></tr>
+          <tr><td>Grievance clocks</td><td>Self-declared published period</td><td>IT Rules 2021: acknowledge in 24h, dispose in 15 days</td><td>Publish the IT Rules clock as your DPDP period. One process, one SLA</td></tr>
+          <tr><td>Consent vs. mandated collection</td><td>Consent must be free and unconditional</td><td>KYC, Aadhaar verification, tax reporting</td><td>Run mandated collection on the sectoral law, not consent &mdash; asking for consent you will collect anyway makes it unfree</td></tr>
+          <tr><td>No sensitive-data category</td><td>Uniform treatment</td><td>Aadhaar Act, SPDI Rules, ABDM health policy</td><td>The category-specific instrument prevails where stricter &mdash; which is why abolition bites the open internet, not regulated sectors</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Two further points belong here. The <strong>IT Amendment Rules, 2026</strong> cut the intermediary takedown clock from 36 hours to <strong>three hours</strong>, and removal of non-consensual intimate or morphed imagery &mdash; deepfakes included &mdash; from 24 hours to <strong>two hours</strong>. And <span class="cite">S.72A</span> of the IT Act, criminalising disclosure of personal information in breach of a lawful contract, is untouched by <span class="cite">S.44</span> and survives permanently: after May 2027 it is the only provision in Indian law attaching personal criminal consequence to data misuse, because the DPDP Act creates no offences at all.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Enforcement practice, early 2026</caption>
+        <thead><tr><th>Metric</th><th>Position</th></tr></thead>
+        <tbody>
+          <tr><td>Cumulative GDPR fines since 2018</td><td>&asymp; &euro;7.1 billion across &asymp; 2,245 fines</td></tr>
+          <tr><td>Share imposed since January 2023</td><td>More than 60% &mdash; enforcement is accelerating</td></tr>
+          <tr><td>Largest regulator by value</td><td>Ireland&rsquo;s DPC, &asymp; &euro;4.04 billion</td></tr>
+          <tr><td>Most active by case count</td><td>Spain&rsquo;s AEPD, 1,000+ fines, seventh year running</td></tr>
+          <tr><td>Nigeria (NDPC), 2025</td><td>Compliance notices to 1,368 organisations</td></tr>
+          <tr class="india"><td>India (Data Protection Board)</td><td>Zero &mdash; S.27&ndash;34 not commenced, no members appointed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Three lessons. Enforcement concentrates where establishment is, and India&rsquo;s single centralised Board reproduces that concentration by design. The lag between statute and enforcement is normal and then ends abruptly &mdash; the GDPR&rsquo;s first two years were quiet, and over 60% of all fines have landed since 2023, so an inert Indian Board in 2026 predicts nothing about 2028. And volume enforcement lands on the mid-market for ordinary failures &mdash; CCTV, marketing, security &mdash; not on headline penalties against large platforms.</p>
+
+    <div class="note flag">
+      <span class="lab">Where enforcement is actually coming from</span>
+      <p>In November 2024 the <strong>Competition Commission of India</strong> fined Meta <strong>&#8377;213.14 crore</strong> over WhatsApp&rsquo;s 2021 privacy policy, barred data sharing with Meta companies for advertising for five years, and held that such sharing <strong>could not be a precondition</strong> of using WhatsApp in India. NCLAT set the advertising ban aside in November 2025 but <strong>upheld the penalty</strong>. Meta and WhatsApp moved the Supreme Court; in February 2026 they undertook to implement a <strong>user-consent-based data-sharing framework by 16 March 2026</strong> and withdrew their interim application. The main appeal is pending.</p>
+      <p>This is India&rsquo;s <em>Meta v. Bundeskartellamt</em>: a competition regulator enforcing, in substance, the DPDP consent standard two and a half years before it becomes enforceable. With <span class="cite">S.27&ndash;34</span> uncommenced and the Board unstaffed, the institutions actually policing data practices today are the <strong>CCI, the sectoral regulators, CERT-In and the courts</strong> &mdash; a materially different risk map from the one a company planning only for the Board would draw. And the competition penalty scales with turnover, where the DPDP Schedule does not.</p>
+    </div>
+
+    <p><strong>Employment is the one place India is <em>more</em> permissive than the GDPR.</strong> <span class="cite">S.7(i)</span> makes employment purposes &mdash; and safeguarding the employer from loss or liability &mdash; a consent-free legitimate use, where EU employee consent is generally treated as invalid for power-imbalance reasons. It removes only the consent requirement, though: not lawful purpose, security, erasure, notice, employee rights, or <em>Puttaswamy</em> proportionality. Commentators argue blanket surveillance clauses are <strong>void, not merely risky</strong>, since a contract cannot manufacture a legitimate use the section does not supply. Indian employees also have <strong>no automated-decision rights</strong> &mdash; no explanation, no contest, no human review of algorithmic performance scoring.</p>
+
+    <div class="note">
+      <span class="lab">The practical lesson</span>
+      <p>For a regulated entity &mdash; bank, NBFC, insurer, broker, telco, hospital &mdash; the DPDP Act is rarely the binding constraint. The sectoral regulator already exceeds it, and is enforcing today while the Board is not. For an unregulated consumer internet company, DPDP plus the IT Rules <em>is</em> the whole stack. Either way the design conclusion is identical: build the retention and erasure engine around a <strong>field-level map of statutory retention obligations</strong>. That map is what reconciles everything above it.</p>
+    </div>
+  </section>
+
+  <section id="ai">
+    <h2><span class="num">07</span>The DPDP Act is India&rsquo;s AI law</h2>
+    <p>India is not enacting a separate AI statute. The <strong>India AI Governance Guidelines</strong>, published by MeitY on 5 November 2025 &mdash; nine days before the Rules &mdash; govern AI through instruments that already exist: the IT Act, the Bharatiya Nyaya Sanhita, consumer law, and the DPDP Act. Seven sutras, an AI Governance Group, a Technology and Policy Expert Committee, an IndiaAI Safety Institute, voluntary compliance and graded liability. The practical consequence: <strong>for anything touching personal data, the DPDP Act is the operative AI law</strong> &mdash; and it was not drafted with models in mind.</p>
+
+    <h3>The training-data question</h3>
+    <p><span class="cite">S.3(c)(ii)</span> removes from the Act&rsquo;s application any personal data made public <em>by the individual</em>, or by someone under a legal obligation to publish it. This is the widest such carve-out in comparative law: elsewhere &mdash; Singapore, China, several US states &mdash; public availability relieves the <em>consent</em> requirement while the data stays inside the statute. In India it leaves the statute entirely, taking every downstream right with it.</p>
+    <p>Four limits are argued and none has been tested: it is not a public-<em>internet</em> exemption (the trigger is publication by the principal or under legal obligation, not crawlability); the context of publication may not stretch to bulk ingestion; aggregation with non-exempt data produces a composite that is no longer &ldquo;the published record&rdquo;; and it says nothing about <em>outputs</em> that identify a person. Treat it as a narrow, provenance-based exemption and keep a dataset register &mdash; a corpus whose provenance you cannot evidence is not exempt merely because it was reachable.</p>
+
+    <div class="note flag">
+      <span class="lab">The Indian anomaly</span>
+      <p>India has simultaneously the <strong>most restrictive lawful-basis regime</strong> (consent only &mdash; no legitimate interests, so service consent does not stretch to training) and the <strong>most permissive public-data exclusion</strong>. That combination pushes every serious Indian AI effort toward the same strategy: assemble corpora that fall outside the Act, and document provenance to prove it. The protection of Indian personal data in AI turns almost entirely on the meaning of one sub-clause.</p>
+    </div>
+
+    <div class="scroll">
+      <table>
+        <caption>The comparative AI-law map, 19 August 2026</caption>
+        <thead><tr><th>Jurisdiction</th><th>Instrument</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>European Union</td><td>AI Act + Digital Omnibus on AI</td><td>Omnibus in force 27 Jul 2026; Annex III high-risk deferred to <strong>2 Dec 2027</strong>, Annex I to 2 Aug 2028</td></tr>
+          <tr><td>South Korea</td><td>AI Framework (Basic) Act</td><td>In force <strong>22 Jan 2026</strong> &mdash; second comprehensive AI law in the world</td></tr>
+          <tr><td>China</td><td>Labelling Measures + GenAI, deep-synthesis and algorithm rules</td><td>Labelling in force <strong>1 Sep 2025</strong>: explicit labels plus implicit metadata labels</td></tr>
+          <tr><td>Japan</td><td>APPI 2026 amendment</td><td>The only <strong>statistical-processing consent exemption expressly for AI development</strong></td></tr>
+          <tr><td>United States</td><td>State patchwork</td><td>109 AI laws enacted by 1 Jul 2026; Texas TRAIGA in force 1 Jan 2026; <strong>Colorado repealed and replaced</strong> its Act, effective 1 Jan 2027</td></tr>
+          <tr class="india"><td>India</td><td>AI Governance Guidelines + DPDP Act</td><td>Voluntary; no statute proposed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>2026 is the year the AI-regulation wave broke. The EU deferred its own core obligations, Colorado repealed its law before it took effect, and the US federal posture turned deregulatory &mdash; while Korea&rsquo;s Act commenced, China&rsquo;s labelling rules bit, and Japan legislated a targeted <em>permission</em> rather than a restriction. India&rsquo;s choice to regulate AI through data protection now looks less like a gap and more like the median position, but only because everyone else moved toward it.</p>
+
+    <p>Rule 13&rsquo;s <strong>algorithmic due diligence</strong> duty is the only provision aimed squarely at algorithms, and it is supply-side only: a duty on the deployer with <em>no</em> corresponding right for the individual &mdash; no explanation, no contest, no human review &mdash; undefined as to method, and applying to nobody until an SDF is notified. Compare GDPR Art. 22, PIPL Art. 24 and Korea&rsquo;s PIPA, each of which gives the individual something.</p>
+  </section>
+
+  <section id="divergence">
+    <h2><span class="num">08</span>Seven structural divergences</h2>
+    <p>Where India departs not from the GDPR specifically, but from the settled practice of every comparable regime.</p>
+    <ol class="div-list">
+      <li>
+        <h4>Penalties on the individual whose data is protected</h4>
+        <p><span class="cite">S.15</span> imposes enforceable duties on the Data Principal, and a &#8377;10,000 penalty for a &ldquo;false or frivolous&rdquo; complaint. No other data protection statute in the world does this. Small in money, large in chilling effect — the person deciding what is frivolous is a Government-appointed Board, and the complainant must already have exhausted the Fiduciary&rsquo;s own grievance process.</p>
+      </li>
+      <li>
+        <h4>Executive control over the regulator</h4>
+        <p>Two-year renewable terms, Government-set qualifications and service conditions, and a Cabinet-Secretary-chaired selection committee. A member seeking reappointment is structurally disincentivised from ruling against the Government that reappoints them — precisely when the Board&rsquo;s hardest cases will involve State instrumentalities.</p>
+      </li>
+      <li>
+        <h4>Wholesale State exemptions with no safeguards</h4>
+        <p><span class="cite">S.17(2)(a)</span> lets the Government exempt any instrumentality of the State on Article 19(2)-style grounds — with no necessity test, no proportionality test, no time limit, no independent review, no notification. GDPR Article 23 permits restrictions only where they respect the essence of the right and specify purposes, categories, safeguards and storage periods. India&rsquo;s has none of that architecture.</p>
+      </li>
+      <li>
+        <h4>An information-demand power with a statutory gag</h4>
+        <p><span class="cite">S.36</span> and Rule 23 let the Government demand information from any Fiduciary or intermediary and forbid disclosure of the demand. No judicial authorisation, no transparency reporting, no sunset, no notification of affected individuals — even after the fact.</p>
+      </li>
+      <li>
+        <h4>No graded data categories</h4>
+        <p>The law cannot distinguish a newsletter list from a genetic database, so the entire risk-differentiation job falls on SDF designation — which is a Government notification, not a self-assessed threshold.</p>
+      </li>
+      <li>
+        <h4>Penalty design that under-deters the largest actors</h4>
+        <p>Absolute ceilings rather than a share of turnover. The GDPR&rsquo;s 4%, Korea&rsquo;s 10% and China&rsquo;s 5% scale with the offender; &#8377;250 crore does not.</p>
+      </li>
+      <li>
+        <h4>Delegation as a governing method</h4>
+        <p>Which entities are SDFs, which data must stay in India, which countries are restricted, which classes get startup exemptions, what lower age applies to whom — all left to future notification. Obligations are not self-assessable from the text, which is the deepest divergence from the EU model.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="right">
+    <h2><span class="num">09</span>What India got right</h2>
+    <p>The drafting is not uniformly weak, and a fair account has to say so.</p>
+    <ul>
+      <li><strong>Rule 6 is the best-drafted security provision in any statute studied.</strong> Naming encryption, access control, a one-year log floor, backups and contractual flow-down converts an unfalsifiable &ldquo;appropriate measures&rdquo; standard into something an auditor and an engineer can both act on. Article 32 GDPR has produced a decade of argument about what &ldquo;appropriate&rdquo; means; Rule 6 will not.</li>
+      <li><strong>Consent quality is textually stronger than the GDPR&rsquo;s</strong> — &ldquo;unconditional,&rdquo; plus automatic voiding of consent beyond necessity, plus withdrawal parity, plus the standalone itemised notice.</li>
+      <li><strong>The Consent Manager is an original institution</strong> — a registered intermediary that holds no data but brokers, records and revokes consent across services. It is the only serious legislated answer anyone has to consent fatigue, and it builds on India&rsquo;s tested Account Aggregator and DEPA architecture.</li>
+      <li><strong>The right to nominate</strong> <span class="cite">S.14</span> — designating someone to exercise your rights on death or incapacity. Simple, obviously useful, absent everywhere else.</li>
+      <li><strong>The children&rsquo;s regime is the most protective in the world on paper</strong>, and the Fourth Schedule genuinely tries to carve out the legitimate institutional cases — schools, hospitals, childcare, school transport — rather than blanket-banning or blanket-permitting.</li>
+      <li><strong>The negative-list transfer regime avoids the <em>Schrems</em> trap.</strong> The GDPR&rsquo;s transfer architecture has consumed enormous compliance effort for contestable privacy gain, and India declined to replicate it.</li>
+      <li><strong>The 48-hour pre-erasure notice</strong> in the Third Schedule prevents silent destruction of a dormant user&rsquo;s data. No other regime has it.</li>
+    </ul>
+
+    <div class="note">
+      <span class="lab">Where the field is heading</span>
+      <p>2025–26 is a period of <strong>simplification plus harder enforcement</strong>. The EU&rsquo;s Digital Omnibus, the UK&rsquo;s DUAA and Japan&rsquo;s AI-oriented APPI amendment all loosen obligations; Korea&rsquo;s 10%-of-revenue penalties, Nigeria&rsquo;s 1,368-entity sweep and China&rsquo;s tightened Cybersecurity Law all raise the cost of non-compliance. India arrives into that environment with light obligations, heavy nominal penalties and no operational regulator — the opposite ordering.</p>
+    </div>
+  </section>
+
+  <section id="build">
+    <h2><span class="num">10</span>What to build</h2>
+    <p>The obligations are knowable today, they are testable, and the deadline is fixed. Build to the obligations, not to the enforcement risk.</p>
+
+    <h3>What a regime like this costs</h3>
+    <p>The GDPR is the closest natural experiment, and the peer-reviewed record is consistent: the losses come through a <strong>cost channel</strong>, not lost demand.</p>
+    <div class="scroll">
+      <table>
+        <caption>Measured effects of the GDPR</caption>
+        <thead><tr><th>Study</th><th>Finding</th></tr></thead>
+        <tbody>
+          <tr><td>Frey &amp; Presidente, <em>Economic Inquiry</em> 62(3) 2024 — 276,638 patenting firms, 31 countries</td><td>≈ <strong>8% lower profits</strong>, ≈ 2% lower sales for exposed firms; tech firms ≈ 2.1% lower profits with <em>no</em> sales decline</td></tr>
+          <tr><td>Jia, Jin &amp; Wagman, <em>Marketing Science</em> 2021</td><td>Negative short-run effect on venture and angel investment; <strong>foreign investment fell more than local</strong></td></tr>
+          <tr><td>Johnson, Shriver &amp; Goldberg; Peukert et al. 2022</td><td>Web technology vendor markets <strong>concentrated</strong> after the enforcement deadline</td></tr>
+          <tr><td>Bessen et al.; Koski &amp; Valmari; Zhao et al.; Chen et al.</td><td>Burden falls <strong>disproportionately on smaller firms</strong> — compliance cost is largely fixed, so it is regressive in firm size</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Stated fairly: these measure <em>costs, not net welfare</em> — none prices the breaches avoided or the trust gained — they are short-run estimates around the 2018 shock, and the GDPR&rsquo;s obligation set differs from India&rsquo;s in both directions. Expect a real cost-channel hit concentrated on mid-market firms, expect vendor concentration, and do not expect the sky to fall.</p>
+    <p>Three features make the burden <strong>more</strong> regressive in India: penalties are absolute rather than turnover-linked; there is no legitimate-interests basis, so consent infrastructure is mandatory for everyone; and the 22-language notice requirement is a fixed cost independent of size. The statutory counterweight — <span class="cite">S.17(3)</span> class and startup exemptions, <span class="cite">S.17(4)</span> deferrals of up to five years — <strong>remains unused</strong>. Meanwhile EY India&rsquo;s 2026 readiness survey reports <strong>64% of organisations have no dedicated compliance budget</strong> and only 18% have completed a cost estimate.</p>
+
+    <h3>Every lever still unpulled</h3>
+    <p>Each of these changes obligations by notification alone, with no further legislation: Board appointments; commencement of <span class="cite">S.27–34</span>; the SDF list or criteria; SDF localisation categories; the restricted-country list; a lower age under <span class="cite">S.9(5)</span>; startup exemptions under <span class="cite">S.17(3)</span>; deferrals under <span class="cite">S.17(4)</span>; State exemptions under <span class="cite">S.17(2)(a)</span>; and commencement of <span class="cite">S.44(2)</span>, which ends the last individual compensation route.</p>
+
+    <h3>The control set</h3>
+
+    <div class="scroll">
+      <table>
+        <caption>Control domains, in build order</caption>
+        <thead><tr><th>#</th><th>Domain</th><th>What it means in practice</th><th>Why here</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td>Rule 6 security controls</td><td>Encryption and tokenisation; authentication on every endpoint touching personal data; access logs retained ≥ 1 year; tested restores; contractual flow-down to processors</td><td>Highest penalty tier, most prescriptive, longest lead time, and it doubles as GDPR Art. 32, ISO 27001, SOC 2, Nigeria GAID and Saudi PDPL</td></tr>
+          <tr><td class="num">2</td><td>Data inventory and lawful-basis register</td><td>One row per personal-data element: system of record, purposes, basis, retention trigger, recipients, destination country</td><td>Every other control depends on it — and you cannot generate an itemised Rule 3 notice without it</td></tr>
+          <tr><td class="num">3</td><td>Breach runbook</td><td>Three clocks: 6h CERT-In, &ldquo;without delay&rdquo; to Board and individuals, 72h full particulars. Pre-drafted templates and a pre-built affected-user query</td><td>Second-highest penalty tier; with no materiality threshold the pipeline must run cheaply and often</td></tr>
+          <tr><td class="num">4</td><td>Notice and consent</td><td>Standalone itemised notices in 22 languages; per-purpose consent records with notice version hashes; withdrawal with parity of ease; retrospective notice for pre-commencement consents</td><td>Largest product and design surface; needs the longest localisation runway</td></tr>
+          <tr><td class="num">5</td><td>Retention and erasure</td><td>Retention clock per element; cascade to warehouses, caches, indexes, CRM and vendors; the 3-year inactivity clock and 48-hour notice if in a Third Schedule class</td><td>Deep plumbing across every store — and deleting only from the primary database is not erasure</td></tr>
+          <tr><td class="num">6</td><td>Rights fulfilment</td><td>Published request mechanism and response period; access summary including <em>who the data was shared with and what was shared</em>; correction, erasure, nomination</td><td>Buildable once the inventory exists; the sharing ledger is the part teams underestimate</td></tr>
+          <tr><td class="num">7</td><td>Children</td><td>Age determination; verifiable parental consent via held identity details or a DigiLocker-style token; hard suppression of tracking and targeted ads under 18</td><td>Decide scope first: excluding under-18s is far cheaper than building parental consent, and confirming a user is not a child is itself an exempt purpose</td></tr>
+          <tr><td class="num">8</td><td>Vendors</td><td>Processor register; DPA imposing Rule 6-equivalent controls and upstream breach notification fast enough to meet your own clock</td><td>Contract cycles are long. <span class="cite">S.8(1)</span> keeps you liable regardless of what the contract says</td></tr>
+          <tr><td class="num">9</td><td>Transfer posture</td><td>Destination map per element; the ability to re-route or localise a category on notice</td><td>Low obligation today, high optionality value — do not build an SCC apparatus for India</td></tr>
+          <tr><td class="num">10</td><td>SDF readiness</td><td>Named India-resident DPO candidate, auditor candidate, one voluntary DPIA, a documented algorithmic due-diligence method</td><td>Notification gives little lead time; four artefacts turn quarters into weeks</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Where it lands, by sector</h3>
+    <div class="scroll">
+      <table>
+        <caption>Sector notes</caption>
+        <thead><tr><th>Sector</th><th>Binding constraint</th><th>First action</th><th>SDF likelihood</th></tr></thead>
+        <tbody>
+          <tr><td>BFSI</td><td>Sectoral regulators, not DPDP — RBI reset into seven Directions on 31 Jul 2026; IRDAI reissued its guidelines 6 Apr 2026, reaching the intermediary chain; SEBI runs CSCRF</td><td>Field-level retention map keyed to the statutory provision behind each period</td><td><strong>High</strong></td></tr>
+          <tr><td>Healthcare</td><td>ABDM Health Data Management Policy fills the gap left by abolishing sensitive data; Rule 6 exposure is the ₹250 crore tier</td><td>Scope the Fourth Schedule limb honestly</td><td>Medium</td></tr>
+          <tr><td>Education / edtech</td><td>The S.9 children&rsquo;s regime — everything it does involves under-18s</td><td>Separate child-data flows in the data map</td><td><strong>High</strong> for large platforms</td></tr>
+          <tr><td>Consumer internet / D2C</td><td>DPDP + IT Rules <em>is</em> the whole stack — no sectoral regulator to defer to</td><td>The consent and notice rebuild</td><td><strong>High</strong> for large platforms</td></tr>
+          <tr><td>B2B SaaS / IT-BPM</td><td>Customer contracts; <span class="cite">S.17(1)(d)</span> exempts processing non-residents&rsquo; data under foreign contract</td><td>DPDP addendum + Rule 6 attestation — compliance is a sales asset here</td><td>Low</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Already run a GDPR programme? Seven things it will not cover</h3>
+    <ol>
+      <li><strong>Standalone itemised notices in 22 languages</strong> — the GDPR requires more <em>content</em>; India requires a particular <em>form</em>.</li>
+      <li><strong>Consent where the EU uses legitimate interests or contract</strong> — analytics, personalisation, product improvement, most fraud analytics.</li>
+      <li><strong>Rule 6&rsquo;s named controls</strong>, especially the one-year access-log floor and mandatory encryption or tokenisation. Article 32 compliance does not prove Rule 6 compliance.</li>
+      <li><strong>No-threshold breach notification to every affected individual, without delay</strong> — plus the separate CERT-In six-hour report.</li>
+      <li><strong>Verifiable parental consent for everyone under 18</strong>, with the tracking and targeted-ads ban.</li>
+      <li><strong>Consent Manager integration</strong> from 13 November 2026.</li>
+      <li><strong>The right to nominate</strong> <span class="cite">S.14</span>.</li>
+    </ol>
+    <p>And four the EU requires that India does not — <strong>portability</strong>, <strong>automated-decision rights</strong>, <strong>privacy by design</strong>, and <strong>restriction and objection</strong>. Build them anyway if you serve the EU, UK, Brazil, Korea or California; the first two are also the most likely to arrive in India by amendment.</p>
+
+    <h3>Building once for many jurisdictions</h3>
+    <p>Build to the union of India and the EU and you cover most of the world. The two India-specific builds nothing else gives you are <strong>22-language standalone itemised notices</strong> and <strong>no-threshold immediate breach notification to every affected individual</strong>. The two things India does not give you are <strong>portability</strong> and <strong>automated-decision transparency</strong> — build both anyway if you serve the EU, UK, Brazil, Korea or California.</p>
+  </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="inner">
+    <p><strong>Sources.</strong> Primary instruments: the Digital Personal Data Protection Act, 2023 (Act 22 of 2023) and the Digital Personal Data Protection Rules, 2025, notified 14 November 2025. Time-sensitive status — commencement phases, the constitution of the Data Protection Board, the pending Supreme Court petitions, the EU Digital Omnibus, Japan&rsquo;s and South Korea&rsquo;s 2026 amendments, and US state law counts — was verified in August 2026 against MeitY and PIB releases, ICO guidance, and analyses by AZB &amp; Partners, Baker Botts, Ikigai Law, Spice Route Legal, Hogan Lovells, DLA Piper, Baker McKenzie, Mori Hamada, Hunton, Norton Rose Fulbright, Tilleke &amp; Gibbins, IAPP, MediaNama, LiveLaw and MultiState.</p>
+    <p style="margin-top:14px">Section and rule numbers are given throughout so that any statement can be checked against the bare Act and the Gazette notification. This is a working reference, not legal advice.</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var deadline = new Date(Date.UTC(2027,4,13));
+    var today = new Date();
+    var days = Math.max(0, Math.ceil((deadline - today)/86400000));
+    document.getElementById('days').textContent = days.toLocaleString('en-IN');
+  })();
+</script>
+
+</body>
+</html>

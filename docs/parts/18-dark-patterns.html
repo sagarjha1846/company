@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 18 — Dark patterns: the third regulator of consent design</title>
+<meta name="description" content="Part 18 — Dark patterns: the third regulator of consent design">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="sitebar"><a href="../index.html">&#8592; All parts</a><span>India&rsquo;s DPDP Act &mdash; a study</span></div>
+<div class="shell"><aside class="toc"><p class="tl">On this page</p><a class="l2" href="#1-the-three-regimes-on-one-screen">1. The three regimes on one screen</a><a class="l2" href="#2-the-dark-patterns-guidelines-2023">2. The Dark Patterns Guidelines, 2023</a><a class="l2" href="#3-enforcement-this-one-is-live">3. Enforcement — this one is live</a><a class="l2" href="#4-where-the-three-regimes-converge-and-where-they-do-not">4. Where the three regimes converge — and where they do not</a><a class="l2" href="#5-what-this-means-for-consent-design">5. What this means for consent design</a><a class="l2" href="#citations">Citations</a></aside><main class="prose"><h1 id="part-18-dark-patterns-the-third-regulator-of-consent-design">Part 18 — Dark patterns: the third regulator of consent design</h1>
+<p>There are <strong>three separate Indian legal regimes governing the same consent screen</strong>, enforced by three different authorities. Most compliance programmes have folded in two of them. The third — and the only one currently issuing penalties for bad consent UI — is consumer protection law.</p>
+<blockquote><strong>Terminology warning.</strong> In India, <strong>CCPA</strong> means the <strong>Central Consumer Protection Authority</strong>,<br>established under the Consumer Protection Act, 2019. It is not the California Consumer Privacy<br>Act. Both appear in privacy literature and they are routinely confused.</blockquote>
+<hr>
+<h2 id="1-the-three-regimes-on-one-screen">1. The three regimes on one screen</h2>
+<div class="scroll"><table><thead><tr>
+<th>Regime</th>
+<th>Authority</th>
+<th>What it asks of a consent screen</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr><td><strong>DPDP Act + Rules</strong></td><td>Data Protection Board</td><td>Is consent <strong>free, specific, informed, unconditional, unambiguous</strong>? Is the notice standalone and itemised? Is withdrawal as easy as giving?</td><td><strong>Not enforceable until 13 May 2027</strong>; Board unstaffed</td></tr>
+<tr><td><strong>Dark Patterns Guidelines, 2023</strong></td><td><strong>Central Consumer Protection Authority</strong></td><td>Does the interface <strong>manipulate or deceive</strong> the consumer into a choice they did not intend?</td><td><strong>In force and being enforced now</strong></td></tr>
+<tr><td><strong>Competition Act, 2002</strong></td><td>Competition Commission of India</td><td>Is consent extracted by a <strong>dominant</strong> firm as a condition of access?</td><td><strong>In force</strong>; CCI&#x27;s ₹213 crore Meta order is the leading case (<a href="16-competition-and-privacy.html">Part 16</a>)</td></tr>
+</tbody></table></div>
+<p>The striking fact: <strong>the DPDP standard is the only one of the three not yet enforceable</strong>, and it is the one everybody is building for.</p>
+<hr>
+<h2 id="2-the-dark-patterns-guidelines-2023">2. The Dark Patterns Guidelines, 2023</h2>
+<p>Notified by the CCPA on <strong>30 November 2023</strong> under the Consumer Protection Act, 2019, making India one of the first countries in the world to issue a dedicated instrument defining and regulating dark patterns. They apply to platforms systematically offering goods or services in India, to advertisers and to sellers.</p>
+<p><strong>The thirteen specified dark patterns:</strong></p>
+<div class="scroll"><table><thead><tr>
+<th>#</th>
+<th>Pattern</th>
+<th>What it looks like on a consent screen</th>
+</tr></thead><tbody>
+<tr><td>1</td><td><strong>False urgency</strong></td><td>&quot;3 people are viewing this consent request&quot; — countdown pressure on a choice that has no deadline</td></tr>
+<tr><td>2</td><td><strong>Basket sneaking</strong></td><td>Additional purposes pre-added to a consent bundle the user did not select</td></tr>
+<tr><td>3</td><td><strong>Confirm shaming</strong></td><td>&quot;No thanks, I don&#x27;t care about personalised service&quot; as the decline button</td></tr>
+<tr><td>4</td><td><strong>Forced action</strong></td><td><strong>Conditioning access on consent to unrelated processing</strong> — the single most important one</td></tr>
+<tr><td>5</td><td><strong>Subscription trap</strong></td><td>Easy to consent, hard to withdraw — precisely what S.6(4) prohibits</td></tr>
+<tr><td>6</td><td><strong>Interface interference</strong></td><td>Accept in high-contrast, decline in grey; decline hidden behind &quot;manage preferences&quot;</td></tr>
+<tr><td>7</td><td><strong>Bait and switch</strong></td><td>Advertised terms differ from what the consent actually authorises</td></tr>
+<tr><td>8</td><td><strong>Drip pricing</strong></td><td>Purposes revealed progressively rather than up front</td></tr>
+<tr><td>9</td><td><strong>Disguised advertisement</strong></td><td>Consent request styled as a system or security notice</td></tr>
+<tr><td>10</td><td><strong>Nagging</strong></td><td>Re-prompting after a refusal until the user relents</td></tr>
+<tr><td>11</td><td><strong>Trick question</strong></td><td>Double negatives and confusing phrasing in the opt-out</td></tr>
+<tr><td>12</td><td><strong>SaaS billing</strong></td><td>Recurring charges harvested from an ambiguous initial consent</td></tr>
+<tr><td>13</td><td><strong>Rogue malware</strong></td><td>Interfaces that mimic system dialogues to force a click</td></tr>
+</tbody></table></div>
+<p><strong>At least seven of the thirteen are consent-screen patterns.</strong> The Guidelines are, functionally, a UI-design specification for lawful consent — written two years before the DPDP consent standard becomes enforceable.</p>
+<hr>
+<h2 id="3-enforcement-this-one-is-live">3. Enforcement — this one is live</h2>
+<ul>
+<li><strong>June 2025:</strong> the CCPA advised e-commerce platforms to comply with the Guidelines and gave them <strong>three months to conduct self-audits</strong>, identify and remove dark patterns, and file <strong>declarations of compliance</strong>.</li>
+<li><strong>2025–26:</strong> enforcement actions against companies across <strong>aviation, e-commerce and digital healthcare</strong>, including action reported against <strong>nine companies</strong>, and a <strong>₹7 lakh</strong> penalty on a quick-commerce platform for <strong>hidden fees and default add-ons</strong>.</li>
+<li>Cumulative penalties reported to Parliament stand at roughly <strong>₹20 lakh</strong> — small money, but a functioning enforcement pipeline, which is more than the DPDP regime has.</li>
+</ul>
+<p><strong>The honest caveat</strong>, and commentators have made it: the legal force of <em>guidelines</em> issued under the Consumer Protection Act is softer than that of regulations, and the penalties so far are trivial next to DPDP&#x27;s ceilings. The signal matters more than the sums — a regulator is actively examining consent interfaces in India <strong>today</strong>.</p>
+<hr>
+<h2 id="4-where-the-three-regimes-converge-and-where-they-do-not">4. Where the three regimes converge — and where they do not</h2>
+<p><strong>They converge on &quot;forced action.&quot;</strong> The CCPA&#x27;s dark pattern #4, the CCI&#x27;s holding that data sharing beyond service provision cannot be a precondition of access, and S.6(1)&#x27;s requirement that consent be <strong>unconditional</strong> are three statements of the same rule from three statutes. A take-it-or-leave-it consent wall in India is now simultaneously:</p>
+<ul>
+<li>an unfair trade practice under consumer law (enforceable <strong>now</strong>),</li>
+<li>potentially an abuse of dominance if you are dominant (enforceable <strong>now</strong>), and</li>
+<li>void consent under the DPDP Act (from <strong>May 2027</strong>).</li>
+</ul>
+<p><strong>They diverge on who is covered.</strong> The Guidelines reach platforms and sellers in commerce; the Competition Act reaches only the dominant; the DPDP Act reaches every Data Fiduciary. So a mid-market SaaS company is outside the first two and squarely inside the third — while a large consumer platform is inside all three at once.</p>
+<p><strong>They diverge on remedy.</strong> Consumer law can order a practice to stop and fine modestly; competition law scales with turnover; DPDP caps in absolute terms and pays the individual nothing.</p>
+<hr>
+<h2 id="5-what-this-means-for-consent-design">5. What this means for consent design</h2>
+<p>Design to the <strong>union</strong> of the three, because the strictest element of each is the safe position:</p>
+<ol>
+<li><strong>Symmetry is non-negotiable.</strong> Accept and decline must be equally prominent, equally worded, equally few taps. This is Guideline #6 (interface interference), S.6(4) withdrawal parity, and the fairness limb of &quot;free&quot; consent, all at once.</li>
+<li><strong>Never condition service on unrelated consent.</strong> Separate the processing you genuinely need from the processing you would like. Guideline #4, the CCI order, and S.6(1).</li>
+<li><strong>No pre-ticked purposes, ever.</strong> Guideline #2 (basket sneaking) and S.6(1)&#x27;s clear affirmative action.</li>
+<li><strong>Neutral language on the decline path.</strong> No confirm-shaming, no double negatives. Guidelines #3 and #11.</li>
+<li><strong>One prompt, not a campaign.</strong> Re-prompting a user who declined is Guideline #10 (nagging), and it also undermines any claim the original refusal was respected.</li>
+<li><strong>Disclose every purpose at once</strong>, itemised. Guideline #8 (drip pricing) and Rule 3&#x27;s itemisation requirement point the same way.</li>
+<li><strong>Make withdrawal reachable from where the service is used</strong>, not buried in a settings tree. Guideline #5 (subscription trap) and S.6(4).</li>
+<li><strong>Keep the evidence.</strong> Screenshot and version every consent surface you ship. Three regulators may ask, and the question will be about a screen that no longer exists.</li>
+</ol>
+<p><strong>Product implication for anything built in this space</strong> (<a href="17-product-opportunity.html">Part 17</a>): a consent SDK should make the dark pattern <em>impossible to ship</em>, not merely discouraged. Enforcing symmetry, purpose separation, no pre-ticking and single-prompt behaviour <strong>in the component</strong> is a genuine differentiator, because it converts three regulatory regimes into a build-time constraint rather than a review-time argument.</p>
+<hr>
+<h2 id="citations">Citations</h2>
+<ul>
+<li>Guidelines for Prevention and Regulation of Dark Patterns, 2023, notified by the Central Consumer Protection Authority on 30 November 2023 under the Consumer Protection Act, 2019</li>
+<li><a href="https://iapp.org/news/a/india-s-ccpa-guidelines-on-dark-patterns-welcome-signal-but-law-is-still-soft">IAPP, &quot;India&#x27;s CCPA guidelines on dark patterns: Welcome signal, but law is still soft&quot;</a></li>
+<li><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2268302&amp;reg=3&amp;lang=1">Press Information Bureau, &quot;CCPA Acts Against Dark Patterns on Digital Platforms&quot;</a></li>
+<li><a href="https://www.azbpartners.com/bank/regulatory-crackdown-on-dark-patterns-ccpas-enforcement-actions-and-emerging-compliance-landscape-in-indian-e-commerce/">AZB &amp; Partners, &quot;Regulatory Crackdown on Dark Patterns: CCPA&#x27;s Enforcement Actions and Emerging Compliance Landscape in Indian E-Commerce&quot;</a></li>
+<li><a href="https://www.storyboard18.com/brand-marketing/ccpa-levies-%E2%82%B920-lakh-in-penalties-over-dark-patterns-government-informs-parliament-ws-l-106623.htm">Storyboard18, &quot;CCPA levies ₹20 lakh in penalties over dark patterns, government informs Parliament&quot;</a></li>
+<li><a href="https://thelogicalindian.com/ccpa-acts-against-9-companies-over-dark-patterns-121157/">The Logical Indian, &quot;Dark Patterns Under Fire: CCPA Acts Against 9 Companies Across Key Sectors&quot;</a></li>
+<li><a href="https://internetfreedom.in/turn-on-the-diyas-turn-off-the-dark-patterns/">Internet Freedom Foundation, &quot;Turn On the Diyas, Turn Off the Dark Patterns&quot;</a></li>
+<li><a href="https://www.lexology.com/library/detail.aspx?g=c9963888-f71c-4140-b068-bbbab6f5fe42">Lexology, &quot;Dark Patterns Decoded: India&#x27;s Legal and Regulatory Guide&quot;</a></li>
+</ul>
+<nav class="pager"><a href="17-product-opportunity.html">&#8592; Part 17 — The product opportunity: a two-sided consent layer</a><a href="../index.html">Contents &#8594;</a></nav>
+</main></div>
+</body>
+</html>

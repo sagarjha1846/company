@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 12 — Sector notes</title>
+<meta name="description" content="Part 12 — Sector notes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="sitebar"><a href="../index.html">&#8592; All parts</a><span>India&rsquo;s DPDP Act &mdash; a study</span></div>
+<div class="shell"><aside class="toc"><p class="tl">On this page</p><a class="l2" href="#1-banking-financial-services-and-insurance">1. Banking, financial services and insurance</a><a class="l2" href="#2-healthcare-and-health-tech">2. Healthcare and health tech</a><a class="l2" href="#3-education-and-edtech">3. Education and edtech</a><a class="l2" href="#4-consumer-internet-e-commerce-and-d2c">4. Consumer internet, e-commerce and D2C</a><a class="l2" href="#5-b2b-saas-and-itbpm-services">5. B2B SaaS and IT/BPM services</a><a class="l2" href="#6-public-sector-and-govtech">6. Public sector and govtech</a><a class="l2" href="#7-cross-sector-summary">7. Cross-sector summary</a><a class="l2" href="#citations">Citations</a></aside><main class="prose"><h1 id="part-12-sector-notes">Part 12 — Sector notes</h1>
+<p>Where the DPDP framework lands differently depending on what business you are in. Each note gives the binding constraint, the conflict that will actually bite, and the one thing to do first.</p>
+<hr>
+<h2 id="1-banking-financial-services-and-insurance">1. Banking, financial services and insurance</h2>
+<p><strong>The binding constraint is not the DPDP Act.</strong> BFSI entities already carry heavier duties from their own regulators, and 2026 tightened them further:</p>
+<ul>
+<li><strong>RBI</strong> reset its framework on <strong>31 July 2026 with seven Directions, one per entity class</strong>, layered on the Master Direction on Digital Payment Security Controls (2024), the Master Direction on Digital Lending (2025), the IT Governance and Outsourcing of IT Services Directions (2023), the <strong>2018 payment-data localisation circular</strong>, and KYC record retention.</li>
+<li><strong>SEBI</strong> runs the <strong>Cybersecurity and Cyber Resilience Framework (CSCRF)</strong> with graded controls, SOC requirements and incident reporting.</li>
+<li><strong>IRDAI</strong> reissued its <strong>Information and Cyber Security Guidelines on 6 April 2026</strong>, replacing the 2023 Guidelines and extending reach <strong>down the intermediary chain</strong>, not just to the insurer.</li>
+</ul>
+<p>Each of these regulators has folded DPDP-style expectations into its own cyber and data-governance rules, so a BFSI entity faces <strong>dual obligations on consent, retention, grievance handling, breach notification and cross-border transfer</strong> — with the sectoral rule prevailing wherever it is stricter, under S.38(2).</p>
+<p><strong>The conflict that bites:</strong> erasure. S.8(7) requires deletion on withdrawal or purpose exhaustion; KYC requires five years after the relationship ends, PMLA five years from the transaction, SEBI five to eight depending on the regulation, and insurance policy tails run longer still. The proviso resolves it — but only if you can name the provision, isolate the fields, keep them out of the erasure workflow, and tell the individual what was retained.</p>
+<p><strong>Do first:</strong> a <strong>field-level retention map</strong> keyed to the specific statutory provision behind each retention period. Everything else in BFSI compliance hangs off it.</p>
+<p><strong>Watch:</strong> BFSI entities are the most likely candidates for <strong>SDF designation</strong> outside big tech, which — under MeitY&#x27;s January 2026 proposal — would bring a <strong>13 November 2026</strong> deadline and an immediately effective localisation duty.</p>
+<hr>
+<h2 id="2-healthcare-and-health-tech">2. Healthcare and health tech</h2>
+<p><strong>The gap the Act created.</strong> By abolishing sensitive personal data, the DPDP Act gives health records <strong>no special statutory status</strong>. What fills the gap is sectoral: the <strong>Ayushman Bharat Digital Mission&#x27;s Health Data Management Policy</strong>, clinical establishment rules, and professional-council confidentiality duties — all of which prevail where stricter under S.38(2).</p>
+<p><strong>The relief the Rules gave.</strong> Rule 12 with the <strong>Fourth Schedule</strong> exempts clinical establishments, mental health establishments, healthcare professionals and allied health professionals from parts of S.9, but <strong>only within a stated processing scope</strong> — health services necessary to protect the child&#x27;s health, and support for treatment and referral plans. Step outside that scope and full verifiable parental consent applies.</p>
+<p><strong>The conflict that bites:</strong> long retention driven by clinical and medico-legal requirements against S.8(7) erasure, plus the fact that a hospital&#x27;s breach exposure is the ₹250 crore tier while its security maturity is typically far below a bank&#x27;s.</p>
+<p><strong>Do first:</strong> scope the Fourth Schedule exemption honestly — write down which entity limb you fall within and which processing it covers — then Rule 6 controls, because health data breaches are where the highest penalties and the greatest real-world harm coincide.</p>
+<hr>
+<h2 id="3-education-and-edtech">3. Education and edtech</h2>
+<p><strong>The strictest sector under the Act</strong>, because everything it does involves people under 18.</p>
+<ul>
+<li><strong>Verifiable parental consent</strong> before processing any child&#x27;s data (S.9(1), R.10) — via identity details already held or a DigiLocker-style virtual token.</li>
+<li><strong>No tracking, no behavioural monitoring, no targeted advertising</strong> directed at children (S.9(3)) — an absolute prohibition, not consent-defeasible.</li>
+<li><strong>Fourth Schedule relief</strong> for educational institutions covers tracking and behavioural monitoring <strong>for educational activities or child safety</strong>, for crèches and childcare centres on safety grounds, and for <strong>transport providers engaged by educational institutions doing location tracking during travel</strong>. It does <strong>not</strong> cover commercial edtech marketing, engagement optimisation, or advertising.</li>
+<li><strong>Old student records must be deleted</strong> once the purpose is served (S.8(7)).</li>
+</ul>
+<p><strong>The exposure:</strong> ₹200 crore for children&#x27;s-data failures, and large edtech platforms are plausible <strong>SDF</strong> candidates precisely because of the volume of children&#x27;s data, the risk of harm to minors, and their use of behavioural analytics and AI.</p>
+<p><strong>The design decision to take now:</strong> whether to age-gate or to build parental consent. If the product genuinely serves under-18s, parental consent infrastructure is unavoidable and has a long lead time. If it does not, excluding minors and documenting the exclusion is far cheaper — and &quot;confirming that the user is not a child&quot; is itself an exempt purpose under Fourth Schedule Part B.</p>
+<p><strong>Do first:</strong> separate the child-data flows from everything else in the data map. You cannot apply S.9 to a system that cannot tell you which records belong to minors.</p>
+<hr>
+<h2 id="4-consumer-internet-e-commerce-and-d2c">4. Consumer internet, e-commerce and D2C</h2>
+<p><strong>The sector with no sectoral regulator to defer to</strong> — here the DPDP Act plus the IT Rules, 2021 <em>is</em> the whole stack, which makes it the sector where the Act is genuinely the binding constraint.</p>
+<ul>
+<li><strong>Rule 3 notices</strong> are a product and design problem, not a legal one: standalone, itemised, per-purpose, in 22 languages.</li>
+<li><strong>No legitimate-interests basis</strong> means analytics, personalisation, recommendations and product improvement all need consent — the deepest change to how a consumer product is built.</li>
+<li><strong>Third Schedule erasure:</strong> e-commerce and social media entities with <strong>≥ 2 crore registered Indian users</strong>, and online gaming intermediaries with <strong>≥ 50 lakh</strong>, must erase after <strong>three years of inactivity</strong>, with <strong>48 hours&#x27; notice</strong> and a re-engagement path.</li>
+<li><strong>IT Rules, 2021 as amended in 2026:</strong> grievance officer with 24-hour acknowledgement and 15-day disposal, plus takedown within <strong>three hours</strong> of a court order or reasoned government intimation and <strong>two hours</strong> for non-consensual intimate or morphed imagery.</li>
+<li><strong>TCCCPR, 2018</strong> governs marketing to Indian numbers independently of DPDP consent.</li>
+</ul>
+<p><strong>Do first:</strong> the consent and notice rebuild. It has the longest lead time of anything in the playbook, touches every surface, and cannot be retrofitted convincingly.</p>
+<hr>
+<h2 id="5-b2b-saas-and-itbpm-services">5. B2B SaaS and IT/BPM services</h2>
+<p><strong>The best-positioned sector</strong>, for two reasons.</p>
+<ol>
+<li><strong>S.17(1)(d)</strong> exempts processing <strong>in India of the personal data of non-residents under a contract with a person outside India</strong> — the outsourcing carve-out, an explicit industrial-policy provision protecting India&#x27;s IT/BPM export industry.</li>
+<li>Most B2B SaaS acts as a <strong>Data Processor</strong>, whose obligations flow from the Fiduciary&#x27;s contract under S.8(2) rather than directly from the Act.</li>
+</ol>
+<p><strong>But three things still apply.</strong> Rule 6 controls flow down contractually and are audited by customers regardless. Your own employee and prospect data makes you a Fiduciary. And upstream breach notification has to be fast enough for your customer to meet <em>their</em> &quot;without delay&quot; clock — which is a contractual commitment you should price before a customer imposes it.</p>
+<p><strong>Do first:</strong> a customer-facing DPDP addendum and a Rule 6 control attestation. In this sector compliance is a <strong>sales asset</strong> — the evidence pack is what unblocks Indian enterprise deals through 2026–27.</p>
+<hr>
+<h2 id="6-public-sector-and-govtech">6. Public sector and govtech</h2>
+<p>The State processes on the <strong>legitimate use</strong> in S.7(b) for subsidies, benefits, services, certificates, licences and permits, so <strong>no consent is required</strong> — but Rule 5 subjects it to the Second Schedule standards: lawful processing, purpose limitation, data minimisation, accuracy, retention limitation, security, notice and a named accountable person.</p>
+<p>Vendors building for government should note two things: <strong>S.17(2)(a)</strong> can exempt a State instrumentality entirely by notification, which changes the compliance posture of a project overnight; and the Second Schedule standards, while real, are enforced by a Board that the same Government appoints.</p>
+<hr>
+<h2 id="7-cross-sector-summary">7. Cross-sector summary</h2>
+<div class="scroll"><table><thead><tr>
+<th>Sector</th>
+<th>Binding constraint</th>
+<th>First action</th>
+<th>SDF likelihood</th>
+</tr></thead><tbody>
+<tr><td>BFSI</td><td>Sectoral regulators, not DPDP</td><td>Field-level retention map</td><td><strong>High</strong></td></tr>
+<tr><td>Healthcare</td><td>ABDM policy + Rule 6 exposure</td><td>Scope the Fourth Schedule limb</td><td>Medium</td></tr>
+<tr><td>Education / edtech</td><td>S.9 children&#x27;s regime</td><td>Separate child-data flows</td><td><strong>High</strong> for large platforms</td></tr>
+<tr><td>Consumer internet / D2C</td><td>DPDP + IT Rules — the whole stack</td><td>Consent and notice rebuild</td><td><strong>High</strong> for large platforms</td></tr>
+<tr><td>B2B SaaS / IT-BPM</td><td>Customer contracts; S.17(1)(d) relief</td><td>DPDP addendum + Rule 6 attestation</td><td>Low</td></tr>
+<tr><td>Public sector</td><td>Rule 5 + Second Schedule</td><td>Named accountable person</td><td>n/a</td></tr>
+</tbody></table></div>
+<hr>
+<h2 id="citations">Citations</h2>
+<ul>
+<li><a href="https://ksandk.com/data-protection-and-data-privacy/dpdp-sector-regulators-navigating-rbi-sebi-irdai-trai/">King Stubb &amp; Kasiva, &quot;DPDP &amp; Sector Regulators: Navigating RBI, SEBI, IRDAI, TRAI&quot;</a></li>
+<li><a href="https://www.tcsa.in/resources/dpdp-compliance-bfsi-rbi-guidelines">TCSA, &quot;RBI &amp; DPDP Act Dual Compliance for BFSI: 2026 Guide&quot;</a></li>
+<li><a href="https://www.bitscore.in/resources/india-cyber-security-regulations">BitScore, &quot;Cyber Security Regulations in India (2026)&quot;</a> — RBI&#x27;s 31 July 2026 reset into seven Directions; IRDAI&#x27;s Information and Cyber Security Guidelines reissued 6 April 2026</li>
+<li><a href="https://ksandk.com/data-protection-and-data-privacy/dpdp-act-compliance-for-edtech-schools/">King Stubb &amp; Kasiva, &quot;DPDP Act Compliance for EdTech &amp; Schools in India&quot;</a></li>
+<li><a href="https://ksandk.com/data-protection-and-data-privacy/childrens-data-protection-under-indias-dpdp-rules/">King Stubb &amp; Kasiva, &quot;Children&#x27;s Data Protection Under India&#x27;s DPDP Rules&quot;</a></li>
+<li><a href="https://www.orfonline.org/expert-speak/dpdp-rules-and-the-future-of-child-data-safety">Observer Research Foundation, &quot;DPDP Rules and the Future of Child Data Safety&quot;</a></li>
+<li><a href="https://dalberg.com/our-ideas/navigating-the-dpdp-act-what-it-means-for-edtech-and-the-future-of-digital-learning/">Dalberg, &quot;Navigating the DPDP Act: What It Means for EdTech and the Future of Digital Learning&quot;</a></li>
+<li><a href="https://amlegals.com/health-data-and-the-dpdp-act-a-practical-guide/">AMLEGALS, &quot;Health Data and the DPDP Act: A Practical Guide&quot;</a></li>
+<li><a href="https://www.storyboard18.com/digital/dpdp-rules-carve-out-key-exemptions-for-healthcare-providers-schools-and-childcare-services-processing-childrens-data-84208.htm">Storyboard18, &quot;DPDP Rules carve out key exemptions for healthcare providers, schools and childcare services&quot;</a></li>
+</ul>
+<nav class="pager"><a href="11-dpdp-gdpr-crosswalk.html">&#8592; Part 11 — DPDP ↔ GDPR crosswalk</a><a href="13-breach-response.html">Part 13 — Breach response: the three clocks &#8594;</a></nav>
+</main></div>
+</body>
+</html>
