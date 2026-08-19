@@ -211,6 +211,22 @@
       <div class="ev hard"><div class="d">13 May 2027</div><div class="t">Everything applies</div><p>Notice, consent, security, breach reporting, rights, children, retention. MeitY has <em>proposed</em> pulling large firms forward to November 2026.</p></div>
     </div>
 
+    <h3>Three regulators, one consent screen</h3>
+    <p>This is the part almost every compliance programme misses. The same button is governed by three Indian regimes, enforced by three authorities — and <strong>the DPDP standard is the only one not yet enforceable.</strong></p>
+    <div class="scroll">
+      <table>
+        <caption>Who is watching the same screen</caption>
+        <thead><tr><th>Regime</th><th>Authority</th><th>The question it asks</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>DPDP Act + Rules</td><td>Data Protection Board</td><td>Is consent free, specific, informed, <strong>unconditional</strong>? Is withdrawal as easy as giving?</td><td><span class="pill gap">May 2027</span></td></tr>
+          <tr><td><strong>Dark Patterns Guidelines, 2023</strong></td><td>Central Consumer Protection Authority</td><td>Does the interface <strong>manipulate</strong> the user into a choice they didn&rsquo;t intend?</td><td><span class="pill us">Enforcing now</span></td></tr>
+          <tr><td>Competition Act, 2002</td><td>Competition Commission of India</td><td>Is consent extracted by a <strong>dominant</strong> firm as a condition of access?</td><td><span class="pill us">Enforcing now</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>India was among the first countries anywhere to issue a dedicated dark-patterns instrument, in November 2023. It names <strong>thirteen patterns</strong> — false urgency, basket sneaking, confirm shaming, forced action, subscription trap, interface interference, and more. <strong>At least seven are consent-screen patterns.</strong> It is, in effect, a UI specification for lawful consent, written two years before the privacy standard it anticipates. Enforcement is live: a 2025 advisory forced three-month self-audits, and penalties have landed across aviation, e-commerce and digital healthcare.</p>
+    <p>All three converge on one rule: <strong>you cannot condition the service on consent to unrelated processing.</strong> Do it in India today and it is simultaneously an unfair trade practice, possibly an abuse of dominance, and — from 2027 — void consent.</p>
+
     <div class="note warn">
       <span class="lab">The thing everyone gets wrong</span>
       <p>"No regulator" does not mean no enforcement. The largest privacy penalty in Indian history — <strong>₹213 crore against Meta</strong>, over WhatsApp's 2021 policy — came from the <strong>competition</strong> regulator, not a privacy one. It held that data sharing beyond running the service <em>cannot be a condition of using it</em> — which is almost exactly what the DPDP Act's consent standard will require. The tribunal upheld the penalty; the Supreme Court is supervising compliance now.</p>
@@ -267,6 +283,10 @@
       </table>
     </div>
 
+    <h3>How big is this, honestly</h3>
+    <p>Third-party research puts the <strong>India data governance market</strong> at about <strong>$219M in 2025</strong>, ~$252M in 2026, reaching <strong>$765M by 2034</strong> at roughly 14.9% CAGR. Broader framings run to billions — a $5.34B "data protection market" in 2024 — but those sweep in backup, disaster recovery and security tooling that has nothing to do with consent.</p>
+    <p><strong>Use the narrow number.</strong> A realistic market for consent-and-rights infrastructure in India is in the <strong>low hundreds of millions of dollars a year</strong> — large enough to build a real company, and too small to support the dozen platforms currently in the category. Consolidation is already visible and will continue. The strategic conclusion: don&rsquo;t plan to win a compliance-tooling market that will be commoditised. <strong>The durable asset is the consumer relationship</strong> — which appears in none of these sizings, because in India it does not yet exist.</p>
+
     <div class="note key">
       <span class="lab">The opening</span>
       <p>Both markets are consolidating, and both are <strong>structurally single-sided</strong>. Privy and Securiti sell to the company. DeleteMe and Incogni sell to the person. Nobody is building <strong>one ledger with two faces</strong> — because in every other jurisdiction that would be a conflict of interest. India is the one place where the statute makes it a licence condition.</p>
@@ -287,7 +307,7 @@
         <p class="eg">Meta. Or a bank, a hospital, a school, a D2C brand.</p>
         <ol>
           <li><b>Notice service</b><span>Standalone, itemised notices generated in English plus 22 languages from a structured purpose registry, versioned and hashed. The most under-estimated build in the Act.</span></li>
-          <li><b>Consent SDKs</b><span>Web, Android, iOS, server — with withdrawal parity enforced <em>in the component</em>. You cannot ship one-tap accept and five-step withdrawal.</span></li>
+          <li><b>Consent SDKs</b><span>Web, Android, iOS, server — with withdrawal parity enforced <em>in the component</em>. And the thirteen dark patterns made <strong>impossible to ship</strong>: enforced symmetry, no pre-ticking, purpose separation, single-prompt. That turns three regulators into a build-time constraint instead of a review-time argument.</span></li>
           <li><b>Purpose &amp; basis registry</b><span>Every data element mapped to consent or a named legitimate use. Doubles as the GDPR Article 30 record.</span></li>
           <li><b>Rights fulfilment</b><span>Including the recipient ledger — who the data was shared with and what — which competitors under-build because it needs real sharing telemetry. Plus nomination, which nobody supports.</span></li>
           <li><b>Retention engine</b><span>Field-level statutory retention map, purpose-expiry deletion, and the three-year inactivity clock with its 48-hour pre-erasure notice.</span></li>
