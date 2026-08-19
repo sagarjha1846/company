@@ -36,6 +36,9 @@ operating across borders.
 | [`05-findings-and-gap-analysis.md`](05-findings-and-gap-analysis.md) | Analysis: what DPDP borrowed, what it dropped, the seven structural divergences, the criticisms, the pending Supreme Court challenge, and the outlook |
 | [`06-compliance-playbook.md`](06-compliance-playbook.md) | Operational translation: an engineering-level control set, artefact list, and a worked applicability note for this repository |
 | [`07-indian-law-overlay.md`](07-indian-law-overlay.md) | What the Act sits on top of: the IT Act and SPDI Rules (still in force), CERT-In, IT Rules 2021 as amended in 2026, RBI, SEBI, IRDAI, telecom, PMLA, Aadhaar, health and employment — and the seven places the stack conflicts |
+| [`08-jurisprudence.md`](08-jurisprudence.md) | The case law: *Puttaswamy* and the proportionality test, the RTI line, the pending Constitution Bench challenge, the CJEU decisions that will fill India's undefined terms, and enforcement data |
+| [`09-ai-and-data-protection.md`](09-ai-and-data-protection.md) | AI: the India AI Governance Guidelines, where the DPDP Act actually bites on models, the S.3(c)(ii) training-data question, and the comparative AI-law map as at August 2026 |
+| [`memo/`](memo/) | The study as a formally cited Word research memorandum — 75 numbered references, with the build script |
 
 Each file is self-contained and can be read alone. Cross-references use section numbers of
 the underlying statutes, so `S.9(1)` always means DPDP Act section 9(1) unless a
@@ -95,7 +98,14 @@ jurisdiction is named.
    protection regimes, and the individual compensation remedy the DPDP Act removes is still
    available today.
 
-9. **Globally, the direction of travel in 2025–26 is simplification and enforcement, not
+9. **India has no AI statute, and after 2026 that looks less unusual than it did.** The India
+   AI Governance Guidelines (5 November 2025) govern AI through existing law, so **the DPDP Act
+   is India's operative AI law** for anything touching personal data. Meanwhile the EU deferred
+   its own high-risk AI obligations to December 2027 and Colorado repealed and replaced its AI
+   Act before it took effect. The unsettled question that matters most in India is the reach of
+   the S.3(c)(ii) public-data exclusion over AI training corpora.
+
+10. **Globally, the direction of travel in 2025–26 is simplification and enforcement, not
    expansion.** The EU's Digital Omnibus proposes to loosen parts of the GDPR; the UK's
    DUAA 2025 already has; Japan's 2026 APPI amendment creates an AI/statistical-processing
    consent exemption. At the same time penalties are rising sharply — South Korea moved to
