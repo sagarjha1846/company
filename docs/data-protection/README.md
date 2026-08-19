@@ -41,6 +41,8 @@ operating across borders.
 | [`10-economics-and-watchlist.md`](10-economics-and-watchlist.md) | What a regime like this costs — the GDPR's measured effect on profits, investment and market concentration — India's readiness gap, MeitY's January 2026 proposal to accelerate SDF compliance, and every lever still unpulled |
 | [`11-dpdp-gdpr-crosswalk.md`](11-dpdp-gdpr-crosswalk.md) | Clause-level DPDP ↔ GDPR mapping for dual-compliance teams: the delta on every obligation, the seven India-only builds, the four EU-only builds |
 | [`12-sector-notes.md`](12-sector-notes.md) | Where it lands differently: BFSI, healthcare, education and edtech, consumer internet and D2C, B2B SaaS and IT/BPM, and the public sector |
+| [`13-breach-response.md`](13-breach-response.md) | The three clocks — CERT-In's six hours, "without delay" to individuals and the Board, 72 hours for particulars — two reportability tests, a runbook, seven pre-built artefacts and a tabletop scenario |
+| [`14-employment-data.md`](14-employment-data.md) | Workplace data under S.7(i): what the employment legitimate use covers, the proportionality limit that survives it, the gaps in Indian workplace privacy law, and seven actions |
 | [`memo/`](memo/) | The study as a formally cited Word research memorandum — 75 numbered references, with the build script |
 
 Each file is self-contained and can be read alone. Cross-references use section numbers of
