@@ -1,0 +1,108 @@
+# Digital Personal Data Protection: India's DPDP Act in Global Context
+
+A study of India's **Digital Personal Data Protection Act, 2023 (DPDP Act)** and the
+**DPDP Rules, 2025**, read against comparable statutes enacted in other jurisdictions.
+
+**Position as of:** 19 August 2026
+**Author:** Compiled for internal engineering/legal reference. Not legal advice.
+
+---
+
+## Why this document set exists
+
+India's data protection regime moved from "passed but dormant" to "live and dated" on
+**14 November 2025**, when the Ministry of Electronics and Information Technology (MeitY)
+notified the DPDP Rules, 2025 together with a staggered commencement of the Act itself.
+Every organisation processing the digital personal data of people in India now has a fixed
+outer deadline — **13 May 2027** — by which the full obligation set applies. That is the
+practical reason to study the law now rather than at the deadline.
+
+The comparative half exists because the DPDP Act is not a standalone invention. It sits in
+a global wave of roughly 160 national data protection statutes, most of which descend
+structurally from the EU GDPR. Understanding where India copied, where it deliberately
+diverged, and where it left gaps is what makes compliance design tractable for a company
+operating across borders.
+
+---
+
+## How to read this set
+
+| File | Contents |
+|---|---|
+| [`01-india-dpdp-act-2023.md`](01-india-dpdp-act-2023.md) | The Act itself: constitutional background, legislative history, chapter-by-chapter and section-by-section analysis of all 44 sections and the Schedule |
+| [`02-dpdp-rules-2025.md`](02-dpdp-rules-2025.md) | The DPDP Rules, 2025: rule-by-rule content, the three commencement phases, the compliance calendar to May 2027, and the state of the Data Protection Board |
+| [`03-international-landscape.md`](03-international-landscape.md) | Jurisdiction studies: EU, UK, Brazil, China, Japan, South Korea, Singapore, Australia, Canada, USA, Saudi Arabia, UAE, Nigeria, South Africa, Kenya, Indonesia, Vietnam, Thailand, Switzerland |
+| [`04-comparative-matrices.md`](04-comparative-matrices.md) | Side-by-side matrices: scope, legal bases, sensitive data, children, rights, breach timelines, transfers, regulator independence, penalties, redress |
+| [`05-findings-and-gap-analysis.md`](05-findings-and-gap-analysis.md) | Analysis: what DPDP borrowed, what it dropped, the seven structural divergences, the criticisms, the pending Supreme Court challenge, and the outlook |
+| [`06-compliance-playbook.md`](06-compliance-playbook.md) | Operational translation: an engineering-level control set, artefact list, and a worked applicability note for this repository |
+
+Each file is self-contained and can be read alone. Cross-references use section numbers of
+the underlying statutes, so `S.9(1)` always means DPDP Act section 9(1) unless a
+jurisdiction is named.
+
+---
+
+## Headline findings
+
+1. **India chose a minimalist statute plus expansive delegated legislation.** The Act is 44
+   sections — roughly a fifth the length of the GDPR — and delegates 26 subjects to rules
+   made by the Central Government. Most of the real obligation content lives in the 2025
+   Rules, and much of the remainder still lives in future notifications.
+
+2. **The consent architecture is stricter than the GDPR; the lawful-basis architecture is
+   narrower.** There is no open-ended "legitimate interests" basis and no contractual-
+   necessity basis. Processing is lawful only on consent (S.6) or one of nine enumerated
+   "certain legitimate uses" (S.7). For ordinary commercial processing, that pushes almost
+   everything onto consent — a design choice with real product consequences.
+
+3. **India abolished the category of "sensitive personal data."** The 2011 SPDI Rules
+   protected passwords, financial data, health, biometrics and sexual orientation as a
+   special class. The DPDP Act protects all digital personal data uniformly and creates no
+   special category. It is the only major recent statute to move in that direction — the
+   EU, Brazil, China, Japan, South Korea, Nigeria and Vietnam all went the other way.
+
+4. **Children's data is the strictest limb of the Act.** Verifiable parental consent for
+   everyone under 18, an outright ban on tracking and behavioural advertising directed at
+   children, and a ₹200 crore penalty ceiling. India's under-18 threshold is the highest in
+   the world; the GDPR floor is 13–16, the US COPPA line is 13, and Japan's 2026 amendment
+   settled on 16.
+
+5. **Cross-border transfer is the most liberal limb.** S.16 read with Rule 15 adopts a
+   *negative list*: personal data may leave India for anywhere, unless the Central
+   Government notifies a restriction. No adequacy decisions, no standard contractual
+   clauses, no transfer impact assessments. This is materially more permissive than the
+   GDPR, China's PIPL or Vietnam's PDPL, and it is a deliberate trade-signal.
+
+6. **Enforcement is centralised, state-favouring, and not yet staffed.** The Data
+   Protection Board is appointed by the Central Government on two-year renewable terms,
+   penalties go to the Consolidated Fund rather than to victims, there is no statutory
+   compensation right, no private right of action, and S.17(2)(a) lets the Government
+   exempt any State instrumentality wholesale. As of mid-2026 the Board still had no
+   appointed Chairperson or Members — MeitY only invited applications on 6 May 2026.
+
+7. **The RTI amendment is the Act's most contested provision and is now before the Supreme
+   Court.** S.44(3) rewrote S.8(1)(j) of the Right to Information Act to exempt all
+   "personal information" from disclosure, deleting the public-interest override. In
+   August 2026 the Supreme Court sought the Centre's response on petitions challenging it.
+
+8. **Globally, the direction of travel in 2025–26 is simplification and enforcement, not
+   expansion.** The EU's Digital Omnibus proposes to loosen parts of the GDPR; the UK's
+   DUAA 2025 already has; Japan's 2026 APPI amendment creates an AI/statistical-processing
+   consent exemption. At the same time penalties are rising sharply — South Korea moved to
+   10% of total revenue for severe breach cases in 2026. India's regime, arriving late, is
+   being calibrated against a global consensus that is itself shifting.
+
+---
+
+## Method and sourcing
+
+Primary instruments were read directly where accessible (the Act's section structure, the
+Rules' rule structure and the Schedule). Current status — commencement dates, Board
+constitution, pending amendments and litigation — was verified against secondary sources
+published between November 2025 and August 2026 and is cited in
+[`05-findings-and-gap-analysis.md`](05-findings-and-gap-analysis.md#sources). Where a fact
+was time-sensitive (e.g. whether the Board has been constituted, whether the EU Digital
+Omnibus has been adopted), the position is stated with its date, because these move.
+
+Nothing here is legal advice. Sections and rule numbers are given so that any statement can
+be checked against the bare Act and the Gazette notification of the Rules.
