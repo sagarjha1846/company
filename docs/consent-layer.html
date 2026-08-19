@@ -348,6 +348,21 @@ gap:16px;align-items:center;justify-content:space-between;background:#14181f;col
       </div>
     </div>
 
+    <h3>The spec nobody has written</h3>
+    <p>Rule 4 requires an <strong>interoperable</strong> platform. Nobody has published what that means &mdash; no artefact schema, no registry, no answer to how a company discovers which Consent Manager a given person uses. India does have three lineages to build on: MeitY&rsquo;s Electronic Consent Framework, which established consent as a signed machine-readable artefact rather than a checkbox event; DEPA&rsquo;s data-blind intermediary pattern; and the only one running in production &mdash; ReBIT&rsquo;s <strong>Account Aggregator API specification</strong>, with separate catalogues for the aggregator, the data holder and the data requester, roles that map cleanly onto DPDP.</p>
+    <p><strong>Publishing a workable interface first is how a private spec becomes the default.</strong> The Account Aggregator ecosystem&rsquo;s own history shows how much power sits with whoever writes the reference implementation.</p>
+
+    <div class="note key">
+      <span class="lab">The requirement that separates real products from compliance logs</span>
+      <p>MeitY&rsquo;s own Business Requirement Document (June 2025) asks for <strong>real-time consent verification over secure APIs, with the data request blocked immediately</strong> where consent is missing, expired or withdrawn. That makes consent an <strong>authorisation service in the request path</strong>, not an audit log consulted afterwards. It is technically hard, most CMP vendors are not built for it, and it is where a genuine moat sits.</p>
+      <p>The second hard thing is the <strong>recipient ledger</strong> &mdash; who your data was actually shared with, and what. It needs sharing telemetry rather than a consent record, no existing specification covers it, and it is what makes the access right real. It is also the single most compelling thing a consumer product can show someone: where their data went.</p>
+    </div>
+
+    <div class="note warn">
+      <span class="lab">A distinction vendors are already blurring</span>
+      <p>Being <strong>shortlisted or empanelled by NeGD</strong> is not the same as being <strong>registered as a Consent Manager by the Data Protection Board under Rule 4</strong>. The first is a government innovation and procurement track. The second is the statutory licence &mdash; and it does not open until 13 November 2026, before a Board exists to grant it. Read any &ldquo;government-approved consent manager&rdquo; claim carefully.</p>
+    </div>
+
     <h3>Why two sides beat one</h3>
     <div class="grid g2">
       <div class="card"><h4>The user side is the moat</h4><p>Consent intermediation has network effects: the useful Consent Manager is the one users already have and companies already integrate. Consumer adoption is the hard half — and the defensible half.</p></div>
