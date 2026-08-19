@@ -35,6 +35,7 @@ operating across borders.
 | [`04-comparative-matrices.md`](04-comparative-matrices.md) | Side-by-side matrices: scope, legal bases, sensitive data, children, rights, breach timelines, transfers, regulator independence, penalties, redress |
 | [`05-findings-and-gap-analysis.md`](05-findings-and-gap-analysis.md) | Analysis: what DPDP borrowed, what it dropped, the seven structural divergences, the criticisms, the pending Supreme Court challenge, and the outlook |
 | [`06-compliance-playbook.md`](06-compliance-playbook.md) | Operational translation: an engineering-level control set, artefact list, and a worked applicability note for this repository |
+| [`07-indian-law-overlay.md`](07-indian-law-overlay.md) | What the Act sits on top of: the IT Act and SPDI Rules (still in force), CERT-In, IT Rules 2021 as amended in 2026, RBI, SEBI, IRDAI, telecom, PMLA, Aadhaar, health and employment — and the seven places the stack conflicts |
 
 Each file is self-contained and can be read alone. Cross-references use section numbers of
 the underlying statutes, so `S.9(1)` always means DPDP Act section 9(1) unless a
@@ -73,19 +74,28 @@ jurisdiction is named.
    clauses, no transfer impact assessments. This is materially more permissive than the
    GDPR, China's PIPL or Vietnam's PDPL, and it is a deliberate trade-signal.
 
-6. **Enforcement is centralised, state-favouring, and not yet staffed.** The Data
-   Protection Board is appointed by the Central Government on two-year renewable terms,
-   penalties go to the Consolidated Fund rather than to victims, there is no statutory
-   compensation right, no private right of action, and S.17(2)(a) lets the Government
-   exempt any State instrumentality wholesale. As of mid-2026 the Board still had no
-   appointed Chairperson or Members — MeitY only invited applications on 6 May 2026.
+6. **Enforcement is centralised, state-favouring, and not yet operative — in two senses.** The
+   sections that give the Board its functions, procedure and penalty powers (S.27–S.34) were
+   *not* commenced on 13 November 2025, so no complaint can be adjudicated and no penalty
+   imposed today; and no Chairperson or Member has been appointed to exercise those powers if
+   they were — MeitY only invited applications on 6 May 2026. Structurally, the Board is
+   appointed by the Central Government on two-year renewable terms, penalties go to the
+   Consolidated Fund rather than to victims, there is no statutory compensation right, no
+   private right of action, and S.17(2)(a) lets the Government exempt any State
+   instrumentality wholesale.
 
 7. **The RTI amendment is the Act's most contested provision and is now before the Supreme
    Court.** S.44(3) rewrote S.8(1)(j) of the Right to Information Act to exempt all
    "personal information" from disclosure, deleting the public-interest override. In
    August 2026 the Supreme Court sought the Centre's response on petitions challenging it.
 
-8. **Globally, the direction of travel in 2025–26 is simplification and enforcement, not
+8. **The old regime has not gone away.** S.44(2), which omits S.43A of the IT Act, was not
+   commenced either — so **S.43A and the SPDI Rules, 2011 remain in force** alongside the DPDP
+   framework until the substantive phase. Until May 2027 India runs two overlapping data
+   protection regimes, and the individual compensation remedy the DPDP Act removes is still
+   available today.
+
+9. **Globally, the direction of travel in 2025–26 is simplification and enforcement, not
    expansion.** The EU's Digital Omnibus proposes to loosen parts of the GDPR; the UK's
    DUAA 2025 already has; Japan's 2026 APPI amendment creates an AI/statistical-processing
    consent exemption. At the same time penalties are rising sharply — South Korea moved to

@@ -16,11 +16,44 @@ what is enforceable *today* versus what is merely scheduled.
 
 | Phase | Date | What comes into force |
 |---|---|---|
-| **Phase 1** | **13/14 November 2025** | Rules **1, 2, 17–22** — short title, definitions, and the entire Board apparatus: appointment and service conditions of the Chairperson and Members, officers and employees, the Board's functioning as a **digital office**, and appeals to the Appellate Tribunal. The Data Protection Board is legally constituted and complaints can, in principle, be filed. |
+| **Phase 1** | **13/14 November 2025** | Rules **1, 2, 17–22** — short title, definitions, and the Board apparatus: appointment and service conditions of the Chairperson and Members, officers and employees, the Board's functioning as a **digital office**, and the form and manner of appeal to the Appellate Tribunal. |
 | **Phase 2** | **13 November 2026** | Rule **4** — registration and obligations of **Consent Managers**. The consent-intermediation market opens. |
 | **Phase 3** | **13 May 2027** | Rules **3, 5–16, 23** — everything substantive: notice, State processing, security safeguards, breach notification, erasure and retention, DPO contact publication, children's and disabled persons' verifiable consent, exemptions, SDF obligations, Data Principal rights, cross-border transfer, the research exemption, and the Government's power to call for information. |
 
-**Reading the phasing correctly.** Two implications are widely misunderstood:
+### 1.1 The Act's own commencement, section by section
+
+The Rules' phasing is only half the picture. A separate notification of the same date
+(**G.S.R. 843(E)**; the Board was established by **G.S.R. 844(E)**, with its head office in the
+National Capital Region, and the Rules were notified as **G.S.R. 846(E)**) commenced the Act
+itself in the same staggered way. **In force from 13 November 2025:**
+
+> S.1(2), S.2 (definitions), **S.18–S.26** (constitution, composition, appointment, terms and
+> conditions, and officers of the Board), S.35 (good-faith protection), **S.38–S.43**
+> (consistency with other laws, bar of jurisdiction, rule-making, laying of rules, power to
+> amend the Schedule, removal of difficulties), and **S.44(1) and S.44(3)** — the TRAI Act
+> amendment and **the RTI amendment**.
+
+**Not yet in force:** S.3–S.17 (the whole of scope, obligations, rights, transfers and
+exemptions), **S.27–S.34** (the Board's *functions*, its *procedure*, appeals to the Appellate
+Tribunal, mediation, voluntary undertakings, **penalties and adjudication**), and **S.44(2)**
+(omission of S.43A of the IT Act).
+
+Three consequences follow, and each corrects a claim that circulates widely:
+
+1. **The Board cannot yet do anything.** S.18–26 constitute it; S.27 gives it functions, S.28
+   its procedure and S.33 its penalty power — and none of those has commenced. A complaint
+   filed today has no statutory basis for adjudication and no penalty can be imposed. The
+   institution exists in law and is inert in fact, on top of having no appointed members.
+2. **The RTI amendment is already operative**, ahead of every substantive privacy protection
+   in the Act. The provision that narrows transparency took effect on day one; the provisions
+   that protect individuals wait until May 2027. That asymmetry is itself an argument in the
+   pending Supreme Court petitions.
+3. **The old regime is still alive.** Because S.44(2) has not commenced, **S.43A of the IT Act
+   and the SPDI Rules, 2011 remain in force**. Until May 2027 India has *two* overlapping data
+   protection regimes: SPDI's sensitive-data security and compensation rules, enforceable
+   today, and DPDP's broader obligations, enforceable later.
+
+**Reading the phasing correctly.** Two further implications are widely misunderstood:
 
 1. **Nothing substantive is enforceable against an ordinary business before 13 May 2027.**
    The obligations in Rules 3 and 5–16 do not bind until then. The Act's own sections came
@@ -324,7 +357,9 @@ rights-first model, and it is squarely in the frame of the pending constitutiona
 
 | Item | Status |
 |---|---|
-| DPDP Act commencement | Phased; Phase 1 provisions in force since 13 Nov 2025 |
+| DPDP Act commencement | Phased; S.1(2), 2, 18–26, 35, 38–43, 44(1) and 44(3) in force since 13 Nov 2025 |
+| Board's functions, procedure and penalty powers (S.27–34) | **Not commenced** — no complaint can be adjudicated and no penalty imposed today |
+| S.43A IT Act and SPDI Rules, 2011 | **Still in force** — S.44(2) not yet commenced |
 | DPDP Rules notification | Done, 14 Nov 2025 |
 | **Data Protection Board constituted with members** | **No.** MeitY invited applications for Chairperson and Members by notification dated **6 May 2026**; on the public record no Chairperson or Member had been appointed as of mid-August 2026 |
 | Consent Manager registrations | Not open; Rule 4 commences 13 Nov 2026 |
@@ -336,8 +371,9 @@ rights-first model, and it is squarely in the frame of the pending constitutiona
 
 **The enforcement gap is the defining feature of the present moment.** India has a fully
 notified data protection framework, a fixed compliance deadline, penalty ceilings among the
-highest in Asia — and no sitting regulator. Complaints can be filed in theory; there is nobody
-appointed to hear them. Every quarter the Board remains unconstituted compresses the runway
+highest in Asia — and no enforcement. The gap is doubled: the sections that would let the
+Board hear a complaint or impose a penalty (S.27–S.34) have not been commenced, *and* no
+Chairperson or Member has been appointed to exercise them if they were. Every quarter the Board remains unconstituted compresses the runway
 for building institutional capacity before the May 2027 cliff, when the obligations of several
 million Data Fiduciaries become enforceable at once.
 

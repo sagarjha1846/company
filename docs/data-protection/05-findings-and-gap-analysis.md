@@ -43,7 +43,7 @@ Two features are genuinely India's own and worth watching for adoption elsewhere
 | **Sensitive personal data** | Caste, religion, health, biometrics, sexual orientation and financial data carry no extra protection. A *regression* from the SPDI Rules 2011. India-specific discrimination risks around caste and religion are unaddressed. |
 | **Portability** | India has built the infrastructure (Account Aggregator, ONDC, UPI) but withheld the right. Competition-policy benefits are left on the table. |
 | **Automated decision-making rights** | No explanation, no contest, no human-review right — in an economy with mass algorithmic credit scoring, insurance underwriting and welfare eligibility determination. Rule 13's SDF-only "algorithmic due diligence" is a supply-side substitute with no individual remedy attached. |
-| **Compensation and private right of action** | With S.43A of the IT Act repealed and S.39 barring civil courts, an individual harmed by a breach has no statutory monetary remedy. |
+| **Compensation and private right of action** | Once S.44(2) commences and S.43A of the IT Act goes, and with S.39 barring civil courts, an individual harmed by a breach has no statutory monetary remedy. Until then S.43A still stands — the loss is scheduled, not yet suffered. |
 | **Journalism / research / archival exemptions in the Act** | The Rules restore research and archiving (Rule 16), but **journalism was never restored**. The Press Council's request for a media exemption was not accepted. |
 | **Monitoring/profiling extraterritorial trigger** | Foreign entities that profile Indians without offering them goods or services fall outside S.3(b). |
 | **Anonymisation standard** | No definition, so the boundary of the Act for de-identified and aggregated data is undefined — a live problem for AI training datasets. |
@@ -85,7 +85,7 @@ newsletter mailing list from a genetic database, and it forces the entire risk-d
 job onto the SDF designation, which is a Government notification rather than a self-assessed
 threshold.
 
-### 3.6 Penalty design that under-deters the largest actors
+### 3.6 Penalty design that under-deters the largest actors, with nothing for the victim
 ₹250 crore (~US$29 million) is an absolute ceiling. For a company with global revenue in the
 hundreds of billions of dollars it is a cost of doing business; the GDPR's 4%, Korea's 10% and
 China's 5% are not. Meanwhile the same ceiling can destroy an Indian mid-market firm. The
@@ -241,6 +241,20 @@ obligations and heavy nominal penalties but no operational regulator — the opp
 | **A contract/legitimate-interests amendment** | The most obvious statutory gap | Speculative |
 | **Interaction with the Telecommunications Act 2023 and any AI governance framework** | Overlapping obligations and regulators | Ongoing |
 | **EU adequacy for India** | Would require India to bridge the independence and redress gaps; currently improbable | Not near-term |
+
+---
+
+## 7A. The Act is not the whole stack
+
+A point that changes the practical conclusion and is developed in
+[Part 7](07-indian-law-overlay.md): S.38 makes the DPDP Act *additional to* other laws, and
+provides that a higher standard elsewhere prevails. For regulated entities — banks, NBFCs,
+insurers, brokers, telcos, health providers — the sectoral regulator already imposes
+localisation, retention, incident-reporting and governance duties that exceed the DPDP
+framework, and those regulators are enforcing them today while the Board is not. The DPDP Act
+is the binding constraint mainly for the unregulated consumer internet, where it operates
+alongside the IT Rules, 2021 — whose takedown clocks were cut to three hours (and two hours for
+non-consensual intimate imagery) by the IT Amendment Rules, 2026.
 
 ---
 

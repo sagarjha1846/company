@@ -45,12 +45,26 @@ executive-controlled model.
 
 ### 1.3 What the Act replaced
 
-S.44(1) omits **S.43A of the Information Technology Act, 2000** (the compensation provision
-for negligent handling of sensitive personal data) and the corresponding rule-making power,
-which removes the legal foundation of the **SPDI Rules, 2011**. The practical effect: India
-moved from a narrow, compensation-driven, sensitive-data-only regime to a broad,
-penalty-driven regime that covers all digital personal data — while *losing* the individual
-compensation remedy in the process. See [Part 5, §3.6](05-findings-and-gap-analysis.md).
+S.44(2) omits **S.43A of the Information Technology Act, 2000** (the compensation provision
+for negligent handling of sensitive personal data) and clause (ob) of S.87(2), the
+corresponding rule-making power — which removes the legal foundation of the **SPDI Rules,
+2011**. The practical effect: India moves from a narrow, compensation-driven,
+sensitive-data-only regime to a broad, penalty-driven regime covering all digital personal
+data — while *losing* the individual compensation remedy in the process. See
+[Part 5, §3.6](05-findings-and-gap-analysis.md).
+
+**Timing matters here, and is widely misreported.** S.44(2) was *not* among the provisions
+brought into force on 13 November 2025. Until it commences with the substantive phase,
+**S.43A and the SPDI Rules, 2011 remain in force and coexist with the DPDP framework** — so
+an individual injured by negligent handling of sensitive personal data today still has the
+S.43A compensation claim. That remedy disappears at commencement, and nothing in the DPDP
+Act replaces it.
+
+**S.72A of the IT Act survives.** It is not touched by S.44, so disclosure of personal
+information in breach of a lawful contract remains a criminal offence punishable by up to
+three years' imprisonment and a fine of up to ₹5 lakh. It is, after commencement, the only
+route by which an individual can put personal criminal consequence behind a data misuse — the
+DPDP Act itself creates no offences.
 
 ---
 
@@ -457,7 +471,7 @@ individual harmed by a breach is left with common-law and constitutional remedie
 | S.41 | Laying of rules before Parliament | |
 | S.42 | Power to amend the Schedule | The Government may amend penalty amounts, but **not beyond twice** the stated figure |
 | S.43 | Power to remove difficulties | Exercisable for three years from commencement |
-| **S.44** | **Amendments to certain Acts** | (1) omits **S.43A of the IT Act** and the related rule-making power; (2) amends S.30(2) of the Telecom Regulatory Authority of India Act; **(3) substitutes S.8(1)(j) of the Right to Information Act, 2005** |
+| **S.44** | **Amendments to certain Acts** | (1) amends the Telecom Regulatory Authority of India Act, 1997; **(2) omits S.43A of the IT Act and clause (ob) of S.87(2)** — *not yet commenced*; **(3) substitutes S.8(1)(j) of the Right to Information Act, 2005** — *in force since 13 Nov 2025* |
 
 ### 8.1 S.44(3) — the RTI amendment
 
