@@ -38,6 +38,7 @@ operating across borders.
 | [`07-indian-law-overlay.md`](07-indian-law-overlay.md) | What the Act sits on top of: the IT Act and SPDI Rules (still in force), CERT-In, IT Rules 2021 as amended in 2026, RBI, SEBI, IRDAI, telecom, PMLA, Aadhaar, health and employment — and the seven places the stack conflicts |
 | [`08-jurisprudence.md`](08-jurisprudence.md) | The case law: *Puttaswamy* and the proportionality test, the RTI line, the pending Constitution Bench challenge, the CJEU decisions that will fill India's undefined terms, and enforcement data |
 | [`09-ai-and-data-protection.md`](09-ai-and-data-protection.md) | AI: the India AI Governance Guidelines, where the DPDP Act actually bites on models, the S.3(c)(ii) training-data question, and the comparative AI-law map as at August 2026 |
+| [`10-economics-and-watchlist.md`](10-economics-and-watchlist.md) | What a regime like this costs — the GDPR's measured effect on profits, investment and market concentration — India's readiness gap, MeitY's January 2026 proposal to accelerate SDF compliance, and every lever still unpulled |
 | [`memo/`](memo/) | The study as a formally cited Word research memorandum — 75 numbered references, with the build script |
 
 Each file is self-contained and can be read alone. Cross-references use section numbers of
@@ -105,7 +106,13 @@ jurisdiction is named.
    Act before it took effect. The unsettled question that matters most in India is the reach of
    the S.3(c)(ii) public-data exclusion over AI training corpora.
 
-10. **Globally, the direction of travel in 2025–26 is simplification and enforcement, not
+10. **The most important deadline may move.** On 23 January 2026 MeitY circulated proposals to
+   compress the compliance window for **Significant Data Fiduciaries from 18 months to 12** —
+   from 13 May 2027 to **13 November 2026** — to notify the SDF list or criteria, and to enforce
+   the SDF cross-border restriction immediately. **Still a proposal as at 19 August 2026**, but
+   any plausible SDF should plan to the earlier date.
+
+11. **Globally, the direction of travel in 2025–26 is simplification and enforcement, not
    expansion.** The EU's Digital Omnibus proposes to loosen parts of the GDPR; the UK's
    DUAA 2025 already has; Japan's 2026 APPI amendment creates an AI/statistical-processing
    consent exemption. At the same time penalties are rising sharply — South Korea moved to
