@@ -21,7 +21,32 @@ No dependencies — `tools/build_site.py` contains a small Markdown-subset rende
 exactly the constructs the study uses (headings, pipe tables, lists, blockquotes, emphasis,
 links, rules). Edit the markdown in `docs/data-protection/`, rerun, commit.
 
-## Enabling Pages (one-time, repository settings)
+## Publishing it
+
+**The site is already built and committed**, so the fastest route needs no CI:
+
+**Settings → Pages → Build and deployment → Source: _Deploy from a branch_**, then choose
+branch `claude/dp-act-analysis-international-yiaxgy` and folder **`/docs`**. Save. The site
+appears at `https://sagarjha1846.github.io/company/` within a minute or two. `.nojekyll` stops
+Jekyll from reprocessing the generated HTML.
+
+### Or via Actions
+
+**Settings → Pages → Source: _GitHub Actions_**, then run the *Deploy study to GitHub Pages*
+workflow from the Actions tab. This route rebuilds from the markdown on every run.
+
+If the `github-pages` environment restricts deployments to protected branches, add this branch
+under **Settings → Environments → github-pages → Deployment branches**, or merge to the default
+branch first.
+
+### Why this needs a human
+
+`actions/configure-pages` can create the Pages site itself, but the API call requires repository
+**admin** rights and the workflow's `GITHUB_TOKEN` does not have them — attempting it returns
+`Resource not accessible by integration`. Enabling Pages is a one-time manual step by someone
+with admin access to the repository.
+
+## Historic notes (superseded)
 
 The workflow at `.github/workflows/pages.yml` builds and deploys on every push that touches
 `docs/`. It needs Pages switched on once:
