@@ -1,0 +1,392 @@
+<title>The Consent Layer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+  :root{
+    --ground:#F2F5F3; --surface:#FFFFFF; --sunk:#E7ECE8;
+    --ink:#101815; --ink-2:#4A5651; --ink-3:#7C8A84;
+    --rule:#D4DCD7; --rule-soft:#E4EAE6;
+    --biz:#0C6B57; --biz-soft:#DCEDE7;      /* fiduciary side */
+    --you:#A2610F; --you-soft:#F6EBD9;      /* person side */
+    --flag:#993528; --flag-soft:#F5E2DE;
+    --shadow:0 1px 2px rgba(16,24,21,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0B100E; --surface:#141A17; --sunk:#1B2320;
+      --ink:#E9EFEB; --ink-2:#A2AFA9; --ink-3:#7C8A84;
+      --rule:#2A342F; --rule-soft:#212926;
+      --biz:#57C3A6; --biz-soft:#10312A;
+      --you:#E0A85C; --you-soft:#33260F;
+      --flag:#DE9083; --flag-soft:#331E1A;
+      --shadow:0 1px 2px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0B100E; --surface:#141A17; --sunk:#1B2320;
+    --ink:#E9EFEB; --ink-2:#A2AFA9; --ink-3:#7C8A84;
+    --rule:#2A342F; --rule-soft:#212926;
+    --biz:#57C3A6; --biz-soft:#10312A;
+    --you:#E0A85C; --you-soft:#33260F;
+    --flag:#DE9083; --flag-soft:#331E1A;
+    --shadow:0 1px 2px rgba(0,0,0,.45);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .mono,.cite{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 26px}
+
+  /* hero */
+  .hero{background:var(--surface);border-bottom:1px solid var(--rule);padding:64px 0 52px}
+  .kicker{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin:0 0 18px}
+  h1{
+    font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+    font-size:clamp(38px,6.6vw,74px);line-height:.98;letter-spacing:-.03em;margin:0;
+    max-width:15ch;text-wrap:balance;
+  }
+  .hero .sub{font-size:20px;color:var(--ink-2);max-width:60ch;margin:22px 0 0}
+  .counters{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .ctr{background:var(--ground);border:1px solid var(--rule);padding:14px 18px;min-width:180px;flex:1 1 180px}
+  .ctr .n{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:34px;line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .ctr .l{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
+  .ctr.a .n{color:var(--biz)} .ctr.b .n{color:var(--you)} .ctr.c .n{color:var(--flag)}
+
+  section{padding:56px 0;border-bottom:1px solid var(--rule-soft)}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+  h2{
+    font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+    font-size:clamp(27px,3.7vw,42px);line-height:1.05;letter-spacing:-.025em;margin:0 0 16px;
+    max-width:22ch;text-wrap:balance;
+  }
+  h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:600;font-size:22px;letter-spacing:-.01em;margin:34px 0 10px;text-wrap:balance}
+  h4{font-size:15px;font-weight:600;margin:20px 0 6px}
+  p{margin:0 0 15px;max-width:70ch}
+  .lead{font-size:20px;color:var(--ink-2);max-width:62ch}
+  ul,ol{max-width:70ch;padding-left:20px;margin:0 0 16px}
+  li{margin-bottom:8px}
+  strong{font-weight:600}
+  a{color:var(--biz)}
+  .cite{font-size:.85em;background:var(--sunk);border:1px solid var(--rule-soft);padding:1px 5px;border-radius:3px;color:var(--ink-2);white-space:nowrap}
+
+  /* plain-english cards */
+  .grid{display:grid;gap:14px;margin:26px 0 8px}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .card{background:var(--surface);border:1px solid var(--rule);padding:20px 22px;box-shadow:var(--shadow)}
+  .card h4{margin:0 0 8px;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:18px;font-weight:600;letter-spacing:-.01em}
+  .card p{font-size:15.5px;color:var(--ink-2);margin:0 0 10px}
+  .card p:last-child{margin:0}
+  .card .tagn{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:9px}
+
+  /* two-sided split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:30px 0 10px;border:1px solid var(--rule);background:var(--surface)}
+  .side{padding:26px 26px 30px}
+  .side.biz{border-right:1px solid var(--rule);border-top:4px solid var(--biz)}
+  .side.you{border-top:4px solid var(--you)}
+  .side .who{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;margin:0 0 6px}
+  .side.biz .who{color:var(--biz)} .side.you .who{color:var(--you)}
+  .side h3{margin:0 0 4px;font-size:23px;font-weight:800}
+  .side .eg{font-size:14.5px;color:var(--ink-3);margin:0 0 18px;font-style:italic}
+  .side ol{padding-left:0;list-style:none;margin:0;counter-reset:f}
+  .side ol li{counter-increment:f;display:grid;grid-template-columns:26px 1fr;gap:12px;margin-bottom:14px;font-size:15.5px}
+  .side ol li::before{
+    content:counter(f);font-family:"JetBrains Mono",monospace;font-size:11px;
+    width:22px;height:22px;display:grid;place-items:center;border-radius:50%;margin-top:2px;
+  }
+  .side.biz ol li::before{background:var(--biz-soft);color:var(--biz)}
+  .side.you ol li::before{background:var(--you-soft);color:var(--you)}
+  .side ol li b{font-weight:600;display:block}
+  .side ol li span{color:var(--ink-2)}
+  @media (max-width:820px){
+    .split{grid-template-columns:1fr}
+    .side.biz{border-right:none;border-bottom:1px solid var(--rule)}
+  }
+
+  /* tables */
+  .scroll{overflow-x:auto;margin:22px 0 10px;border:1px solid var(--rule);background:var(--surface);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:540px}
+  caption{caption-side:top;text-align:left;padding:13px 16px;border-bottom:1px solid var(--rule);background:var(--sunk);
+    font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+  th,td{padding:10px 15px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule-soft)}
+  thead th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:600;border-bottom:1px solid var(--rule);white-space:nowrap}
+  tbody tr:last-child td{border-bottom:none}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .pill{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:3px}
+  .pill.hot{background:var(--flag-soft);color:var(--flag)}
+  .pill.us{background:var(--biz-soft);color:var(--biz)}
+  .pill.gap{background:var(--you-soft);color:var(--you)}
+
+  .note{border-left:3px solid var(--biz);background:var(--surface);padding:18px 22px;margin:24px 0;max-width:72ch;box-shadow:var(--shadow)}
+  .note.warn{border-left-color:var(--flag)}
+  .note.key{border-left-color:var(--you)}
+  .note .lab{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:8px}
+  .note p:last-child{margin:0}
+
+  /* timeline */
+  .tl{display:grid;gap:0;margin:26px 0 8px;border-left:2px solid var(--rule)}
+  .tl .ev{padding:0 0 24px 22px;position:relative}
+  .tl .ev::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--ground);border:2px solid var(--rule)}
+  .tl .ev.now::before{background:var(--you);border-color:var(--you)}
+  .tl .ev.hard::before{background:var(--flag);border-color:var(--flag)}
+  .tl .d{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink-3);letter-spacing:.04em}
+  .tl .t{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:600;font-size:18px;margin:2px 0 4px}
+  .tl p{font-size:15px;color:var(--ink-2);margin:0;max-width:64ch}
+
+  footer{padding:36px 0 60px;color:var(--ink-2);font-size:14.5px}
+  :focus-visible{outline:2px solid var(--biz);outline-offset:2px}
+</style>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="kicker">India · DPDP Act 2023 + Rules 2025 · Position at 19 Aug 2026</p>
+    <h1>Somebody has to build the consent layer</h1>
+    <p class="sub">India wrote a data protection law that only works if a new kind of company exists — one that is paid by businesses and legally answerable to their users. That company does not exist yet. This page explains the law, then the opening.</p>
+    <div class="counters">
+      <div class="ctr c"><div class="n" id="days">—</div><div class="l">days to full compliance</div></div>
+      <div class="ctr a"><div class="n">64%</div><div class="l">of Indian firms have no budget for it</div></div>
+      <div class="ctr b"><div class="n">0</div><div class="l">members on the regulator</div></div>
+      <div class="ctr a"><div class="n">₹250cr</div><div class="l">top penalty, per instance</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Part one</p>
+    <h2>The law in five minutes</h2>
+    <p class="lead">India's Digital Personal Data Protection Act was passed in 2023 and sat dormant for two years. On 14 November 2025 the Rules were notified and the clock started.</p>
+
+    <div class="grid g3">
+      <div class="card">
+        <span class="tagn">Who's who</span>
+        <h4>Three roles</h4>
+        <p>A <strong>Data Principal</strong> is you. A <strong>Data Fiduciary</strong> is the company deciding what to do with your data — the word is deliberate: it implies a duty of trust. A <strong>Data Processor</strong> works for the Fiduciary.</p>
+        <p>A <strong>Significant Data Fiduciary</strong> is one the government names as big or risky enough for extra duties.</p>
+      </div>
+      <div class="card">
+        <span class="tagn">The core rule</span>
+        <h4>Consent, or nothing much else</h4>
+        <p>There are only <strong>two lawful grounds</strong>: your consent, or one of nine narrow "legitimate uses" — mostly for the State and for employment.</p>
+        <p>There is <em>no</em> "legitimate interests" ground like Europe's. So analytics, personalisation and product improvement all need consent, separately and specifically.</p>
+      </div>
+      <div class="card">
+        <span class="tagn">The money</span>
+        <h4>Up to ₹250 crore</h4>
+        <p>Per instance, for failing to keep data secure. ₹200 crore for failing to report a breach, or for mishandling a child's data.</p>
+        <p>None of it goes to you. Penalties go to the Consolidated Fund, and the Act gives individuals <strong>no compensation right at all</strong>.</p>
+      </div>
+    </div>
+
+    <h3>What actually changes for a company</h3>
+    <div class="grid g2">
+      <div class="card">
+        <h4>Notices get rebuilt from scratch</h4>
+        <p>Every consent needs a <strong>standalone, itemised notice</strong> — not a clause buried in terms of service — listing exactly what data and exactly what purpose, available in <strong>English plus 22 Indian languages</strong> at the user's choice.</p>
+      </div>
+      <div class="card">
+        <h4>Security stops being a judgement call</h4>
+        <p>India names the controls: encryption or tokenisation, access control, <strong>access logs kept at least a year</strong>, tested backups, and the same imposed on every vendor. Europe's "appropriate measures" language left room to argue. This does not.</p>
+      </div>
+      <div class="card">
+        <h4>Every breach gets reported</h4>
+        <p>No severity threshold. Every affected person must be told <strong>without delay</strong>, the regulator too, with full particulars in 72 hours — and a separate <strong>six-hour</strong> report to CERT-In for cyber incidents.</p>
+      </div>
+      <div class="card">
+        <h4>Under-18s are off limits for advertising</h4>
+        <p>Verifiable parental consent for everyone under 18 — the strictest age line in the world — plus a flat ban on tracking and targeted ads aimed at children.</p>
+      </div>
+    </div>
+
+    <h3>The dates</h3>
+    <div class="tl">
+      <div class="ev"><div class="d">14 Nov 2025</div><div class="t">Rules notified, clock starts</div><p>The Board is created in law. The RTI amendment takes effect immediately — narrowing transparency before any privacy protection arrives.</p></div>
+      <div class="ev now"><div class="d">Today · 19 Aug 2026</div><div class="t">Nothing substantive is enforceable yet</div><p>The sections giving the Board its powers were never commenced, and it has no members. The old regime — the 2011 SPDI Rules — is still technically in force.</p></div>
+      <div class="ev"><div class="d">13 Nov 2026</div><div class="t">Consent Manager registration opens</div><p>The new licensed intermediary becomes real. Except the registrar — the Board — may still not be staffed.</p></div>
+      <div class="ev hard"><div class="d">13 May 2027</div><div class="t">Everything applies</div><p>Notice, consent, security, breach reporting, rights, children, retention. MeitY has <em>proposed</em> pulling large firms forward to November 2026.</p></div>
+    </div>
+
+    <div class="note warn">
+      <span class="lab">The thing everyone gets wrong</span>
+      <p>"No regulator" does not mean no enforcement. The largest privacy penalty in Indian history — <strong>₹213 crore against Meta</strong>, over WhatsApp's 2021 policy — came from the <strong>competition</strong> regulator, not a privacy one. It held that data sharing beyond running the service <em>cannot be a condition of using it</em> — which is almost exactly what the DPDP Act's consent standard will require. The tribunal upheld the penalty; the Supreme Court is supervising compliance now.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Part two</p>
+    <h2>The strange institution at the centre of it</h2>
+    <p class="lead">India legislated a company that is paid by businesses and legally accountable to their users. That is normally a conflict of interest. Here it is the licence condition.</p>
+
+    <p>It is called a <strong>Consent Manager</strong>. It registers with the Board, gets integrated by companies, and lets a person give, review and withdraw consent across all of them from one place. It routes consent without ever reading the data — a "data-blind" pipe, modelled on the Account Aggregator system that already moves financial data for millions of Indians.</p>
+    <p>The statute is explicit that it is <strong>accountable to the Data Principal</strong> — the individual — not to the company paying the bill. No other country has legislated this.</p>
+
+    <div class="grid g3">
+      <div class="card"><span class="tagn">To register</span><h4>The bar</h4><p>Indian company · <strong>₹2 crore net worth</strong> · interoperable platform · fit-and-proper promoters · published business model · registration granted by the Board.</p></div>
+      <div class="card"><span class="tagn">Proven at scale</span><h4>The precedent</h4><p><strong>17 licensed Account Aggregators</strong> already run this architecture in financial services. The hard part isn't the technology — it's whether ordinary people adopt it.</p></div>
+      <div class="card"><span class="tagn">The catch</span><h4>No registrar</h4><p>Rule 4 switches on in <strong>November 2026</strong>. Registration is granted by a Board that has <strong>no chairperson and no members</strong>. A commenced rule with no registrar cannot be complied with.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Part three</p>
+    <h2>Who is already building, and what nobody is building</h2>
+
+    <div class="scroll">
+      <table>
+        <caption>Selling to the company</caption>
+        <thead><tr><th>Player</th><th>Position</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Privy by IDfy</strong></td><td>The one to beat in India</td><td><span class="pill hot">Hot</span> Won MeitY's Code for Consent challenge, March 2026 · <strong>$53M Series F</strong>, Feb 2026 · 500+ enterprise clients, 400+ connectors</td></tr>
+          <tr><td><strong>Securiti</strong></td><td>Global data command centre</td><td>$156M raised · <strong>acquired by Veeam, Dec 2025</strong> — the category is becoming a feature of a data-infrastructure roadmap</td></tr>
+          <tr><td><strong>Jio Platforms</strong></td><td>MeitY shortlist</td><td>Distribution and balance sheet. The strategic threat — and a consent broker owned by a data conglomerate has an obvious credibility problem</td></tr>
+          <tr><td>Concur, Zoop, Redacto, Aurelion</td><td>MeitY shortlist</td><td>Early, focused, unproven at enterprise scale</td></tr>
+          <tr><td>OneTrust, Didomi, Usercentrics, Ketch, Transcend</td><td>Global CMP / privacy ops</td><td>Strong on GDPR and CCPA · weak on India's specifics: 22 languages, one-year logs, Consent Manager interop</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="scroll">
+      <table>
+        <caption>Selling to the person</caption>
+        <thead><tr><th>Player</th><th>Position</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td><strong>DeleteMe + Permission Slip</strong></td><td>The consumer benchmark</td><td><strong>Acquired Permission Slip from Consumer Reports, 30 July 2026</strong> · ~<strong>5 million</strong> privacy requests run across 400+ companies since 2022 — the demand is real</td></tr>
+          <tr><td>Incogni, Optery</td><td>Data-broker removal, subscription</td><td>Narrow: brokers, not the services people actually use every day</td></tr>
+          <tr><td>Mine</td><td>Data footprint discovery</td><td>Freemium; monetisation still forming</td></tr>
+          <tr><td><strong>India</strong></td><td><strong>Nobody</strong></td><td><span class="pill gap">The gap</span> No consumer data-rights product built for Indian law, in Indian languages, at Indian price points</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note key">
+      <span class="lab">The opening</span>
+      <p>Both markets are consolidating, and both are <strong>structurally single-sided</strong>. Privy and Securiti sell to the company. DeleteMe and Incogni sell to the person. Nobody is building <strong>one ledger with two faces</strong> — because in every other jurisdiction that would be a conflict of interest. India is the one place where the statute makes it a licence condition.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Part four · the product</p>
+    <h2>One ledger, two faces</h2>
+    <p class="lead">A single append-only record of every consent — purpose, notice version, timestamp, language, the action taken, every withdrawal, every downstream share. Data-blind: it holds the consent and the metadata, never the personal data. Everything else is a surface on that spine.</p>
+
+    <div class="split">
+      <div class="side biz">
+        <p class="who">Side A · the company</p>
+        <h3>For the Data Fiduciary</h3>
+        <p class="eg">Meta. Or a bank, a hospital, a school, a D2C brand.</p>
+        <ol>
+          <li><b>Notice service</b><span>Standalone, itemised notices generated in English plus 22 languages from a structured purpose registry, versioned and hashed. The most under-estimated build in the Act.</span></li>
+          <li><b>Consent SDKs</b><span>Web, Android, iOS, server — with withdrawal parity enforced <em>in the component</em>. You cannot ship one-tap accept and five-step withdrawal.</span></li>
+          <li><b>Purpose &amp; basis registry</b><span>Every data element mapped to consent or a named legitimate use. Doubles as the GDPR Article 30 record.</span></li>
+          <li><b>Rights fulfilment</b><span>Including the recipient ledger — who the data was shared with and what — which competitors under-build because it needs real sharing telemetry. Plus nomination, which nobody supports.</span></li>
+          <li><b>Retention engine</b><span>Field-level statutory retention map, purpose-expiry deletion, and the three-year inactivity clock with its 48-hour pre-erasure notice.</span></li>
+          <li><b>Breach console</b><span>Two decision trees, a pre-built affected-user query, and the three clocks: six hours, without delay, 72 hours.</span></li>
+          <li><b>SDF pack</b><span>Annual DPIA, audit evidence room, algorithmic due-diligence register, and a localisation switch that can pin a data category to India on short notice.</span></li>
+        </ol>
+      </div>
+      <div class="side you">
+        <p class="who">Side B · the person</p>
+        <h3>For the Data Principal</h3>
+        <p class="eg">The person who uses Meta. On a mid-range Android, in their own language, free.</p>
+        <ol>
+          <li><b>See every consent you've given</b><span>Across every integrated company — what data, what purpose, since when. Most people have never seen this list.</span></li>
+          <li><b>Withdraw in one tap</b><span>Propagating to the company and its processors, with a receipt you keep.</span></li>
+          <li><b>Exercise rights without writing an email</b><span>Access, correction, erasure — and the internal grievance step the law makes a mandatory precondition before you can complain to the regulator.</span></li>
+          <li><b>Nominate someone</b><span>To hold your rights if you die or are incapacitated. A genuinely novel Indian right that nobody has shipped.</span></li>
+          <li><b>Breach inbox</b><span>Every notification you're owed, in plain language, in your language, with what you can actually do about it.</span></li>
+          <li><b>Parent controls</b><span>One place to grant and revoke verifiable parental consent, and see every service holding your child's data.</span></li>
+          <li><b>Escalate</b><span>When a company misses its own published deadline, a one-tap complaint to the Board with the precondition already evidenced.</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <h3>Why two sides beat one</h3>
+    <div class="grid g2">
+      <div class="card"><h4>The user side is the moat</h4><p>Consent intermediation has network effects: the useful Consent Manager is the one users already have and companies already integrate. Consumer adoption is the hard half — and the defensible half.</p></div>
+      <div class="card"><h4>The company side pays for it</h4><p>Enterprise contracts fund a free consumer product. The consumer product is not charity; it is the distribution and the defensibility.</p></div>
+      <div class="card"><h4>Each side sells the other</h4><p>Every consent screen rendered for a company is a distribution surface: <em>manage this later in your consent wallet</em>. Every user is a reason for the next company to integrate.</p></div>
+      <div class="card"><h4>The statute clears the conflict</h4><p>Rule 4 makes accountability to the individual a registration condition. What would look like double-dealing anywhere else is the licence requirement here.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Part five</p>
+    <h2>Model, sequence, and how it dies</h2>
+
+    <div class="scroll">
+      <table>
+        <caption>Where the money comes from</caption>
+        <thead><tr><th>Line</th><th>Who pays</th><th>Basis</th></tr></thead>
+        <tbody>
+          <tr><td>Consent infrastructure</td><td>Company</td><td>Platform fee + per-MAU consent volume</td></tr>
+          <tr><td>Notice localisation</td><td>Company</td><td>Per purpose-set, per language</td></tr>
+          <tr><td>Rights fulfilment</td><td>Company</td><td>Per request, bundled floor</td></tr>
+          <tr><td>Breach console + retainer</td><td>Company</td><td>Annual — priced against the ₹200 and ₹250 crore tiers</td></tr>
+          <tr><td>SDF pack</td><td>Company</td><td>Premium tier; highest willingness to pay</td></tr>
+          <tr><td>Consumer app</td><td><strong>Free</strong></td><td>Strategic, not charitable — adoption is the moat</td></tr>
+          <tr><td>Consumer premium, later</td><td>Person</td><td>Broker removal, footprint discovery, family controls</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Never monetise the individual's data.</strong> Not for ethics-brochure reasons — because the statutory duty runs to them, and the entire thesis dies the day that is compromised. Put it in the registration filing and in the app.</p>
+
+    <h3>Sequence</h3>
+    <div class="tl">
+      <div class="ev now"><div class="d">Now → Nov 2026</div><div class="t">Earn the right to be the default</div><p>Sell to mid-market BFSI, health tech, edtech and D2C — hard deadline, real exposure, no in-house privacy team. Lead with security controls and the breach console: they carry the biggest penalties and are the easiest sale. Publish the interoperability spec openly.</p></div>
+      <div class="ev"><div class="d">Nov 2026</div><div class="t">Register on day one</div><p>₹2 crore net worth, Indian incorporation, fit-and-proper, published model. Expect the Board to be slow. Being ready is the differentiator, not being fast.</p></div>
+      <div class="ev"><div class="d">2027</div><div class="t">Turn on the consumer side</div><p>Launch inside the consent screens already deployed. Distribution is the installed base, not paid acquisition.</p></div>
+    </div>
+
+    <h3>How it dies</h3>
+    <div class="scroll">
+      <table>
+        <caption>Risks, ranked</caption>
+        <thead><tr><th>Risk</th><th>Severity</th><th>Answer</th></tr></thead>
+        <tbody>
+          <tr><td>Trust failure — one breach of the consent ledger</td><td><span class="pill hot">Fatal</span></td><td>Data-blind by construction; hold yourself above the standard you sell; publish audits</td></tr>
+          <tr><td>The Board never functions, so registration never happens</td><td>High</td><td>Build so the product works standalone — the licence is upside, not the business</td></tr>
+          <tr><td>Jio launches with distribution and a balance sheet</td><td>High</td><td>Be the <strong>neutral</strong> one. Enterprises will want an alternative to a conglomerate that also collects their users' data</td></tr>
+          <tr><td>Privy compounds its MeitY win and $53M</td><td>High</td><td>Don't fight on compliance tooling. Win on the consumer side they have not built</td></tr>
+          <tr><td>Consumers don't care</td><td>High</td><td>Assume they don't. Adoption comes at moments they're already engaged: consent screens, breach notices, account deletion</td></tr>
+          <tr><td>Deadlines slip</td><td>Medium</td><td>The sectoral stack — RBI, SEBI, IRDAI, CERT-In — does not slip</td></tr>
+          <tr><td>Category absorbed into data platforms</td><td>Medium</td><td>A consumer relationship is not absorbable by an infrastructure vendor</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>First 90 days</h3>
+    <ol>
+      <li><strong>The purpose registry and consent ledger.</strong> Append-only, exportable, hash-versioned.</li>
+      <li><strong>The notice renderer</strong> — 22-language output from a structured purpose definition. Sellable on its own, and nobody does it well.</li>
+      <li><strong>Web and Android consent SDKs</strong> with withdrawal parity enforced in the component.</li>
+      <li><strong>The breach console</strong>, seeded with both decision trees and the three-clock timer.</li>
+      <li><strong>A read-only consumer view</strong> — one link from any consent screen showing a person what they agreed to. Not the full app: just enough to prove the two-sided thesis and start the network effect.</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Working name <strong>Sammati</strong> (सहमति) — needs trademark clearance; adjacent marks are in use. Statutory references are to the Digital Personal Data Protection Act, 2023 and the DPDP Rules, 2025 as notified on 14 November 2025. Market facts stated as at 19 August 2026 and sourced in the accompanying study. Not legal or investment advice.</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var d = new Date(Date.UTC(2027,4,13)) - new Date();
+    document.getElementById('days').textContent = Math.max(0, Math.ceil(d/86400000)).toLocaleString('en-IN');
+  })();
+</script>
