@@ -77,7 +77,11 @@ has to be documented field by field.
   years** after the business relationship ends; transaction records for five years.
 - **Master Directions on IT Governance, Risk and Controls (2023)** and on **Outsourcing of IT
   Services (2023):** board-level IT governance, vendor due diligence, audit rights, exit plans,
-  and incident reporting to RBI on its own (shorter) clocks.
+  and incident reporting to RBI on its own (shorter) clocks. Add the **Master Direction on
+  Digital Payment Security Controls (2024)** and the **Master Direction on Digital Lending
+  (2025)**.
+- **2026 development:** RBI **reset its framework on 31 July 2026 into seven Directions, one per
+  entity class**, consolidating and tightening the cyber and data-governance stack.
 - **Account Aggregator (NBFC-AA) framework:** the consent-artefact architecture that the DPDP
   Consent Manager generalises. An organisation already integrated with AA has most of the
   consent-record plumbing Rule 4 will need.
@@ -91,9 +95,11 @@ and localisation expectations for specified regulated-entity data.
 
 ### 1.6 Insurance — IRDAI
 
-Information and Cyber Security Guidelines, policyholder-record localisation, and long
-retention periods driven by policy tenure and claims tails — frequently the longest retention
-obligations any Indian company carries, and the ones that most often defeat an erasure request.
+Information and Cyber Security Guidelines — **reissued on 6 April 2026**, replacing the 2023
+Guidelines and extending down the **intermediary chain** rather than stopping at the insurer —
+policyholder-record localisation, and long retention periods driven by policy tenure and claims
+tails, frequently the longest retention obligations any Indian company carries and the ones that
+most often defeat an erasure request.
 
 ### 1.7 Telecom — the Telecommunications Act, 2023 and licence conditions
 

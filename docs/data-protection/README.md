@@ -39,6 +39,8 @@ operating across borders.
 | [`08-jurisprudence.md`](08-jurisprudence.md) | The case law: *Puttaswamy* and the proportionality test, the RTI line, the pending Constitution Bench challenge, the CJEU decisions that will fill India's undefined terms, and enforcement data |
 | [`09-ai-and-data-protection.md`](09-ai-and-data-protection.md) | AI: the India AI Governance Guidelines, where the DPDP Act actually bites on models, the S.3(c)(ii) training-data question, and the comparative AI-law map as at August 2026 |
 | [`10-economics-and-watchlist.md`](10-economics-and-watchlist.md) | What a regime like this costs — the GDPR's measured effect on profits, investment and market concentration — India's readiness gap, MeitY's January 2026 proposal to accelerate SDF compliance, and every lever still unpulled |
+| [`11-dpdp-gdpr-crosswalk.md`](11-dpdp-gdpr-crosswalk.md) | Clause-level DPDP ↔ GDPR mapping for dual-compliance teams: the delta on every obligation, the seven India-only builds, the four EU-only builds |
+| [`12-sector-notes.md`](12-sector-notes.md) | Where it lands differently: BFSI, healthcare, education and edtech, consumer internet and D2C, B2B SaaS and IT/BPM, and the public sector |
 | [`memo/`](memo/) | The study as a formally cited Word research memorandum — 75 numbered references, with the build script |
 
 Each file is self-contained and can be read alone. Cross-references use section numbers of
