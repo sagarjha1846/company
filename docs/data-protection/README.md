@@ -47,6 +47,7 @@ operating across borders.
 | [`16-competition-and-privacy.md`](16-competition-and-privacy.md) | How the CCI enforced a DPDP-style consent standard against Meta/WhatsApp before the Board existed, the pending Supreme Court appeal, and the two-regulator overlap it creates |
 | [`18-dark-patterns.md`](18-dark-patterns.md) | The third regulator of consent design: India's Dark Patterns Guidelines, 2023, the thirteen specified patterns, live enforcement by the Central Consumer Protection Authority, and where three regimes converge on "forced action" |
 | [`17-product-opportunity.md`](17-product-opportunity.md) | The business thesis: a two-sided consent layer — market map of who is already building on both sides, the product for the Data Fiduciary and for the Data Principal, model, sequencing, risks and a 90-day MVP |
+| [`19-interoperability.md`](19-interoperability.md) | What a Consent Manager has to speak: the three Indian specification lineages, MeitY's Code for Consent BRD, the artefact fields DPDP adds beyond Account Aggregator, and a proposed minimum viable interface |
 | [`consent-layer-page.html`](consent-layer-page.html) | Standalone explainer + product page (published as an Artifact) — the law in five minutes, then the opening |
 | [`memo/`](memo/) | The study as a formally cited Word research memorandum — 75 numbered references, with the build script |
 

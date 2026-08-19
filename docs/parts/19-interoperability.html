@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 19 — The interoperability layer: what a Consent Manager actually has to speak</title>
+<meta name="description" content="Part 19 — The interoperability layer: what a Consent Manager actually has to speak">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="sitebar"><a href="../index.html">&#8592; All parts</a><span>India&rsquo;s DPDP Act &mdash; a study</span></div>
+<div class="shell"><aside class="toc"><p class="tl">On this page</p><a class="l2" href="#1-why-interoperability-is-the-whole-game">1. Why interoperability is the whole game</a><a class="l2" href="#2-india-already-has-three-specification-lineages">2. India already has three specification lineages</a><a class="l3" href="#21-meitys-electronic-consent-framework-v11">2.1 MeitY&amp;#x27;s Electronic Consent Framework (v1.1)</a><a class="l3" href="#22-depa">2.2 DEPA</a><a class="l3" href="#23-the-account-aggregator-stack-the-only-one-that-runs-in-production">2.3 The Account Aggregator stack — the only one that runs in production</a><a class="l2" href="#3-meitys-own-requirements-the-code-for-consent-brd">3. MeitY&amp;#x27;s own requirements: the Code for Consent BRD</a><a class="l2" href="#4-what-a-dpdp-consent-artefact-must-carry-beyond-aas">4. What a DPDP consent artefact must carry beyond AA&amp;#x27;s</a><a class="l2" href="#5-a-minimum-viable-interface">5. A minimum viable interface</a><a class="l2" href="#6-what-is-still-unspecified">6. What is still unspecified</a><a class="l2" href="#7-the-strategic-read">7. The strategic read</a><a class="l2" href="#citations">Citations</a></aside><main class="prose"><h1 id="part-19-the-interoperability-layer-what-a-consent-manager-actually-has-to-speak">Part 19 — The interoperability layer: what a Consent Manager actually has to speak</h1>
+<p>Rule 4 requires a Consent Manager to operate an <strong>interoperable platform</strong>. Nobody has published what that means. This part collects the three specification lineages India already has, sets out what a DPDP consent artefact must carry beyond them, and proposes a minimum viable interface — because whoever publishes a workable spec first has a real shot at becoming the default.</p>
+<hr>
+<h2 id="1-why-interoperability-is-the-whole-game">1. Why interoperability is the whole game</h2>
+<p>A Consent Manager that only works with the Fiduciaries it has bilaterally integrated is a vendor, not an institution. The statutory promise — one place to see and withdraw every consent you have given — only holds if:</p>
+<ul>
+<li>any Fiduciary can integrate against a <strong>published interface</strong> rather than a private one;</li>
+<li>consent artefacts are <strong>portable</strong> between Consent Managers, so a Data Principal can switch;</li>
+<li>withdrawal <strong>propagates</strong> to the Fiduciary <em>and its Processors</em> within S.6(6)&#x27;s &quot;reasonable time&quot;; and</li>
+<li>the record is <strong>machine-readable and auditable</strong> by the Board.</li>
+</ul>
+<p>None of that exists yet. That is the gap, and it is a design gap rather than a legal one.</p>
+<hr>
+<h2 id="2-india-already-has-three-specification-lineages">2. India already has three specification lineages</h2>
+<h3 id="21-meitys-electronic-consent-framework-v11">2.1 MeitY&#x27;s Electronic Consent Framework (v1.1)</h3>
+<p>The ancestor. A MeitY technology specification defining a <strong>digitally signed, machine-readable consent artefact</strong> — the idea that consent is a <em>document with structure</em>, not a checkbox event. It predates the DPDP Act and is the conceptual source of everything that followed.</p>
+<h3 id="22-depa">2.2 DEPA</h3>
+<p>The architectural pattern: a <strong>data-blind consent intermediary</strong> sitting between data providers and data users, holding no data, brokering flows on the individual&#x27;s instruction.</p>
+<h3 id="23-the-account-aggregator-stack-the-only-one-that-runs-in-production">2.3 The Account Aggregator stack — the only one that runs in production</h3>
+<p><strong>ReBIT</strong> publishes the <strong>NBFC-AA API Specification (v2.0.0)</strong> with three API catalogues:</p>
+<div class="scroll"><table><thead><tr>
+<th>Catalogue</th>
+<th>Role</th>
+<th>DPDP analogue</th>
+</tr></thead><tbody>
+<tr><td><strong>AA APIs</strong></td><td>The aggregator itself</td><td>The Consent Manager</td></tr>
+<tr><td><strong>FIP APIs</strong></td><td>Financial Information Provider — holds the data</td><td>The Data Fiduciary holding data</td></tr>
+<tr><td><strong>FIU APIs</strong></td><td>Financial Information User — wants the data</td><td>The Data Fiduciary requesting data</td></tr>
+</tbody></table></div>
+<p>The <strong>consent artefact</strong> specifies purpose, validity, and the recipients, with easy revocation and auditable logs of every consent and data request. The flow: the FIU resolves the FIP identifier from a <strong>Central Registry</strong>, then posts a consent request naming the data types, the duration and the purpose.</p>
+<p><strong>Three structural lessons transfer directly to DPDP:</strong></p>
+<ol>
+<li><strong>A central registry is not optional.</strong> Discovery — how does Fiduciary A find Consent Manager B, and verify it is registered? — is the piece a statutory registration regime should supply and currently does not.</li>
+<li><strong>Separate the roles.</strong> AA&#x27;s three-catalogue split maps cleanly onto DPDP, where a Fiduciary may be both a holder and a requester of data.</li>
+<li><strong>The artefact is the contract.</strong> Everything else is transport.</li>
+</ol>
+<hr>
+<h2 id="3-meitys-own-requirements-the-code-for-consent-brd">3. MeitY&#x27;s own requirements: the Code for Consent BRD</h2>
+<p>MeitY, through <strong>NeGD with MeitY Startup Hub</strong>, ran <strong>&quot;Code for Consent: The DPDP Innovation Challenge,&quot;</strong> shortlisting six entities — <strong>Jio Platforms, Baldor Technologies (IDfy), VertexTech Labs (Redacto), Quagga Tech (Zoop), Concur, and Aurelion Future Forge</strong> — for a three-month coding round evaluated on functionality, compliance, usability and scalability.</p>
+<p>The <strong>Business Requirement Document, released June 2025</strong>, is the closest thing to an official statement of what a consent management system must do. Its notable requirements:</p>
+<ul>
+<li><strong>Real-time consent verification over secure APIs</strong> before any personal data is collected or used — and the ability to <strong>block the data request immediately</strong> where consent is missing, expired or withdrawn;</li>
+<li><strong>administrative controls</strong>: user role management and configurable retention policy;</li>
+<li><strong>multi-channel notification</strong> to the individual — email, SMS, in-app.</li>
+</ul>
+<p>The first of those is the significant one. It implies consent is not a record consulted after the fact but an <strong>enforcement point in the request path</strong> — closer to an authorisation service than to a compliance log. That is a much more demanding engineering posture than most CMP vendors are built for, and it is where a genuine technical moat could exist.</p>
+<p><strong>A distinction worth keeping straight:</strong> being empanelled or shortlisted by NeGD is <strong>not</strong> the same as being <strong>registered as a Consent Manager by the Data Protection Board under Rule 4</strong>. The first is a government procurement and innovation track; the second is the statutory licence, and it does not open until 13 November 2026 — before a Board exists to grant it (<a href="15-consent-managers.html">Part 15</a>). Vendors are already blurring the two in their marketing.</p>
+<hr>
+<h2 id="4-what-a-dpdp-consent-artefact-must-carry-beyond-aas">4. What a DPDP consent artefact must carry beyond AA&#x27;s</h2>
+<p>AA&#x27;s artefact was designed for financial data sharing between regulated institutions. DPDP consent is a broader thing, and the Act and Rules impose fields AA never needed:</p>
+<div class="scroll"><table><thead><tr>
+<th>Field</th>
+<th>Why it is required</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td><strong>Itemised data list</strong></td><td>Consent is limited to data <em>necessary</em> for the purpose; anything beyond is void</td><td>S.6(1)</td></tr>
+<tr><td><strong>Itemised purpose list</strong></td><td>Notice must describe purposes item by item, not by category</td><td>R.3</td></tr>
+<tr><td><strong>Notice version hash</strong></td><td>You must be able to prove <em>which</em> notice text the consent was given against</td><td>S.5, R.3</td></tr>
+<tr><td><strong>Language served</strong></td><td>The notice must be available in English or any of 22 Eighth Schedule languages, at the individual&#x27;s option</td><td>S.5(3), R.3</td></tr>
+<tr><td><strong>Capture surface and affirmative action</strong></td><td>Consent requires a clear affirmative action; you must be able to evidence what the user actually did</td><td>S.6(1)</td></tr>
+<tr><td><strong>Withdrawal parity evidence</strong></td><td>Withdrawal must be as easy as giving — a claim that has to be demonstrable</td><td>S.6(4)</td></tr>
+<tr><td><strong>Propagation state</strong></td><td>Whether cessation reached the Fiduciary <em>and its Processors</em></td><td>S.6(6)</td></tr>
+<tr><td><strong>Child / guardian flag and verification method</strong></td><td>Verifiable parental consent, and which method verified it</td><td>S.9(1), R.10</td></tr>
+<tr><td><strong>Recipient ledger</strong></td><td>The access right includes the identities of everyone the data was shared with, and what was shared</td><td>S.11</td></tr>
+<tr><td><strong>Legitimate-use marker</strong></td><td>Where processing runs on S.7 rather than consent, the artefact should record <em>which</em> ground</td><td>S.7</td></tr>
+<tr><td><strong>Retention trigger</strong></td><td>The erasure clock is per purpose, not per record</td><td>S.8(7), Third Schedule</td></tr>
+<tr><td><strong>Nomination</strong></td><td>A nominee may exercise these rights on death or incapacity</td><td>S.14</td></tr>
+</tbody></table></div>
+<p>The last four are the ones no existing specification covers, and the <strong>recipient ledger</strong> is the hardest: it requires sharing telemetry, not just a consent record. It is also the field that makes the S.11 access right meaningful rather than decorative, which is why it is worth building even though nobody is asking for it yet.</p>
+<hr>
+<h2 id="5-a-minimum-viable-interface">5. A minimum viable interface</h2>
+<p>Offered as a design proposal, not a standard. Five endpoints and a registry get you most of the way:</p>
+<p><strong>Registry (needed from the Board, or bootstrapped by the ecosystem)</strong></p>
+<ul>
+<li><code>GET /registry/consent-managers</code> — registered CMs, status, public keys, endpoints</li>
+<li><code>GET /registry/fiduciaries/{id}</code> — identity, endpoints, SDF status</li>
+</ul>
+<p><strong>Consent Manager, called by a Fiduciary</strong></p>
+<ol>
+<li><code>POST /consent/requests</code> — Fiduciary proposes an itemised purpose set with the notice reference and language; returns an artefact in <code>pending</code> state</li>
+<li><code>GET /consent/artefacts/{id}</code> — current state, signed</li>
+<li><code>POST /consent/verify</code> — <strong>the enforcement call in the request path.</strong> Given artefact + purpose, returns allow/deny with a reason. Must be fast enough to sit inline</li>
+<li><code>POST /consent/withdrawals</code> — from either side; returns propagation obligations</li>
+<li><code>POST /consent/events</code> — Fiduciary reports back: propagation complete, processors notified, data shared with recipient X, retention clock started</li>
+</ol>
+<p><strong>Non-negotiables</strong></p>
+<ul>
+<li>Every artefact <strong>digitally signed</strong> by the issuing Consent Manager, verifiable offline</li>
+<li><strong>Append-only</strong> artefact history; states change by adding events, never by mutation</li>
+<li>The Consent Manager holds <strong>no personal data</strong> beyond what identifies the artefact and the individual to the Fiduciary</li>
+<li><strong>Exportable</strong> in full, so an individual can move Consent Managers without losing history — portability of the <em>consent record</em> is achievable even though the Act grants no data portability right (<a href="11-dpdp-gdpr-crosswalk.html">Part 11</a>)</li>
+</ul>
+<hr>
+<h2 id="6-what-is-still-unspecified">6. What is still unspecified</h2>
+<div class="scroll"><table><thead><tr>
+<th>Question</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr><td>Is there a Board-run registry of Consent Managers?</td><td>Nothing published</td></tr>
+<tr><td>Is there a mandated artefact schema?</td><td>No</td></tr>
+<tr><td>How does a Fiduciary discover which CM a given individual uses?</td><td>Undefined — the hardest UX problem in the whole design</td></tr>
+<tr><td>Must a Fiduciary integrate with <em>every</em> registered CM?</td><td>Unclear; if yes, that is an N×M problem the registry must solve</td></tr>
+<tr><td>How do AA consent artefacts and DPDP artefacts coexist for a fintech?</td><td>Unresolved — the AA/CM paradox (<a href="15-consent-managers.html">Part 15</a>)</td></tr>
+<tr><td>Who audits a Consent Manager&#x27;s own compliance?</td><td>Rule 4 says the Board; no procedure published</td></tr>
+<tr><td>What happens to artefacts if a CM&#x27;s registration is revoked?</td><td>Undefined — an obvious systemic risk</td></tr>
+</tbody></table></div>
+<hr>
+<h2 id="7-the-strategic-read">7. The strategic read</h2>
+<p>The specification vacuum is the opportunity in <a href="17-product-opportunity.html">Part 17</a>. Three consequences:</p>
+<ol>
+<li><strong>Publish first.</strong> An open, well-documented interface published before the Board acts is how a private spec becomes the de facto standard — the AA ecosystem&#x27;s own history shows how much power sits with whoever writes the reference implementation.</li>
+<li><strong>Build the verify endpoint properly.</strong> MeitY&#x27;s BRD already asks for <strong>real-time consent verification with immediate blocking</strong>. Treating consent as an authorisation service in the request path — rather than an audit log consulted later — is technically hard, genuinely differentiating, and exactly what a regulator will eventually require.</li>
+<li><strong>Build the recipient ledger nobody wants yet.</strong> It is the hardest field, it makes the S.11 access right real, and it is what a consumer-facing product needs in order to show a person something they have never been able to see: where their data actually went.</li>
+</ol>
+<hr>
+<h2 id="citations">Citations</h2>
+<ul>
+<li>Reserve Bank Information Technology Pvt Ltd (ReBIT), <strong>NBFC-Account Aggregator API Specification v2.0.0</strong> — <a href="https://specifications.rebit.org.in/artefacts/NBFC-AA_API_Specification_v2.0.0.pdf">specification PDF</a> · <a href="https://sahamati.org.in/wp-content/uploads/2025/02/2-API_Specifications_v2.0.0.pdf">Sahamati mirror</a></li>
+<li>ReBIT, <strong>Standards to enhance customer protection and user experience within the AA Framework v1.0</strong> — <a href="https://specifications.rebit.org.in/artefacts/NBFC-AA_Standards_to_enhance_customer_protection_and_user_experience_in_AA_Framework_v1.0.pdf">PDF</a></li>
+<li><a href="https://sahamati.org.in/rbi-announces-technical-specifications-for-the-account-aggregator-ecosystem/">Sahamati, &quot;RBI announces technical specifications for the Account Aggregator ecosystem&quot;</a></li>
+<li>MeitY, <strong>Electronic Consent Framework Technology Specifications, Version 1.1</strong> — <a href="https://dla.gov.in/sites/default/files/pdf/MeitY-Consent-Tech-Framework%20v1.1.pdf">PDF</a></li>
+<li><a href="https://www.storyboard18.com/digital/meity-selects-six-firms-including-jio-platforms-for-code-for-consent-challenge-77886.htm">Storyboard18, &quot;MeitY selects six firms, including Jio Platforms, for &#x27;Code for Consent&#x27; challenge&quot;</a> · <a href="https://www.medianama.com/2025/08/223-jio-idfy-meity-consent-management-systems-dpdpa/">MediaNama, &quot;MeitY chooses Jio, IDfy for DPDPA consent management systems&quot;</a></li>
+<li><a href="https://the420.in/india-consent-management-system-dpdp-act-guidelines/">The420.in, &quot;DPDP Act 2023: MeitY details the ideal consent management system&quot;</a> — on the June 2025 Business Requirement Document</li>
+<li><a href="https://www.consent.in/blog/negd-consent-manager">Consent.in, &quot;Are NeGD empanelled Consent Managers needed for businesses?&quot;</a> — on the empanelment/registration distinction</li>
+<li>DPDP Act, 2023, S.5–S.9, S.11, S.14; DPDP Rules, 2025, Rules 3, 4, 10 and the First Schedule</li>
+</ul>
+<nav class="pager"><a href="18-dark-patterns.html">&#8592; Part 18 — Dark patterns: the third regulator of consent design</a><a href="../index.html">Contents &#8594;</a></nav>
+</main></div>
+</body>
+</html>
