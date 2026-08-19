@@ -41,6 +41,25 @@ Two asymmetries make this an unusually good moment. First, **the registrar does 
 Second, **64% of Indian organisations have no compliance budget allocated** and only 18% have
 costed it (EY India 2026), so the buying wave has not yet broken.
 
+### 2.1 How big is the market, honestly
+
+Third-party market research puts the **India data governance market** at about **US$219 million
+in 2025**, roughly **US$252 million in 2026**, reaching **US$765 million by 2034** at a ~14.9%
+CAGR. Broader framings run much larger — an "India data protection market" of US$5.34 billion in
+2024 growing to US$27.77 billion by 2033, and an India cybersecurity market of US$11.34 billion
+in 2025 — but those definitions sweep in backup, disaster recovery and security tooling that
+have nothing to do with consent.
+
+**Use the narrow number.** A realistic serviceable market for consent-and-rights infrastructure
+in India is in the **low hundreds of millions of dollars annually**, growing at mid-teens, with
+a step change as the May 2027 deadline forces budgets. That is large enough to build a real
+company and **too small to support the dozen platforms currently in the category** — which is
+why consolidation is already visible (Veeam/Securiti) and will continue.
+
+The corollary matters for strategy: **do not plan to win a compliance-tooling market that will
+be commoditised.** The durable asset is the consumer relationship, which does not appear in any
+of these market sizings because it does not yet exist in India.
+
 ---
 
 ## 3. Who is already here
@@ -98,7 +117,11 @@ The buyer is the DPO, CISO, GC or Head of Growth at a company facing 13 May 2027
    Eighth Schedule languages** from a structured purpose registry, with versioning and hashes.
    Solves the single most under-estimated build in the Act.
 2. **Consent SDKs** for web, Android, iOS and server, with withdrawal parity enforced in the
-   component — you cannot ship a one-tap accept with a five-step withdrawal.
+   component — you cannot ship a one-tap accept with a five-step withdrawal. The SDK should also
+   make the **thirteen dark patterns impossible to ship** ([Part 18](18-dark-patterns.md)):
+   enforced symmetry, no pre-ticking, purpose separation, single-prompt behaviour. That converts
+   three regulatory regimes — DPDP, consumer protection and competition — into a build-time
+   constraint instead of a review-time argument, and it is a real differentiator.
 3. **Purpose and lawful-basis registry.** Every data element mapped to S.6 consent or a named
    S.7 legitimate use, with the S.7(a)/S.7(i) boundary flagged for review. This doubles as the
    GDPR Article 30 record.
