@@ -312,11 +312,23 @@ derogations from specific rights. The safeguard doing the work is the no-individ
 condition, plus the Schedule's standards.
 
 ### Rules 17–22 — The Board and appeals
-Appointment, salary and service conditions of the **Chairperson and Members** (Fifth Schedule),
-and of **officers and employees** (Sixth Schedule); the procedure for the Board's **functioning
-as a digital office** — proceedings, hearings and orders conducted through digital means, with
-techno-legal measures for authentication and record-keeping; and the **form, fee and manner of
-filing an appeal** to the Appellate Tribunal (TDSAT), also digitally.
+
+| Rule | Subject |
+|---|---|
+| 17 | Appointment of the Chairperson and other Members |
+| 18 | Salary, allowances and other terms and conditions of service (Fifth Schedule) |
+| 19 | Procedure for meetings of the Board, and authentication of its orders, directions and instruments |
+| 20 | Functioning of the Board as a **digital office** |
+| 21 | Terms and conditions of service of officers and employees (Sixth Schedule) |
+| 22 | **Appeals to the Appellate Tribunal** |
+
+The Board is to operate through techno-legal systems: complaints filed, hearings held and
+decisions issued **digitally**, with no need to travel to Delhi — physical presence remains
+possible where a person must be summoned or examined. Two specifics are easy to miss and matter
+a great deal: an **inquiry must be completed within six months**, extendable only in
+**three-month blocks with recorded written justification**; and an **appeal is filed digitally
+with a fee equivalent to a TRAI Act appeal, payable by UPI**, reducible or waivable by the
+Tribunal's Chairperson. See [Part 20](20-enforcement-in-practice.md).
 
 Selection of the Chairperson runs through a **Search-cum-Selection Committee headed by the
 Cabinet Secretary**; a separate committee, headed by the Secretary, MeitY, shortlists Members.
